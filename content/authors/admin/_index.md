@@ -60,7 +60,7 @@ email: ''
 highlight_name: true
 ---
 
-This corner of the internet belongs to someone who can spend an entire evening fixing a missing parenthesis and call it a productive day. Experiments, code, cameras, and questionable life choices all end up here sooner or later. His name’s Edo, and he’s still convinced this all makes sense.
+This corner of the internet belongs to someone who likes good company and bad ideas in equal measure. Experiments, code, cameras, and questionable life choices all end up here sooner or later. His name’s Edo, and he’s still convinced this all makes sense.
 
 Some days it’s a plot that finally makes sense. Other days it’s a random photo. Occasionally something profound appears, though it’s usually accidental.
 
