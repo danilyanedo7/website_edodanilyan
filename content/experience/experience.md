@@ -7,6 +7,41 @@ subtitle:
 date_format: Jan 2006
 experience:
 
+  - title: Researcher
+    company: University of Vienna
+    company_url: 'https://www.univie.ac.at/en/'
+    company_logo: org-univie
+    location: Vienna, Austria
+    date_start: '2024-07-01'
+    date_end: ''
+    description: |2-
+        * Conducting research as part of the FWF Cluster of Excellence – Microplanet: Microbiomes Drive Planetary Health.
+        * Studying microbial biomass and metabolism, with a focus on aquatic systems.
+
+  - title: Super Mentor
+    company: Dealls – Jobs & Mentoring
+    company_url: 'https://dealls.com/mentoring'
+    company_logo: org-dealls
+    location: Online
+    date_start: '2024-06-01'
+    date_end: ''
+    description: |2-
+        * Conducted one-on-one online mentoring sessions (30–60 minutes) to help mentees navigate career transitions, academic challenges, and personal development.
+        * Shared expertise in bioinformatics, data science, and research to guide aspiring scientists and professionals toward their goals.
+        * Inspired and supported talents seeking direction by drawing on lived experience across international programs and multi-disciplinary research.
+        * Contributed to a community-driven platform addressing the gap where 65% of workers lack meaningful career guidance.
+
+  - title: Business Development Specialist
+    company: ngeLESin Global Edutech
+    company_url: 'https://ngelesin.com'
+    company_logo: org-ngelesin
+    location: Jakarta, Indonesia
+    date_start: '2022-07-01'
+    date_end: '2023-04-01'
+    description: |2-
+        * Contributed to business development initiatives for a one-stop learning solution platform.
+        * Supported growth strategies and partnerships within the Indonesian edtech sector.
+
   - title: Student Exchange
     company: University of Szczecin
     company_url: 'http://www.usz.edu.pl/'
