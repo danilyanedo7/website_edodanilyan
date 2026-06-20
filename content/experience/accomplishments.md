@@ -38,6 +38,12 @@ item:
     organization_url: https://www.ndhu.edu.tw/?Lang=en
     title: Sustainable Agriculture
     #url: https://www.edx.org/professional-certificate/uc-berkeleyx-blockchain-fundamentals
+  - date_end: ''
+    date_start: '2021-01-01'
+    description: Ecological survey methods and field techniques training organized by the Ecological Laboratory, Department of Biology, Institut Teknologi Sepuluh Nopember
+    organization: Ecological Laboratory, Biology Dept. ITS
+    organization_url: https://www.its.ac.id
+    title: Surveyor Training XI
   - #certificate_url: https://www.edx.org
     date_end: ''
     date_start: '2021-01-01'
