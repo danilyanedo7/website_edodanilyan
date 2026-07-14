@@ -35,7 +35,7 @@ The dashboard lets you browse the data at your own pace. You can look at long-te
 
 Have a look around and see what you find.
 
-[https://danilyanedo7.github.io/kaggle-energy/]https://danilyanedo7.github.io/kaggle-energy/
+[https://danilyanedo7.github.io/kaggle-energy/](https://danilyanedo7.github.io/kaggle-energy/)
 
 ---
 
