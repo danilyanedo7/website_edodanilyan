@@ -1,0 +1,221 @@
+---
+title: "R tutorial series: Analyzing bacterial growth from OD600 data"
+subtitle: ""
+summary: "This article will include code chunks on how I analyze bacterial growth of OD600 data"
+authors: [admin]
+tags: [Portfolio, r, dataviz]
+categories: []
+date: 2024-08-08T18:23:23+07:00
+lastmod: 2024-08-08T18:23:23+07:00
+featured: false
+draft: false
+output:
+  blogdown::html_page:
+    toc: false
+
+image:
+  caption: ""
+  focal_point: ""
+  preview_only: true
+
+projects: []
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, fig.retina = 2)
+```
+
+Bacterial growth analysis is a fundamental task in microbiology, allowing researchers to monitor the proliferation of bacteria over time. Optical Density at 600 nm (OD600) is a commonly used method to measure this growth. In this tutorial, we'll walk through the process of analyzing bacterial growth data using R: loading and tidying the data, visualizing growth curves for several samples at once, automatically detecting each sample's exponential phase to estimate its maximum specific growth rate (**&mu;max**), and comparing growth rates across samples. This is just basic things for a new undergrad biology student and a nice way to start learning microbiology.
+
+
+# Libraries we need
+We start by defining the libraries that will be used in our analysis.
+
+```{r}
+libs <- c(
+  "readr", "dplyr", "tidyr", "purrr", "lubridate",
+  "ggplot2", "ggsci", "plotly", "knitr")
+
+installed_libs <- libs %in% rownames(installed.packages())
+if (any(installed_libs == FALSE)) {
+  install.packages(libs[!installed_libs])
+}
+
+invisible(lapply(libs, library, character.only = TRUE))
+```
+
+`readr` for reading the CSV, `dplyr`/`tidyr`/`purrr` for wrangling, `lubridate` for parsing the time stamps, `ggplot2`/`ggsci` for static plots, `plotly` for an interactive version, and `knitr` for printing tidy summary tables.
+
+# Load and tidy the data
+We load the OD600 data from a CSV file (Excel works too, just keep the same column layout). You can download example data [here](https://drive.google.com/file/d/1O6Y1g-_Z6oRyfYlfth24hm-s7GWBqKhF/view?usp=share_link). This is personal data collected during my training at the University of Vienna, using *Vibrio* as a bacterial model grown in marine broth liquid medium.
+
+The raw file has one row per reading, with a `Sample_name` column encoding both the sample and the time it was taken (e.g. `WT_09:15`), plus the raw `Result` (OD600 reading). The workflow below supports any number of samples — nothing has to change if you add more.
+
+```{r}
+blank_od <- 0.001 # OD600 of your blank/media-only well — adjust to your own measurement
+
+df <- read_csv("od_data2.csv") %>%
+  mutate(
+    Sample = sub("_.*", "", Sample_name),
+    Time   = sub(".*_", "", Sample_name),
+    Time   = hm(Time),
+    Result = Result - blank_od) %>%
+  filter(Result > 0) %>% # can't take log() of a non-positive OD
+  mutate(Result_log = log(Result)) %>%
+  group_by(Sample) %>%
+  arrange(Time, .by_group = TRUE) %>%
+  mutate(Time_h = as.numeric(Time - min(Time), units = "hours")) %>%
+  ungroup() %>%
+  select(Sample, Time_h, Result, Result_log)
+
+glimpse(df)
+```
+
+A few changes from a "just read the CSV" approach worth calling out:
+
+- The blank correction lives in a named `blank_od` variable instead of a magic number buried in a pipe, so it's obvious what to change for your own plate reader.
+- Any blank-corrected reading `<= 0` is dropped before log-transforming — otherwise `log()` silently returns `-Inf`/`NaN` and breaks the regressions further down.
+- `Time` is converted to **hours elapsed since that sample's first reading** (`Time_h`), computed per sample. That keeps the x-axis in intuitive units and means samples that were started at different clock times still line up at t = 0.
+
+# Growth curves for all samples
+With tidy data in hand, we can plot every sample's growth curve on one panel.
+
+```{r}
+p_raw <- ggplot(df, aes(x = Time_h, y = Result, color = Sample)) +
+  geom_line() +
+  geom_point(size = 1) +
+  labs(
+    title = "Optical Density λ600",
+    x = "Time (hours)",
+    y = "Optical Density (OD600)") +
+  scale_color_nejm() +
+  theme_minimal()
+
+p_raw
+```
+
+# Log-transformed OD600
+Plotting `log(OD600)` against time is what makes the exponential phase visible as a straight line — that straight segment is exactly what the next section detects automatically.
+
+```{r}
+p_log <- ggplot(df, aes(x = Time_h, y = Result_log, color = Sample)) +
+  geom_line() +
+  geom_point(size = 1) +
+  labs(
+    title = "Optical Density λ600 (log scale)",
+    x = "Time (hours)",
+    y = "log(Optical Density)") +
+  scale_color_nejm() +
+  theme_minimal()
+
+p_log
+```
+
+# Finding &mu;max with a sliding-window regression
+
+In batch culture, growth during the exponential phase follows
+
+$$ \frac{dN}{dt} = \mu N $$
+
+so a straight line fit to `log(N)` vs. time has slope &mu;, the specific growth rate. **&mu;max** is the highest &mu; sustained anywhere in the curve — i.e. the steepest straight stretch of the log-transformed curve.
+
+Rather than eyeballing where the exponential phase starts and ends (as I did in an earlier version of this post, and which has to be re-guessed by hand for every new sample), we slide a small window of consecutive time points along each sample's curve, fit a linear regression of `Result_log ~ Time_h` inside every window, and keep the window with the steepest good-quality fit. This is the same idea used by dedicated growth-curve tools like the `growthcurver` package.
+
+```{r}
+find_mu_max <- function(data, window = 5) {
+  data <- arrange(data, Time_h)
+  n <- nrow(data)
+  if (n < window) {
+    return(tibble())
+  }
+
+  map_dfr(1:(n - window + 1), function(i) {
+    w <- data[i:(i + window - 1), ]
+    fit <- lm(Result_log ~ Time_h, data = w)
+    tibble(
+      window_start = min(w$Time_h),
+      window_end   = max(w$Time_h),
+      mu           = unname(coef(fit)[2]),
+      r_squared    = summary(fit)$r.squared
+    )
+  })
+}
+```
+
+`window` is the number of consecutive readings used per regression — tune it to your sampling frequency (e.g. a smaller window for coarser sampling, a larger one for very frequent readings) so each window still spans a few minutes of real growth.
+
+We apply this per sample, then for each sample keep the best window: the steepest slope among windows with a good linear fit (`r_squared > 0.98`).
+
+```{r}
+growth_windows <- df %>%
+  group_by(Sample) %>%
+  group_modify(~ find_mu_max(.x, window = 5)) %>%
+  ungroup()
+
+mu_max_summary <- growth_windows %>%
+  filter(r_squared > 0.98, mu > 0) %>%
+  group_by(Sample) %>%
+  slice_max(mu, n = 1, with_ties = FALSE) %>%
+  ungroup() %>%
+  mutate(doubling_time_min = (log(2) / mu) * 60) %>%
+  select(Sample, mu_max = mu, r_squared, window_start, window_end, doubling_time_min)
+
+kable(mu_max_summary, digits = 3,
+      col.names = c("Sample", "μmax (h⁻¹)", "R²",
+                    "Window start (h)", "Window end (h)", "Doubling time (min)"))
+```
+
+The doubling time follows directly from &mu;max:
+
+$$ t_d = \frac{\ln(2)}{\mu_{max}} $$
+
+# Checking the detected exponential phase
+Before trusting these numbers, it's worth visualizing which window was picked for each sample, overlaid on the log-transformed curve.
+
+```{r, fig.height=4}
+ggplot(df, aes(x = Time_h, y = Result_log)) +
+  geom_rect(
+    data = mu_max_summary,
+    aes(xmin = window_start, xmax = window_end, ymin = -Inf, ymax = Inf),
+    inherit.aes = FALSE, fill = "grey80", alpha = 0.5
+  ) +
+  geom_line(aes(color = Sample), show.legend = FALSE) +
+  geom_point(aes(color = Sample), size = 1, show.legend = FALSE) +
+  facet_wrap(~Sample, scales = "free_x") +
+  labs(
+    title = "Detected exponential-phase window per sample",
+    x = "Time (hours)", y = "log(Optical Density)") +
+  scale_color_nejm() +
+  theme_minimal()
+```
+
+The shaded rectangle is the window `find_mu_max()` selected for that sample. If it looks too short, too noisy, or off to one side, adjust the `window` size or the `r_squared` cutoff above and re-run.
+
+# Comparing growth rate across samples
+This is the part that's easy to lose track of when analyzing one sample at a time: how do the samples actually compare?
+
+```{r, fig.height=4}
+mu_max_summary %>%
+  select(Sample, `μmax (h⁻¹)` = mu_max, `Doubling time (min)` = doubling_time_min) %>%
+  pivot_longer(-Sample, names_to = "metric", values_to = "value") %>%
+  ggplot(aes(x = reorder(Sample, value), y = value, fill = Sample)) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~metric, scales = "free_x") +
+  coord_flip() +
+  scale_fill_nejm() +
+  labs(x = NULL, y = NULL, title = "Growth rate vs. doubling time by sample") +
+  theme_minimal()
+```
+
+# Interactive growth curve
+Handy for zooming into a specific stretch of the curve or checking individual points.
+
+```{r}
+ggplotly(p_raw)
+```
+
+# Remarks
+By automating exponential-phase detection with a sliding-window regression, this workflow scales to any number of samples without hand-tuning a `lag_end`/`exp_end` cutoff for each one, and the &mu;max/doubling-time table and every plot above are regenerated straight from the raw CSV whenever this document is knitted. That makes the whole analysis reproducible: re-run it on a new plate and the numbers and figures update themselves.
+
+Buy me a [coffee](https://bmc.link/danilyanedo)
+See you in the next post and have a beautiful day!

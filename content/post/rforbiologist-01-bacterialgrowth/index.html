@@ -1,0 +1,255 @@
+---
+title: "R tutorial series: Analyzing bacterial growth from OD600 data"
+subtitle: ""
+summary: "This article will include code chunks on how I analyze bacterial growth of OD600 data"
+authors: [admin]
+tags: [Portfolio, r, dataviz]
+categories: []
+date: 2024-08-08T18:23:23+07:00
+lastmod: 2024-08-08T18:23:23+07:00
+featured: false
+draft: false
+output:
+  blogdown::html_page:
+    toc: false
+
+image:
+  caption: ""
+  focal_point: ""
+  preview_only: true
+
+projects: []
+---
+
+<link href="{{< blogdown/postref >}}index_files/htmltools-fill/fill.css" rel="stylesheet" />
+<script src="{{< blogdown/postref >}}index_files/htmlwidgets/htmlwidgets.js"></script>
+<script src="{{< blogdown/postref >}}index_files/plotly-binding/plotly.js"></script>
+<script src="{{< blogdown/postref >}}index_files/typedarray/typedarray.min.js"></script>
+<script src="{{< blogdown/postref >}}index_files/jquery/jquery.min.js"></script>
+<link href="{{< blogdown/postref >}}index_files/crosstalk/css/crosstalk.min.css" rel="stylesheet" />
+<script src="{{< blogdown/postref >}}index_files/crosstalk/js/crosstalk.min.js"></script>
+<link href="{{< blogdown/postref >}}index_files/plotly-htmlwidgets-css/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="{{< blogdown/postref >}}index_files/plotly-main/plotly-latest.min.js"></script>
+
+
+<p>Bacterial growth analysis is a fundamental task in microbiology, allowing researchers to monitor the proliferation of bacteria over time. Optical Density at 600 nm (OD600) is a commonly used method to measure this growth. In this tutorial, we’ll walk through the process of analyzing bacterial growth data using R: loading and tidying the data, visualizing growth curves for several samples at once, automatically detecting each sample’s exponential phase to estimate its maximum specific growth rate (<strong>μmax</strong>), and comparing growth rates across samples. This is just basic things for a new undergrad biology student and a nice way to start learning microbiology.</p>
+<div id="libraries-we-need" class="section level1">
+<h1>Libraries we need</h1>
+<p>We start by defining the libraries that will be used in our analysis.</p>
+<pre class="r"><code>libs &lt;- c(
+  &quot;readr&quot;, &quot;dplyr&quot;, &quot;tidyr&quot;, &quot;purrr&quot;, &quot;lubridate&quot;,
+  &quot;ggplot2&quot;, &quot;ggsci&quot;, &quot;plotly&quot;, &quot;knitr&quot;)
+
+installed_libs &lt;- libs %in% rownames(installed.packages())
+if (any(installed_libs == FALSE)) {
+  install.packages(libs[!installed_libs])
+}
+
+invisible(lapply(libs, library, character.only = TRUE))</code></pre>
+<p><code>readr</code> for reading the CSV, <code>dplyr</code>/<code>tidyr</code>/<code>purrr</code> for wrangling, <code>lubridate</code> for parsing the time stamps, <code>ggplot2</code>/<code>ggsci</code> for static plots, <code>plotly</code> for an interactive version, and <code>knitr</code> for printing tidy summary tables.</p>
+</div>
+<div id="load-and-tidy-the-data" class="section level1">
+<h1>Load and tidy the data</h1>
+<p>We load the OD600 data from a CSV file (Excel works too, just keep the same column layout). You can download example data <a href="https://drive.google.com/file/d/1O6Y1g-_Z6oRyfYlfth24hm-s7GWBqKhF/view?usp=share_link">here</a>. This is personal data collected during my training at the University of Vienna, using <em>Vibrio</em> as a bacterial model grown in marine broth liquid medium.</p>
+<p>The raw file has one row per reading, with a <code>Sample_name</code> column encoding both the sample and the time it was taken (e.g. <code>WT_09:15</code>), plus the raw <code>Result</code> (OD600 reading). The workflow below supports any number of samples — nothing has to change if you add more.</p>
+<pre class="r"><code>blank_od &lt;- 0.001 # OD600 of your blank/media-only well — adjust to your own measurement
+
+df &lt;- read_csv(&quot;od_data2.csv&quot;) %&gt;%
+  mutate(
+    Sample = sub(&quot;_.*&quot;, &quot;&quot;, Sample_name),
+    Time   = sub(&quot;.*_&quot;, &quot;&quot;, Sample_name),
+    Time   = hm(Time),
+    Result = Result - blank_od) %&gt;%
+  filter(Result &gt; 0) %&gt;% # can&#39;t take log() of a non-positive OD
+  mutate(Result_log = log(Result)) %&gt;%
+  group_by(Sample) %&gt;%
+  arrange(Time, .by_group = TRUE) %&gt;%
+  mutate(Time_h = as.numeric(Time - min(Time), units = &quot;hours&quot;)) %&gt;%
+  ungroup() %&gt;%
+  select(Sample, Time_h, Result, Result_log)
+
+glimpse(df)</code></pre>
+<pre><code>## Rows: 34
+## Columns: 4
+## $ Sample     &lt;chr&gt; &quot;t1.1&quot;, &quot;t1.1&quot;, &quot;t1.1&quot;, &quot;t1.1&quot;, &quot;t1.1&quot;, &quot;t1.1&quot;, &quot;t1.1&quot;, &quot;t1…
+## $ Time_h     &lt;dbl&gt; 12.51667, 13.70000, 13.96667, 14.23333, 14.45000, 14.73333,…
+## $ Result     &lt;dbl&gt; 0.001, 0.005, 0.008, 0.014, 0.019, 0.032, 0.049, 0.078, 0.0…
+## $ Result_log &lt;dbl&gt; -6.907755, -5.298317, -4.828314, -4.268698, -3.963316, -3.4…</code></pre>
+<p>A few changes from a “just read the CSV” approach worth calling out:</p>
+<ul>
+<li>The blank correction lives in a named <code>blank_od</code> variable instead of a magic number buried in a pipe, so it’s obvious what to change for your own plate reader.</li>
+<li>Any blank-corrected reading <code>&lt;= 0</code> is dropped before log-transforming — otherwise <code>log()</code> silently returns <code>-Inf</code>/<code>NaN</code> and breaks the regressions further down.</li>
+<li><code>Time</code> is converted to <strong>hours elapsed since that sample’s first reading</strong> (<code>Time_h</code>), computed per sample. That keeps the x-axis in intuitive units and means samples that were started at different clock times still line up at t = 0.</li>
+</ul>
+</div>
+<div id="growth-curves-for-all-samples" class="section level1">
+<h1>Growth curves for all samples</h1>
+<p>With tidy data in hand, we can plot every sample’s growth curve on one panel.</p>
+<pre class="r"><code>p_raw &lt;- ggplot(df, aes(x = Time_h, y = Result, color = Sample)) +
+  geom_line() +
+  geom_point(size = 1) +
+  labs(
+    title = &quot;Optical Density λ600&quot;,
+    x = &quot;Time (hours)&quot;,
+    y = &quot;Optical Density (OD600)&quot;) +
+  scale_color_nejm() +
+  theme_minimal()
+
+p_raw</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-3-1.png" alt="" width="672" /></p>
+</div>
+<div id="log-transformed-od600" class="section level1">
+<h1>Log-transformed OD600</h1>
+<p>Plotting <code>log(OD600)</code> against time is what makes the exponential phase visible as a straight line — that straight segment is exactly what the next section detects automatically.</p>
+<pre class="r"><code>p_log &lt;- ggplot(df, aes(x = Time_h, y = Result_log, color = Sample)) +
+  geom_line() +
+  geom_point(size = 1) +
+  labs(
+    title = &quot;Optical Density λ600 (log scale)&quot;,
+    x = &quot;Time (hours)&quot;,
+    y = &quot;log(Optical Density)&quot;) +
+  scale_color_nejm() +
+  theme_minimal()
+
+p_log</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-4-1.png" alt="" width="672" /></p>
+</div>
+<div id="finding-μmax-with-a-sliding-window-regression" class="section level1">
+<h1>Finding μmax with a sliding-window regression</h1>
+<p>In batch culture, growth during the exponential phase follows</p>
+<p><span class="math display">\[ \frac{dN}{dt} = \mu N \]</span></p>
+<p>so a straight line fit to <code>log(N)</code> vs. time has slope μ, the specific growth rate. <strong>μmax</strong> is the highest μ sustained anywhere in the curve — i.e. the steepest straight stretch of the log-transformed curve.</p>
+<p>Rather than eyeballing where the exponential phase starts and ends (as I did in an earlier version of this post, and which has to be re-guessed by hand for every new sample), we slide a small window of consecutive time points along each sample’s curve, fit a linear regression of <code>Result_log ~ Time_h</code> inside every window, and keep the window with the steepest good-quality fit. This is the same idea used by dedicated growth-curve tools like the <code>growthcurver</code> package.</p>
+<pre class="r"><code>find_mu_max &lt;- function(data, window = 5) {
+  data &lt;- arrange(data, Time_h)
+  n &lt;- nrow(data)
+  if (n &lt; window) {
+    return(tibble())
+  }
+
+  map_dfr(1:(n - window + 1), function(i) {
+    w &lt;- data[i:(i + window - 1), ]
+    fit &lt;- lm(Result_log ~ Time_h, data = w)
+    tibble(
+      window_start = min(w$Time_h),
+      window_end   = max(w$Time_h),
+      mu           = unname(coef(fit)[2]),
+      r_squared    = summary(fit)$r.squared
+    )
+  })
+}</code></pre>
+<p><code>window</code> is the number of consecutive readings used per regression — tune it to your sampling frequency (e.g. a smaller window for coarser sampling, a larger one for very frequent readings) so each window still spans a few minutes of real growth.</p>
+<p>We apply this per sample, then for each sample keep the best window: the steepest slope among windows with a good linear fit (<code>r_squared &gt; 0.98</code>).</p>
+<pre class="r"><code>growth_windows &lt;- df %&gt;%
+  group_by(Sample) %&gt;%
+  group_modify(~ find_mu_max(.x, window = 5)) %&gt;%
+  ungroup()
+
+mu_max_summary &lt;- growth_windows %&gt;%
+  filter(r_squared &gt; 0.98, mu &gt; 0) %&gt;%
+  group_by(Sample) %&gt;%
+  slice_max(mu, n = 1, with_ties = FALSE) %&gt;%
+  ungroup() %&gt;%
+  mutate(doubling_time_min = (log(2) / mu) * 60) %&gt;%
+  select(Sample, mu_max = mu, r_squared, window_start, window_end, doubling_time_min)
+
+kable(mu_max_summary, digits = 3,
+      col.names = c(&quot;Sample&quot;, &quot;μmax (h⁻¹)&quot;, &quot;R²&quot;,
+                    &quot;Window start (h)&quot;, &quot;Window end (h)&quot;, &quot;Doubling time (min)&quot;))</code></pre>
+<table>
+<colgroup>
+<col width="9%" />
+<col width="14%" />
+<col width="7%" />
+<col width="22%" />
+<col width="19%" />
+<col width="26%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Sample</th>
+<th align="right">μmax (h⁻¹)</th>
+<th align="right">R²</th>
+<th align="right">Window start (h)</th>
+<th align="right">Window end (h)</th>
+<th align="right">Doubling time (min)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">t1.1</td>
+<td align="right">1.797</td>
+<td align="right">0.998</td>
+<td align="right">13.700</td>
+<td align="right">14.733</td>
+<td align="right">23.140</td>
+</tr>
+<tr class="even">
+<td align="left">t2.1</td>
+<td align="right">1.782</td>
+<td align="right">0.998</td>
+<td align="right">13.700</td>
+<td align="right">14.733</td>
+<td align="right">23.332</td>
+</tr>
+<tr class="odd">
+<td align="left">t3.1</td>
+<td align="right">1.703</td>
+<td align="right">0.999</td>
+<td align="right">13.717</td>
+<td align="right">14.733</td>
+<td align="right">24.420</td>
+</tr>
+</tbody>
+</table>
+<p>The doubling time follows directly from μmax:</p>
+<p><span class="math display">\[ t_d = \frac{\ln(2)}{\mu_{max}} \]</span></p>
+</div>
+<div id="checking-the-detected-exponential-phase" class="section level1">
+<h1>Checking the detected exponential phase</h1>
+<p>Before trusting these numbers, it’s worth visualizing which window was picked for each sample, overlaid on the log-transformed curve.</p>
+<pre class="r"><code>ggplot(df, aes(x = Time_h, y = Result_log)) +
+  geom_rect(
+    data = mu_max_summary,
+    aes(xmin = window_start, xmax = window_end, ymin = -Inf, ymax = Inf),
+    inherit.aes = FALSE, fill = &quot;grey80&quot;, alpha = 0.5
+  ) +
+  geom_line(aes(color = Sample), show.legend = FALSE) +
+  geom_point(aes(color = Sample), size = 1, show.legend = FALSE) +
+  facet_wrap(~Sample, scales = &quot;free_x&quot;) +
+  labs(
+    title = &quot;Detected exponential-phase window per sample&quot;,
+    x = &quot;Time (hours)&quot;, y = &quot;log(Optical Density)&quot;) +
+  scale_color_nejm() +
+  theme_minimal()</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-7-1.png" alt="" width="672" /></p>
+<p>The shaded rectangle is the window <code>find_mu_max()</code> selected for that sample. If it looks too short, too noisy, or off to one side, adjust the <code>window</code> size or the <code>r_squared</code> cutoff above and re-run.</p>
+</div>
+<div id="comparing-growth-rate-across-samples" class="section level1">
+<h1>Comparing growth rate across samples</h1>
+<p>This is the part that’s easy to lose track of when analyzing one sample at a time: how do the samples actually compare?</p>
+<pre class="r"><code>mu_max_summary %&gt;%
+  select(Sample, `μmax (h⁻¹)` = mu_max, `Doubling time (min)` = doubling_time_min) %&gt;%
+  pivot_longer(-Sample, names_to = &quot;metric&quot;, values_to = &quot;value&quot;) %&gt;%
+  ggplot(aes(x = reorder(Sample, value), y = value, fill = Sample)) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~metric, scales = &quot;free_x&quot;) +
+  coord_flip() +
+  scale_fill_nejm() +
+  labs(x = NULL, y = NULL, title = &quot;Growth rate vs. doubling time by sample&quot;) +
+  theme_minimal()</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-8-1.png" alt="" width="672" /></p>
+</div>
+<div id="interactive-growth-curve" class="section level1">
+<h1>Interactive growth curve</h1>
+<p>Handy for zooming into a specific stretch of the curve or checking individual points.</p>
+<pre class="r"><code>ggplotly(p_raw)</code></pre>
+<div class="plotly html-widget html-fill-item" id="htmlwidget-1" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-1">{"x":{"data":[{"x":[12.516666666666667,13.699999999999999,13.966666666666667,14.233333333333333,14.449999999999999,14.733333333333333,14.983333333333333,15.25,15.35,15.6,16.066666666666666,16.649999999999999],"y":[0.001,0.0050000000000000001,0.0080000000000000002,0.013999999999999999,0.019,0.032000000000000001,0.049000000000000002,0.078,0.090999999999999998,0.13700000000000001,0.252,0.33200000000000002],"text":["Time_h: 12.51667<br />Result: 0.001<br />Sample: t1.1","Time_h: 13.70000<br />Result: 0.005<br />Sample: t1.1","Time_h: 13.96667<br />Result: 0.008<br />Sample: t1.1","Time_h: 14.23333<br />Result: 0.014<br />Sample: t1.1","Time_h: 14.45000<br />Result: 0.019<br />Sample: t1.1","Time_h: 14.73333<br />Result: 0.032<br />Sample: t1.1","Time_h: 14.98333<br />Result: 0.049<br />Sample: t1.1","Time_h: 15.25000<br />Result: 0.078<br />Sample: t1.1","Time_h: 15.35000<br />Result: 0.091<br />Sample: t1.1","Time_h: 15.60000<br />Result: 0.137<br />Sample: t1.1","Time_h: 16.06667<br />Result: 0.252<br />Sample: t1.1","Time_h: 16.65000<br />Result: 0.332<br />Sample: t1.1"],"type":"scatter","mode":"lines+markers","line":{"width":1.8897637795275593,"color":"rgba(188,60,41,1)","dash":"solid"},"hoveron":"points","name":"t1.1","legendgroup":"t1.1","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","marker":{"autocolorscale":false,"color":"rgba(188,60,41,1)","opacity":1,"size":3.7795275590551185,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(188,60,41,1)"}},"frame":null},{"x":[13.699999999999999,13.983333333333333,14.25,14.449999999999999,14.733333333333333,14.983333333333333,15.266666666666667,15.35,15.616666666666667,16.083333333333332,16.649999999999999],"y":[0.0050000000000000001,0.0090000000000000011,0.013999999999999999,0.02,0.032000000000000001,0.049999999999999996,0.078,0.090999999999999998,0.13900000000000001,0.25600000000000001,0.32300000000000001],"text":["Time_h: 13.70000<br />Result: 0.005<br />Sample: t2.1","Time_h: 13.98333<br />Result: 0.009<br />Sample: t2.1","Time_h: 14.25000<br />Result: 0.014<br />Sample: t2.1","Time_h: 14.45000<br />Result: 0.020<br />Sample: t2.1","Time_h: 14.73333<br />Result: 0.032<br />Sample: t2.1","Time_h: 14.98333<br />Result: 0.050<br />Sample: t2.1","Time_h: 15.26667<br />Result: 0.078<br />Sample: t2.1","Time_h: 15.35000<br />Result: 0.091<br />Sample: t2.1","Time_h: 15.61667<br />Result: 0.139<br />Sample: t2.1","Time_h: 16.08333<br />Result: 0.256<br />Sample: t2.1","Time_h: 16.65000<br />Result: 0.323<br />Sample: t2.1"],"type":"scatter","mode":"lines+markers","line":{"width":1.8897637795275593,"color":"rgba(0,114,181,1)","dash":"solid"},"hoveron":"points","name":"t2.1","legendgroup":"t2.1","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","marker":{"autocolorscale":false,"color":"rgba(0,114,181,1)","opacity":1,"size":3.7795275590551185,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(0,114,181,1)"}},"frame":null},{"x":[13.716666666666667,13.983333333333333,14.25,14.449999999999999,14.733333333333333,14.983333333333333,15.266666666666667,15.366666666666667,15.616666666666667,16.083333333333332,16.649999999999999],"y":[0.0050000000000000001,0.0080000000000000002,0.013000000000000001,0.017999999999999999,0.028000000000000001,0.043999999999999997,0.069999999999999993,0.079000000000000001,0.126,0.252,0.314],"text":["Time_h: 13.71667<br />Result: 0.005<br />Sample: t3.1","Time_h: 13.98333<br />Result: 0.008<br />Sample: t3.1","Time_h: 14.25000<br />Result: 0.013<br />Sample: t3.1","Time_h: 14.45000<br />Result: 0.018<br />Sample: t3.1","Time_h: 14.73333<br />Result: 0.028<br />Sample: t3.1","Time_h: 14.98333<br />Result: 0.044<br />Sample: t3.1","Time_h: 15.26667<br />Result: 0.070<br />Sample: t3.1","Time_h: 15.36667<br />Result: 0.079<br />Sample: t3.1","Time_h: 15.61667<br />Result: 0.126<br />Sample: t3.1","Time_h: 16.08333<br />Result: 0.252<br />Sample: t3.1","Time_h: 16.65000<br />Result: 0.314<br />Sample: t3.1"],"type":"scatter","mode":"lines+markers","line":{"width":1.8897637795275593,"color":"rgba(225,135,39,1)","dash":"solid"},"hoveron":"points","name":"t3.1","legendgroup":"t3.1","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","marker":{"autocolorscale":false,"color":"rgba(225,135,39,1)","opacity":1,"size":3.7795275590551185,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(225,135,39,1)"}},"frame":null}],"layout":{"margin":{"t":40.840182648401829,"r":7.3059360730593621,"b":37.260273972602747,"l":43.105022831050235},"paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724},"title":{"text":"Optical Density λ600","font":{"color":"rgba(0,0,0,1)","family":"","size":17.534246575342465},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[12.31,16.856666666666666],"tickmode":"array","ticktext":["13","14","15","16"],"tickvals":[13,14,15,16],"categoryorder":"array","categoryarray":["13","14","15","16"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"y","title":{"text":"Time (hours)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-0.015550000000000001,0.34855000000000003],"tickmode":"array","ticktext":["0.0","0.1","0.2","0.3"],"tickvals":[0,0.10000000000000003,0.19999999999999998,0.30000000000000004],"categoryorder":"array","categoryarray":["0.0","0.1","0.2","0.3"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"x","title":{"text":"Optical Density (OD600)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"shapes":[],"showlegend":true,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.68949771689498},"title":{"text":"Sample","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"1311f789a11b6":{"x":{},"y":{},"colour":{},"type":"scatter"},"1311f4b010195":{"x":{},"y":{},"colour":{}}},"cur_data":"1311f789a11b6","visdat":{"1311f789a11b6":["function (y) ","x"],"1311f4b010195":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="remarks" class="section level1">
+<h1>Remarks</h1>
+<p>By automating exponential-phase detection with a sliding-window regression, this workflow scales to any number of samples without hand-tuning a <code>lag_end</code>/<code>exp_end</code> cutoff for each one, and the μmax/doubling-time table and every plot above are regenerated straight from the raw CSV whenever this document is knitted. That makes the whole analysis reproducible: re-run it on a new plate and the numbers and figures update themselves.</p>
+<p>Buy me a <a href="https://bmc.link/danilyanedo">coffee</a>
+See you in the next post and have a beautiful day!</p>
+</div>
