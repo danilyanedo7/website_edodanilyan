@@ -9,7 +9,7 @@ address:
   region: "East Java"
   postcode: "60115"
   country: "Indonesia"
-summary: "Structured guidance on identifying funded PhD positions, scholarships, supervisor communication, and strategic self-presentation."
+summary: "How to find funded PhD positions, write to supervisors, and put together a strong application."
 abstract: ""
 date: "2026-04-15T09:00:00+07:00"
 date_end: "2026-04-15T12:00:00+07:00"
@@ -40,7 +40,7 @@ This mentorship session was delivered as part of the **CoE MicroPlanet Global Am
 - Strategic self-presentation: CVs, motivation letters, and research proposals
 - One-on-one mentoring session with participants
 
-This session recorded the largest self-assessment shifts across the entire GAP program. Confidence in applying for overseas programs jumped from 2.00 to 4.36 (out of 5), and scholarship awareness rose from 2.55 to 4.00, suggesting that structured guidance on graduate pathways addressed a significant knowledge gap.
+This session recorded the largest self-assessment shifts across the entire GAP program. Confidence in applying for overseas programs jumped from 2.00 to 4.36 (out of 5), and scholarship awareness rose from 2.55 to 4.00. Participants reported higher confidence and knowledge afterward, though this reflects self-perception rather than independently tested learning.
 
 ---
 

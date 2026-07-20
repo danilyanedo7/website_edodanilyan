@@ -7,7 +7,7 @@ address:
   city: "Malang"
   region: "East Java"
   country: "Indonesia"
-summary: "Structured guidance on identifying funded PhD positions, scholarships, supervisor communication, and strategic self-presentation."
+summary: "How to find funded PhD positions, write to supervisors, and put together a strong application."
 abstract: ""
 date: "2026-04-22T09:00:00+07:00"
 date_end: "2026-04-22T12:00:00+07:00"

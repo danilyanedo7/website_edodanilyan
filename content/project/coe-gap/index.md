@@ -33,10 +33,10 @@ The program was delivered at two institutions, with three full days of activitie
 Introduction to microbial growth kinetics, bioreactors, and the integration of computation in microbiology, drawing from MicroPlanet WP 7.1 research themes. Around **200 students** joined in a hybrid format at Institut Teknologi Sepuluh Nopember (ITS), and it turned into a lively discussion about microbiology, research, and career paths in science. The session at ITS was delivered together with [Catalin Rusnac](https://www.linkedin.com/in/cata7in/) from Replifactory.
 
 **Day 2 – R for Biologists: Data Wrangling, Visualization, and Reproducible Analysis**\
-Hands-on workshop focusing on transparency, scripting, and interpretation. Shifting students from click-based workflows toward script-based and reproducible analysis.
+Participants worked through an R exercise covering data cleaning with the `tidyverse`, visualization with `ggplot2`, and reproducible reporting with R Markdown, moving away from click-based tools like SPSS.
 
 **Day 3 – Preparing for Graduate Studies Overseas: Applications, Funding, and Mentorship Session**\
-Structured guidance on identifying funded PhD positions, scholarships, supervisor communication, and strategic self-presentation.
+We went through how to find funded MSc and PhD positions, what selection committees look for, how to write emails to potential supervisors, and the scholarship landscape (Erasmus+, FWF, DAAD), followed by one-on-one mentoring.
 
 
 At [Universitas Muhammadiyah Malang (UMM)](https://www.umm.ac.id/), we held sessions with faculty members from several departments. The discussion covered similar topics and turned into a thoughtful exchange about research, studying overseas, and scientific collaboration.
@@ -51,7 +51,7 @@ To measure the impact of the program, participants completed a self-assessment q
 
 **Day 2 (Technical Workshop)** saw improvements across all four metrics: R familiarity (2.90 → 3.50), data wrangling (2.73 → 3.35), reproducibility (3.02 → 3.38), and data visualization (2.67 → 3.38), indicating meaningful skill development during the hands-on session.
 
-**Day 3 (Graduate Preparation)** recorded the largest shifts. Confidence level jumped from 2.00 to 4.36, application document knowledge from 1.91 to 4.36, program identification from 2.18 to 4.45, and scholarship awareness from 2.55 to 4.00. These results suggest that structured guidance on graduate pathways addressed a significant knowledge gap.
+**Day 3 (Graduate Preparation)** recorded the largest shifts. Confidence level jumped from 2.00 to 4.36, application document knowledge from 1.91 to 4.36, program identification from 2.18 to 4.45, and scholarship awareness from 2.55 to 4.00. Participants reported higher confidence and knowledge after the session, although the questionnaire measured self-perception rather than independently tested learning.
 
 ### Partner Institutions
 
@@ -75,7 +75,7 @@ The journey began with a roughly 21-hour flight from Vienna to Surabaya, about 1
 
 On Friday we packed up and drove about 100 km south to Malang, roughly a 2-hour drive through East Java's countryside. The sessions at Universitas Muhammadiyah Malang (UMM) ran on Monday and Tuesday of the second week, covering similar ground but with a different audience of faculty members and researchers.
 
-Then came the longest road leg, Wednesday we drove another 210 km east from Malang to Bondowoso, about 4 hours through the mountains and beaches. That stretch alone made the trip feel like a proper adventure. After a day of settling in and reconnecting with the town, the final session took place on Friday at my old high school. In total, the program covered roughly 11,610 km. An amazing adventure along the way and a super nice experience from start to finish.
+Then came the longest road leg, Wednesday we drove another 210 km east from Malang to Bondowoso, about 4 hours through the mountains and beaches. After a day of settling in and reconnecting with the town, the final session took place on Friday at my old high school. In total, the program covered roughly 11,610 km.
 
 ### Work With Me!
 

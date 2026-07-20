@@ -16,7 +16,7 @@ feature:
     icon: r-project
     icon_pack: fab
     name: R Programming Language
-  - description: Basic algebra and mathematics, data distribution, data analytics, hypothesis testing, and probability
+  - description: Regression, mixed-effects modelling, hypothesis testing, exploratory data analysis, experimental design, mixture modelling, and clustering 
     icon: chart-line
     icon_pack: fas
     name: Statistics

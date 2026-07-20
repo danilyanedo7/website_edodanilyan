@@ -10,7 +10,7 @@ organizations:
   - name: Universität Wien - Austria
     url: https://cemess.univie.ac.at
 
-bio: Interested in data science.
+bio: Microbial ecologist, data scientist and PhD researcher.
 
 interests:
   - Computational Biology
@@ -23,9 +23,9 @@ interests:
 
 education:
   courses:
-    - course: PhD in Microbiology and Env. Science
+    - course: PhD in Microbiology and Environmental Science
       institution: Centre for Microbiology and Environmental System Science, Universität Wien
-      year: 2024-Present
+      year: 2024–present
     - course: MSc in Biology
       institution: Institut Teknologi Sepuluh Nopember
       year: 2021-2023
@@ -60,11 +60,11 @@ email: ''
 highlight_name: true
 ---
 
-This corner of the internet belongs to someone who likes good company and bad ideas in equal measure. Experiments, code, cameras, and questionable life choices all end up here sooner or later. His name’s Edo, and he’s still convinced this all makes sense.
+Hi there, I’m Edo. I likes good company and bad ideas in equal measure. Experiments, code, cameras, and questionable life choices all end up here sooner or later. Tho he’s still convinced this all makes sense.
 
-Some days it’s a plot that finally makes sense. Other days it’s a random photo. Occasionally something profound appears, though it’s usually accidental.
+Some weeks that means a new dashboard or a photo from the field. Other weeks it’s just one plot I’m proud of, or a page I forgot to update for a year.
 
-Things got out of hand here long before anyone started calling it a website. You can follow the trail of [code](/tag/r/), get lost in [science](/tag/research/), or peek into the [fieldwork (photography gallery)](https://danilyan.myportfolio.com/) where mud, microbes, and cameras coexist more peacefully than they should. If anything resonates, great. If not, at least the coffee was worth it.
+Things got out of hand here long before anyone started calling it a website. Poke around: there’s [code](/tag/r/) if that’s your thing, [research](/tag/research/) for the more serious version, and a [photography portfolio](https://danilyan.myportfolio.com/) if you’d rather look at mud and random lanscapes than at R code. If anything resonates, great. If not, at least the coffee was worth it.
 
 ### [Learn more about me](/post/aboutme)
 

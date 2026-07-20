@@ -29,7 +29,7 @@ links:
 projects: ["coe-gap"]
 ---
 
-This hands-on workshop was delivered as part of the **CoE MicroPlanet Global Ambassador Program (GAP)**, focusing on transparency, scripting, and interpretation in biological data analysis.
+This hands-on workshop was delivered as part of the **CoE MicroPlanet Global Ambassador Program (GAP)**, walking students through scripted, reproducible data analysis in R.
 
 ## Topics Covered
 

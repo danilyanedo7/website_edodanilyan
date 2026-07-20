@@ -2,7 +2,7 @@
 
 
 title: "Alas Karetan Forest Biodiversity Project"
-summary: "The research project on biodiversity assessment in Alas Karetan forests aims to comprehensively analyze the ecological diversity within forest ecosystems. Utilizing advanced techniques such as remote sensing, and ecological modeling. The study explores flora and fauna present in diverse forest habitat by evaluating species richness, and ecological interactions"
+summary: "This project documented plant and animal diversity in the Alas Karetan forest. We combined field observations with spatial data to map habitats and examine patterns in species richness."
 authors: [admin]
 tags: [Research]
 categories: []
