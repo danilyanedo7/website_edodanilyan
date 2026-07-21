@@ -31,12 +31,13 @@
         {{ if site.Params.features.avatar.gravatar }}
           <img class="avatar {{ if eq $avatar_shape "square" }}avatar-square{{ else }}avatar-circle{{ end }}"
                src="https://s.gravatar.com/avatar/{{ md5 $person.email }}?s=320"
-               alt="Portrait of {{ $person_page.Title }}">
+               alt="Portrait of {{ $person_page.Title }}" loading="eager" fetchpriority="high" decoding="async">
         {{ else if $avatar }}
           {{ $avatar_image := $avatar.Fill "320x320 Center" }}
           <img class="avatar {{ if eq $avatar_shape "square" }}avatar-square{{ else }}avatar-circle{{ end }}"
                width="{{ $avatar_image.Width }}" height="{{ $avatar_image.Height }}"
-               src="{{ $avatar_image.RelPermalink }}" alt="Portrait of {{ $person_page.Title }}">
+               src="{{ $avatar_image.RelPermalink }}" alt="Portrait of {{ $person_page.Title }}"
+               loading="eager" fetchpriority="high" decoding="async">
         {{ end }}
 
         <div class="portrait-title">
