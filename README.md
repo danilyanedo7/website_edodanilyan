@@ -11,7 +11,11 @@ The site showcases my research, publications, projects, and other professional a
 - **Content Structure:** Personalized sections for research, publications, and projects.
 
 ## Structure
-- **content/** – Main content pages (home, publications, blog, projects, etc.)
-- **static/** – Static files such as images and PDFs
-- **config/** – Site configuration files
-- **themes/** – Academic theme files
+- **content/**: Main content pages, including publications, posts, and projects
+- **static/**: Static files such as images and PDFs
+- **config/**: Site configuration files
+- **wowchemy-hugo-themes/**: Wowchemy theme source and modules
+
+## License
+
+The website software retains the original MIT License and copyright notice from George Cushen and Wowchemy. Original illustrations, photographs, graphics, and media by Edo Danilyan are all rights reserved. See [LICENSE.md](LICENSE.md) and [MEDIA_LICENSE.md](MEDIA_LICENSE.md) for details.
