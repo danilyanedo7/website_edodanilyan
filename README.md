@@ -18,4 +18,8 @@ The site showcases my research, publications, projects, and other professional a
 
 ## License
 
-The website software retains the original MIT License and copyright notice from George Cushen and Wowchemy. Original illustrations, photographs, graphics, and media by Edo Danilyan are all rights reserved. See [LICENSE.md](LICENSE.md) and [MEDIA_LICENSE.md](MEDIA_LICENSE.md) for details.
+Copyright 2017 [George Cushen](https://georgecushen.com).
+
+Released under the [MIT](https://github.com/sourcethemes/academic-kickstart/blob/master/LICENSE.md) license.
+
+Original illustrations, photographs, graphics, and media by Edo Danilyan are not covered by the MIT License. See [MEDIA_LICENSE.md](MEDIA_LICENSE.md) for details.
