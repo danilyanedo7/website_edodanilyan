@@ -60,7 +60,7 @@ email: ''
 highlight_name: true
 ---
 
-Hi there, I’m Edo. I likes good company and bad ideas in equal measure. Experiments, code, cameras, and questionable life choices all end up here sooner or later. Tho he’s still convinced this all makes sense.
+Hi there, I’m Edo. I like good company and bad ideas in equal measure. Experiments, code, cameras, and questionable life choices all end up here sooner or later. Tho he’s still convinced this all makes sense.
 
 Some weeks that means a new dashboard or a photo from the field. Other weeks it’s just one plot I’m proud of, or a page I forgot to update for a year.
 
