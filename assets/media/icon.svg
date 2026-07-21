@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Euler complex orbit mark</title>
+  <desc id="desc">A lowercase e formed from a complex unit-circle orbit with a teal point moving along the curve</desc>
+  <g fill="none" stroke="#112440" stroke-width="28" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M373 382C302 446 193 438 126 371C59 304 59 196 126 129C193 62 301 61 368 121" />
+    <path d="M405 176C418 203 422 232 419 262H220" />
+  </g>
+  <circle cx="389" cy="149" r="24" fill="#39989b" />
+</svg>
