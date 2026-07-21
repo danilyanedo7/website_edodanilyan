@@ -15,9 +15,9 @@ main:
   - name: Talks
     url: '/talks/'
     weight: 30
-  - name: Brainy Stuff
+  - name: Publications
     url: '/publication/'
     weight: 40
-  - name: Let's Talk
+  - name: Contact
     url: '#contact'
     weight: 50

@@ -2,7 +2,7 @@
 title: "Spain Energy Generation Dashboard"
 summary: ""
 authors: [admin]
-tags: [Portfolio, R, dataviz]
+tags: [Portfolio, R, dataviz, Featured]
 categories: []
 date: 2026-07-13T23:07:33+07:00
 

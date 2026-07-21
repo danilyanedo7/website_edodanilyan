@@ -5,28 +5,28 @@ widget: featurette
 
 headless: true
 
-weight: 30
+weight: 40
 
 title: Skills
-subtitle:
+subtitle: 'Tools and ways of working that connect research, data, and visual storytelling'
 
 
 feature:
-  - description: Data wrangling and manipulation (tidyverse), data visualization (ggplot2, plotly), reporting (Rmarkdown, Bookdown, blogdown), and base R
+  - description: Reproducible analysis, statistical programming, advanced visualization, automated reporting, and interactive data applications
     icon: r-project
     icon_pack: fab
-    name: R Programming Language
-  - description: Regression, mixed-effects modelling, hypothesis testing, exploratory data analysis, experimental design, mixture modelling, and clustering 
+    name: R & Reproducible Data Science
+  - description: Statistical modelling, experimental design, multivariate analysis, hypothesis testing, and clear interpretation of complex data
     icon: chart-line
     icon_pack: fas
     name: Statistics
-  - description: Portrait, landscape, architecture, interior, and product
+  - description: Documentary, field, landscape, and portrait photography focused on science, nature, people, and place
     icon: camera-retro
     icon_pack: fas
     name: Photography
 
 design:
   spacing:
-    padding: ["15px", "0", "15px", "0"]
+    padding: ["52px", "0", "58px", "0"]
 
 ---

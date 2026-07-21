@@ -1,0 +1,111 @@
+{{ $ := .root }}
+{{ $page := .page }}
+{{ $author := "" }}
+{{ if .author }}
+  {{ $author = .author }}
+{{ else }}
+  {{ $author = $page.Params.author }}
+{{ end }}
+{{ $person_page := site.GetPage (printf "/authors/%s" $author) }}
+{{ if not $person_page }}
+  {{ errorf "Could not find an author page for `%s`." $author }}
+{{ end }}
+{{ $person := $person_page.Params }}
+{{ $avatar := ($person_page.Resources.ByType "image").GetMatch "*avatar*" }}
+{{ $avatar_shape := site.Params.features.avatar.shape | default "circle" }}
+
+<div class="about-home">
+  <div class="about-hero row">
+    <div class="about-hero-copy col-12 col-lg-8">
+      {{ if and $page.Params.widget $page.Title }}
+        <h1>{{ $page.Title | markdownify | emojify }}</h1>
+      {{ end }}
+
+      <div class="article-style">
+        {{ $person_page.Content }}
+      </div>
+    </div>
+
+    <aside class="about-profile col-12 col-lg-4" aria-label="Profile">
+      <div id="profile">
+        {{ if site.Params.features.avatar.gravatar }}
+          <img class="avatar {{ if eq $avatar_shape "square" }}avatar-square{{ else }}avatar-circle{{ end }}"
+               src="https://s.gravatar.com/avatar/{{ md5 $person.email }}?s=320"
+               alt="Portrait of {{ $person_page.Title }}">
+        {{ else if $avatar }}
+          {{ $avatar_image := $avatar.Fill "320x320 Center" }}
+          <img class="avatar {{ if eq $avatar_shape "square" }}avatar-square{{ else }}avatar-circle{{ end }}"
+               width="{{ $avatar_image.Width }}" height="{{ $avatar_image.Height }}"
+               src="{{ $avatar_image.RelPermalink }}" alt="Portrait of {{ $person_page.Title }}">
+        {{ end }}
+
+        <div class="portrait-title">
+          <h2>{{ $person_page.Title }}</h2>
+          {{ with $person.role }}<h3>{{ . | markdownify | emojify }}</h3>{{ end }}
+          {{ range $person.organizations }}
+            <h3>
+              {{ with .url }}<a href="{{ . }}" target="_blank" rel="noopener">{{ end }}
+              <span>{{ .name }}</span>
+              {{ if .url }}</a>{{ end }}
+            </h3>
+          {{ end }}
+        </div>
+
+        <ul class="network-icon">
+          {{ range $person.social }}
+            {{ $pack := or .icon_pack "fas" }}
+            {{ $pack_prefix := $pack }}
+            {{ if in (slice "fab" "fas" "far" "fal") $pack }}{{ $pack_prefix = "fa" }}{{ end }}
+            {{ $link := .link }}
+            {{ $scheme := (urls.Parse $link).Scheme }}
+            {{ $target := "" }}
+            {{ if not $scheme }}
+              {{ $link = .link | relLangURL }}
+            {{ else if in (slice "http" "https") $scheme }}
+              {{ $target = "target=\"_blank\" rel=\"noopener\"" }}
+            {{ end }}
+            <li>
+              <a href="{{ $link | safeURL }}" {{ $target | safeHTMLAttr }} aria-label="{{ .icon }}">
+                <i class="{{ $pack }} {{ $pack_prefix }}-{{ .icon }} big-icon" aria-hidden="true"></i>
+              </a>
+            </li>
+          {{ end }}
+        </ul>
+      </div>
+    </aside>
+  </div>
+
+  <div class="about-credentials row">
+    {{ with $person.interests }}
+      <section class="about-credential-card col-12 col-lg-5" aria-labelledby="interests-heading">
+        <div class="credential-card-inner">
+          <p class="credential-kicker">Focus</p>
+          <h2 id="interests-heading">{{ i18n "interests" | markdownify }}</h2>
+          <ul class="interest-tags">
+            {{ range . }}<li>{{ . | markdownify | emojify }}</li>{{ end }}
+          </ul>
+        </div>
+      </section>
+    {{ end }}
+
+    {{ with $person.education }}
+      <section class="about-credential-card col-12 col-lg-7" aria-labelledby="education-heading">
+        <div class="credential-card-inner">
+          <p class="credential-kicker">Background</p>
+          <h2 id="education-heading">{{ i18n "education" | markdownify }}</h2>
+          <ol class="education-timeline">
+            {{ range .courses }}
+              <li>
+                <span class="education-year">{{ .year }}</span>
+                <div>
+                  <h3>{{ .course }}</h3>
+                  <p>{{ .institution }}</p>
+                </div>
+              </li>
+            {{ end }}
+          </ol>
+        </div>
+      </section>
+    {{ end }}
+  </div>
+</div>

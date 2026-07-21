@@ -3,28 +3,23 @@ widget: portfolio
 
 headless: true
 
-weight: 60
+weight: 30
 
-title: Projects
-subtitle: ''
+title: Featured Projects
+subtitle: 'A selection of recent research, outreach, and data work'
 
 content:
   page_type: project
+  filters:
+    tags:
+      - Featured
 
   # Default filter index (e.g. 0 corresponds to the first `filter_button` instance below).
   filter_default: 0
 
   filter_button:
-    - name: All
+    - name: Selected work
       tag: '*'
-    - name: Research
-      tag: Research
-    - name: Community Development
-      tag: ComDev
-    - name: Data Visualization
-      tag: dataviz
-    - name: R
-      tag: R
 
 design:
   columns: '2'
@@ -40,3 +35,5 @@ design:
 
   flip_alt_rows: false
 ---
+
+[View all projects →](/project/)

@@ -3,10 +3,10 @@ widget: about
 active: true
 headless: true
 weight: 20
-title: 'Hi and welcome'
+title: 'Curious about data, technology, and the natural world'
 author: admin
 design:
   columns: '2'
   spacing:
-    padding: ["10px", "0", "12px", "0"]
+    padding: ["20px", "0", "56px", "0"]
 ---

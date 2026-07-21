@@ -2,7 +2,7 @@
 title: "Shinyapp for biologist: apps and usage tutorial"
 summary: ""
 authors: [admin]
-tags: [Portfolio, R, dataviz]
+tags: [Portfolio, R, dataviz, Featured]
 categories: []
 date: 2024-10-11T16:07:33+07:00
 

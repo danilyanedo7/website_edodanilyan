@@ -1,42 +1,15 @@
 ---
 
-widget: contact
+widget: blank
 headless: true
 weight: 130
-title: Contact
-subtitle:
-
-content:
-  autolink: true
-  email: danilyanedo7@gmail.com
-  address:
-    street: ''
-    city: Surabaya
-    region: East Java
-    postcode: ''
-    country: Indonesia
-    country_code: ID
-  contact_links:
-    - icon: twitter
-      icon_pack: fab
-      name: DM me
-      link: 'https://twitter.com/edo_danilyan'
-    - icon: instagram
-      icon_pack: fab
-      name: DM me
-      link: 'https://instagram.com/edo_danilyan?igshid=YmMyMTA2M2Y='
-    - icon: calendar-days
-      icon_pack: fas
-      name: Schedule a mentoring session
-      link: 'https://calendly.com/mentoringwithedo/30min'
-    - icon: message
-      icon_pack: fas
-      name: Send me anonymous message here
-      link: 'https://forms.gle/DXBuCbvJhDiddMAG7' 
+title: ''
+subtitle: ''
 
 design:
-  columns: '2'
+  columns: '1'
   spacing:
-    padding: ["15px", "0", "15px", "0"]
+    padding: ["0", "0", "0", "0"]
 ---
 
+{{< closing_contact >}}

@@ -1,0 +1,51 @@
+<script>
+  (() => {
+    const heading = document.querySelector('#about .about-hero-copy > h1');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    if (!heading || reduceMotion.matches) return;
+
+    const phrases = ['data', 'technology', 'the natural world'];
+    let phraseIndex = 0;
+    let characterIndex = 0;
+    let deleting = false;
+
+    heading.classList.add('typing-heading');
+    heading.setAttribute('aria-label', 'Curious about data, technology, and the natural world');
+    heading.textContent = '';
+
+    const prefix = document.createElement('span');
+    const typedText = document.createElement('span');
+    prefix.className = 'typing-prefix';
+    prefix.textContent = 'Curious about ';
+    typedText.className = 'typing-text';
+    heading.append(prefix, typedText);
+
+    const type = () => {
+      const phrase = phrases[phraseIndex];
+
+      if (deleting) {
+        characterIndex -= 1;
+      } else {
+        characterIndex += 1;
+      }
+
+      typedText.textContent = phrase.slice(0, characterIndex);
+
+      let delay = deleting ? 45 : 85;
+
+      if (!deleting && characterIndex === phrase.length) {
+        deleting = true;
+        delay = 2200;
+      } else if (deleting && characterIndex === 0) {
+        deleting = false;
+        phraseIndex = (phraseIndex + 1) % phrases.length;
+        delay = 500;
+      }
+
+      window.setTimeout(type, delay);
+    };
+
+    type();
+  })();
+</script>

@@ -2,7 +2,7 @@
 title: "CoE MicroPlanet Global Ambassador Program"
 summary: "Representing the Cluster of Excellence MicroPlanet through targeted outreach and capacity building across two universities and a high school in Indonesia, reaching over 200 students and faculty members."
 authors: [admin]
-tags: [ComDev, Academic, Experience, Research, Teaching]
+tags: [ComDev, Academic, Experience, Research, Teaching, Featured]
 categories: []
 date: 2026-04-15T10:00:00+07:00
 external_link: ""
