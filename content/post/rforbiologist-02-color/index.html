@@ -1,0 +1,348 @@
+---
+title: "R tutorial series: Choosing color for data visualization"
+subtitle: ""
+summary: "A practical guide to categorical, sequential, and diverging color palettes in R, with visible swatches and reproducible ggplot2 examples."
+authors: [admin]
+tags: [r,dataviz]
+categories: []
+date: 2025-02-03T22:37:36+01:00
+lastmod: 2025-02-03T22:37:36+01:00
+featured: false
+draft: false
+output:
+  blogdown::html_page:
+    toc: false
+
+image:
+  caption: ""
+  focal_point: ""
+  preview_only: false
+
+projects: []
+---
+
+<p>When designing visualizations, choosing the right colors can greatly enhance readability, convey the correct message, and make your plots aesthetically pleasing. Here are some guidelines along with code examples to help you choose color palettes effectively.</p>
+<div id="understand-your-data-type-and-visualization-purpose" class="section level2">
+<h2>Understand Your Data Type and Visualization Purpose</h2>
+<ul>
+<li><strong>Categorical Data:</strong> Use distinct colors to differentiate between groups or categories.</li>
+<li><strong>Sequential Data:</strong> Use gradients where the intensity of color represents increasing or decreasing values.</li>
+<li><strong>Diverging Data:</strong> Use palettes that emphasize a neutral midpoint, highlighting deviations from a central value.</li>
+</ul>
+</div>
+<div id="define-a-core-palette-for-consistency" class="section level2">
+<h2>Define a Core Palette for Consistency</h2>
+<p>Start with a set of <strong>main colors</strong> to create a consistent look across your visualizations.</p>
+<pre class="r"><code>main_colors &lt;- c(&quot;#1696d2&quot;, &quot;#d2d2d2&quot;, &quot;#000000&quot;, &quot;#fdbf11&quot;, &quot;#ec008b&quot;, &quot;#55b748&quot;, &quot;#5c5859&quot;, &quot;#db2b27&quot;)</code></pre>
+<p>Here is what that palette actually looks like:</p>
+<div style="display:flex; flex-wrap:wrap; gap:0.55rem; margin:1rem 0 1.5rem;">
+<div style="background:#1696d2; color:#fff; padding:0.75rem 0.9rem; border-radius:0.35rem;">
+#1696d2
+</div>
+<div style="background:#d2d2d2; color:#111; padding:0.75rem 0.9rem; border-radius:0.35rem;">
+#d2d2d2
+</div>
+<div style="background:#000000; color:#fff; padding:0.75rem 0.9rem; border-radius:0.35rem;">
+#000000
+</div>
+<div style="background:#fdbf11; color:#111; padding:0.75rem 0.9rem; border-radius:0.35rem;">
+#fdbf11
+</div>
+<div style="background:#ec008b; color:#fff; padding:0.75rem 0.9rem; border-radius:0.35rem;">
+#ec008b
+</div>
+<div style="background:#55b748; color:#111; padding:0.75rem 0.9rem; border-radius:0.35rem;">
+#55b748
+</div>
+<div style="background:#5c5859; color:#fff; padding:0.75rem 0.9rem; border-radius:0.35rem;">
+#5c5859
+</div>
+<div style="background:#db2b27; color:#fff; padding:0.75rem 0.9rem; border-radius:0.35rem;">
+#db2b27
+</div>
+</div>
+</div>
+<div id="use-shades-to-represent-variations" class="section level2">
+<h2>Use Shades to Represent Variations</h2>
+<p>Shades of a main color can be used for gradients or to show hierarchy. For example:</p>
+<pre class="r"><code>shades_blue &lt;- c(&quot;#cfe8f3&quot;, &quot;#a2d4ec&quot;, &quot;#73bfe2&quot;, &quot;#46abdb&quot;, &quot;#1696d2&quot;, &quot;#12719e&quot;, &quot;#0a4c6a&quot;, &quot;#062635&quot;)
+shades_grey &lt;- c(&quot;#f5f5f5&quot;, &quot;#ececec&quot;, &quot;#e3e3e3&quot;, &quot;#dcdbdb&quot;, &quot;#d2d2d2&quot;, &quot;#9d9d9d&quot;, &quot;#696969&quot;, &quot;#353535&quot;)</code></pre>
+<p><strong>Blue sequence</strong></p>
+<div style="display:grid; grid-template-columns:repeat(8, minmax(2.5rem, 1fr)); margin:0.5rem 0 0.25rem; border-radius:0.4rem; overflow:hidden; box-shadow:0 0 0 1px rgba(0,0,0,0.08);">
+<div style="height:3.5rem; background:#cfe8f3;" title="#cfe8f3">
+
+</div>
+<div style="height:3.5rem; background:#a2d4ec;" title="#a2d4ec">
+
+</div>
+<div style="height:3.5rem; background:#73bfe2;" title="#73bfe2">
+
+</div>
+<div style="height:3.5rem; background:#46abdb;" title="#46abdb">
+
+</div>
+<div style="height:3.5rem; background:#1696d2;" title="#1696d2">
+
+</div>
+<div style="height:3.5rem; background:#12719e;" title="#12719e">
+
+</div>
+<div style="height:3.5rem; background:#0a4c6a;" title="#0a4c6a">
+
+</div>
+<div style="height:3.5rem; background:#062635;" title="#062635">
+
+</div>
+</div>
+<div style="display:flex; justify-content:space-between; font-size:0.8rem; margin-bottom:1.25rem;">
+<span>#cfe8f3</span><span>#062635</span>
+</div>
+<p><strong>Grey sequence</strong></p>
+<div style="display:grid; grid-template-columns:repeat(8, minmax(2.5rem, 1fr)); margin:0.5rem 0 0.25rem; border-radius:0.4rem; overflow:hidden; box-shadow:0 0 0 1px rgba(0,0,0,0.12);">
+<div style="height:3.5rem; background:#f5f5f5;" title="#f5f5f5">
+
+</div>
+<div style="height:3.5rem; background:#ececec;" title="#ececec">
+
+</div>
+<div style="height:3.5rem; background:#e3e3e3;" title="#e3e3e3">
+
+</div>
+<div style="height:3.5rem; background:#dcdbdb;" title="#dcdbdb">
+
+</div>
+<div style="height:3.5rem; background:#d2d2d2;" title="#d2d2d2">
+
+</div>
+<div style="height:3.5rem; background:#9d9d9d;" title="#9d9d9d">
+
+</div>
+<div style="height:3.5rem; background:#696969;" title="#696969">
+
+</div>
+<div style="height:3.5rem; background:#353535;" title="#353535">
+
+</div>
+</div>
+<div style="display:flex; justify-content:space-between; font-size:0.8rem; margin-bottom:1.25rem;">
+<span>#f5f5f5</span><span>#353535</span>
+</div>
+<p>These can be especially useful for continuous scales or when you need subtle color transitions.</p>
+</div>
+<div id="tailor-palettes-to-the-number-of-groups" class="section level2">
+<h2>Tailor Palettes to the Number of Groups</h2>
+<p>Depending on the number of groups in your data, choose or create a palette that provides enough distinction:</p>
+<ul>
+<li><strong>One Group:</strong></li>
+</ul>
+<pre class="r"><code>  one_group &lt;- c(&quot;#1696d2&quot;, &quot;#000000&quot;)</code></pre>
+<ul>
+<li><strong>Two Groups:</strong></li>
+</ul>
+<pre class="r"><code>  categorical_two &lt;- c(&quot;#1696d2&quot;, &quot;#000000&quot;, &quot;#d2d2d2&quot;, &quot;#fdbf11&quot;)
+  political_two &lt;- c(&quot;#1696d2&quot;, &quot;#db2b27&quot;)
+  sequential_two &lt;- c(&quot;#a2d4ec&quot;, &quot;#1696d2&quot;)</code></pre>
+<ul>
+<li><strong>Three Groups:</strong></li>
+</ul>
+<pre class="r"><code>  categorical_three &lt;- c(&quot;#1696d2&quot;, &quot;#000000&quot;, &quot;#d2d2d2&quot;, &quot;#fdbf11&quot;, &quot;#55b748&quot;, &quot;#ec008b&quot;)
+  sequential_three &lt;- c(&quot;#a2d4ec&quot;, &quot;#1696d2&quot;, &quot;#0a4c6a&quot;)</code></pre>
+<ul>
+<li><strong>Four, Five, Six, Seven Groups:</strong><br />
+You can expand the palette as needed:</li>
+</ul>
+<pre class="r"><code>  categorical_four &lt;- c(&quot;#1696d2&quot;, &quot;#000000&quot;, &quot;#d2d2d2&quot;, &quot;#fdbf11&quot;, &quot;#ec008b&quot;)
+  sequential_four &lt;- c(&quot;#cfe8f3&quot;, &quot;#73bfe2&quot;, &quot;#1696d2&quot;, &quot;#0a4c6a&quot;)
+  
+  categorical_five &lt;- c(&quot;#1696d2&quot;, &quot;#000000&quot;, &quot;#d2d2d2&quot;, &quot;#fdbf11&quot;, &quot;#ec008b&quot;, &quot;#0a4c6a&quot;, &quot;#55b748&quot;)
+  sequential_five &lt;- c(&quot;#cfe8f3&quot;, &quot;#73bfe2&quot;, &quot;#1696d2&quot;, &quot;#0a4c6a&quot;, &quot;#000000&quot;)
+  
+  categorical_six &lt;- c(&quot;#1696d2&quot;, &quot;#000000&quot;, &quot;#d2d2d2&quot;, &quot;#fdbf11&quot;, &quot;#55b748&quot;, &quot;#ec008b&quot;, &quot;#0a4c6a&quot;)
+  sequential_six &lt;- c(&quot;#cfe8f3&quot;, &quot;#a2d4ec&quot;, &quot;#73bfe2&quot;, &quot;#46abdb&quot;, &quot;#1696d2&quot;, &quot;#12719e&quot;)
+  
+  categorical_seven &lt;- c(&quot;#1696d2&quot;, &quot;#000000&quot;, &quot;#d2d2d2&quot;, &quot;#fdbf11&quot;, &quot;#55b748&quot;, &quot;#ec008b&quot;, &quot;#0a4c6a&quot;)
+  sequential_seven &lt;- c(&quot;#cfe8f3&quot;, &quot;#a2d4ec&quot;, &quot;#73bfe2&quot;, &quot;#46abdb&quot;, &quot;#1696d2&quot;, &quot;#12719e&quot;, &quot;#0a4c6a&quot;)</code></pre>
+</div>
+<div id="use-diverging-palettes-for-midpoint-based-data" class="section level2">
+<h2>Use Diverging Palettes for Midpoint-Based Data</h2>
+<p>When you need to highlight how values diverge from a central point, a diverging palette is ideal.</p>
+<pre class="r"><code>diverging_colors &lt;- c(&quot;#ca5800&quot;, &quot;#fdbf11&quot;, &quot;#fdd870&quot;, &quot;#fff2cf&quot;, &quot;#cfe8f3&quot;, &quot;#73bfe2&quot;, &quot;#1696d2&quot;, &quot;#0a4c6a&quot;)</code></pre>
+<div style="display:grid; grid-template-columns:repeat(8, minmax(2.5rem, 1fr)); margin:0.75rem 0 0.25rem; border-radius:0.4rem; overflow:hidden; box-shadow:0 0 0 1px rgba(0,0,0,0.08);">
+<div style="height:3.5rem; background:#ca5800;" title="#ca5800">
+
+</div>
+<div style="height:3.5rem; background:#fdbf11;" title="#fdbf11">
+
+</div>
+<div style="height:3.5rem; background:#fdd870;" title="#fdd870">
+
+</div>
+<div style="height:3.5rem; background:#fff2cf;" title="#fff2cf">
+
+</div>
+<div style="height:3.5rem; background:#cfe8f3;" title="#cfe8f3">
+
+</div>
+<div style="height:3.5rem; background:#73bfe2;" title="#73bfe2">
+
+</div>
+<div style="height:3.5rem; background:#1696d2;" title="#1696d2">
+
+</div>
+<div style="height:3.5rem; background:#0a4c6a;" title="#0a4c6a">
+
+</div>
+</div>
+<div style="display:flex; justify-content:space-between; font-size:0.8rem; margin-bottom:1.25rem;">
+<span>#ca5800</span><span>neutral midpoint</span><span>#0a4c6a</span>
+</div>
+</div>
+<div id="practical-examples-with-ggplot2" class="section level2">
+<h2>Practical Examples with ggplot2</h2>
+<div id="scatter-plot-with-a-sequential-palette" class="section level3">
+<h3>Scatter Plot with a Sequential Palette</h3>
+<pre class="r"><code>library(tidyverse)
+ggplot(iris, aes(
+  x = Petal.Length,
+  y = Petal.Width,
+  color = Sepal.Length
+)) +
+  geom_point(size = 3) +
+  scale_color_gradientn(colors = shades_blue) +
+  theme_classic() +
+  labs(
+    title = &quot;Petal dimensions across iris measurements&quot;,
+    subtitle = &quot;Color represents the continuous Sepal.Length variable&quot;,
+    x = &quot;Petal length (cm)&quot;,
+    y = &quot;Petal width (cm)&quot;,
+    color = &quot;Sepal length\n(cm)&quot;
+  )</code></pre>
+<p><img src="index_files/figure-html/scatter-plot-1.png" alt="" width="100%" /></p>
+</div>
+<div id="bar-chart-with-a-categorical-palette" class="section level3">
+<h3>Bar Chart with a Categorical Palette</h3>
+<pre class="r"><code>ggplot(mpg, aes(x = class, fill = class)) +
+  geom_bar() +
+  scale_fill_manual(values = categorical_seven) +
+  theme_classic() +
+  labs(title = &quot;Count of Cars by Class&quot;,
+       subtitle = &quot;Using categorical_seven palette&quot;,
+       fill = &quot;Car Class&quot;)</code></pre>
+<p><img src="index_files/figure-html/bar-chart-1.png" alt="" width="100%" /></p>
+</div>
+<div id="continuous-gradient-for-price-vs.-carat" class="section level3">
+<h3>Continuous Gradient for Price vs. Carat</h3>
+<pre class="r"><code>ggplot(diamonds, aes(x = carat, y = price, color = carat)) +
+  geom_point(alpha = 0.6) +
+  scale_color_gradientn(colors = shades_blue) +
+  theme_classic() +
+  labs(title = &quot;Diamonds: Price vs. Carat&quot;,
+       subtitle = &quot;Using shades_blue as a continuous gradient&quot;,
+       color = &quot;Carat&quot;)</code></pre>
+<p><img src="index_files/figure-html/continuous-gradient-1.png" alt="" width="100%" /></p>
+</div>
+<div id="boxplot-with-custom-shades" class="section level3">
+<h3>Boxplot with Custom Shades</h3>
+<pre class="r"><code># Identify the unique drive types in mpg
+drv_levels &lt;- sort(unique(mpg$drv))
+# Select three shades from shades_grey (for example, positions 2, 4, and 6)
+selected_grey &lt;- shades_grey[c(2, 4, 6)]
+
+ggplot(mpg, aes(x = drv, y = hwy, fill = drv)) +
+  geom_boxplot() +
+  scale_fill_manual(values = selected_grey) +
+  theme_classic() +
+  labs(title = &quot;Highway MPG by Drive Type&quot;,
+       subtitle = &quot;Using custom shades from shades_grey&quot;,
+       fill = &quot;Drive Type&quot;)</code></pre>
+<p><img src="index_files/figure-html/boxplot-1.png" alt="" width="100%" /></p>
+</div>
+<div id="binary-category-bar-chart" class="section level3">
+<h3>Binary Category Bar Chart</h3>
+<pre class="r"><code>mtcars2 &lt;- mtcars %&gt;%
+  mutate(gear_binary = ifelse(gear == 4, &quot;Four Gears&quot;, &quot;Other Gears&quot;))
+
+ggplot(mtcars2, aes(x = gear_binary, fill = gear_binary)) +
+  geom_bar() +
+  scale_fill_manual(values = categorical_two) +
+  theme_classic() +
+  labs(title = &quot;Count of Cars by Gear (Binary)&quot;,
+       fill = &quot;Gear Category&quot;)</code></pre>
+<p><img src="index_files/figure-html/binary-bar-chart-1.png" alt="" width="100%" /></p>
+</div>
+<div id="d-density-plot-with-diverging-palette" class="section level3">
+<h3>2D Density Plot with Diverging Palette</h3>
+<pre class="r"><code>ggplot(iris, aes(x = Petal.Length, y = Petal.Width, fill = after_stat(density))) +
+  stat_density_2d(geom = &quot;raster&quot;, contour = FALSE) +
+  scale_fill_gradientn(colors = diverging_colors) +
+  theme_classic() +
+  labs(title = &quot;2D Density of Iris Petal Dimensions&quot;,
+       fill = &quot;Density&quot;)</code></pre>
+<p><img src="index_files/figure-html/density-plot-1.png" alt="" width="100%" /></p>
+</div>
+</div>
+<div id="a-fancier-example-world-population-map" class="section level2">
+<h2>A Fancier Example: World Population Map</h2>
+<p>A map is a good test for a sequential palette because the reader should immediately understand that darker color means “more.” This example uses Natural Earth country boundaries, a logarithmic population scale, and a Robinson projection. The classic theme keeps the typography and legend clean while <code>theme()</code> removes the axes, which are usually unnecessary for a world map.</p>
+<pre class="r"><code>library(ggplot2)
+library(sf)
+library(rnaturalearth)
+library(scales)
+
+shades_blue &lt;- c(
+  &quot;#cfe8f3&quot;, &quot;#a2d4ec&quot;, &quot;#73bfe2&quot;, &quot;#46abdb&quot;,
+  &quot;#1696d2&quot;, &quot;#12719e&quot;, &quot;#0a4c6a&quot;, &quot;#062635&quot;
+)
+
+world &lt;- ne_countries(scale = &quot;medium&quot;, returnclass = &quot;sf&quot;)
+world &lt;- world[world$admin != &quot;Antarctica&quot;, ]
+world$pop_est[world$pop_est &lt;= 0] &lt;- NA
+
+ggplot(world) +
+  geom_sf(
+    aes(fill = pop_est),
+    color = &quot;white&quot;,
+    linewidth = 0.12
+  ) +
+  coord_sf(crs = &quot;+proj=robin&quot;, datum = NA) +
+  scale_fill_gradientn(
+    colors = shades_blue,
+    trans = &quot;log10&quot;,
+    labels = label_number(scale_cut = cut_short_scale()),
+    na.value = &quot;#ececec&quot;,
+    name = &quot;Population&quot;
+  ) +
+  labs(
+    title = &quot;Where the world lives&quot;,
+    subtitle = &quot;Estimated population by country&quot;,
+    caption = &quot;Data: Natural Earth&quot;
+  ) +
+  theme_classic(base_size = 12) +
+  theme(
+    axis.line = element_blank(),
+    axis.text = element_blank(),
+    axis.ticks = element_blank(),
+    axis.title = element_blank(),
+    legend.position = &quot;bottom&quot;,
+    legend.key.width = grid::unit(3, &quot;cm&quot;),
+    plot.title = element_text(face = &quot;bold&quot;, size = 18),
+    plot.subtitle = element_text(color = &quot;#5c5859&quot;),
+    plot.caption = element_text(color = &quot;#696969&quot;)
+  )</code></pre>
+<p><img src="index_files/figure-html/world-population-map-1.png" alt="" width="100%" /></p>
+</div>
+<div id="popular-color-palette" class="section level2">
+<h2>Popular Color Palette</h2>
+<pre class="r"><code>library(RColorBrewer)
+display.brewer.all()</code></pre>
+<p><img src="index_files/figure-html/brewer-palettes-1.png" alt="" width="100%" /></p>
+</div>
+<div id="additional-tips" class="section level2">
+<h2>Additional Tips</h2>
+<ul>
+<li><strong>Contrast &amp; Accessibility:</strong> Ensure sufficient contrast between colors to maintain readability for all users.</li>
+<li><strong>Consistency:</strong> Apply similar color schemes across multiple charts to help viewers quickly associate colors with data groups.</li>
+<li><strong>Test in Context:</strong> Always preview your palette with actual data. Adjust as necessary to ensure the intended message is conveyed.</li>
+<li><strong>Cultural Considerations:</strong> Be mindful of color connotations (e.g., red may imply warning or danger in many cultures).</li>
+</ul>
+</div>
