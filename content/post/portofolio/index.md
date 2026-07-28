@@ -2,6 +2,7 @@
 title: Portfolio
 subtitle: Questions I followed further than expected
 summary: A curated collection of data stories, investigations, and experiments by Edo Danilyan.
+layout: portfolio
 projects: []
 date: '2020-12-13T00:00:00Z'
 lastmod: '2026-07-28T00:00:00Z'
@@ -57,10 +58,10 @@ categories:
 <section class="edp-intro" aria-labelledby="edp-intro-title">
 <div>
 <p class="edp-kicker">Selected work</p>
-<h2 id="edp-intro-title">Questions I followed further than expected.</h2>
+<h2 id="edp-intro-title">Questions I followed further than expected</h2>
 </div>
 <div class="edp-intro-copy">
-<p>A few complete investigations into food, music, energy, and the patterns hiding in ordinary data.</p>
+<p>A few complete investigations into food, music, energy, and the patterns hiding in ordinary data</p>
 <a class="edp-link" href="#featured-work">See the stories <span aria-hidden="true">↓</span></a>
 </div>
 </section>

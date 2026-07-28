@@ -1,0 +1,24 @@
+{{- define "main" -}}
+
+<article class="article">
+  {{ partial "page_header" . }}
+
+  <div class="edp-article-container">
+    <div class="article-style">
+      {{ .Content }}
+    </div>
+  </div>
+
+  <div class="article-container">
+    {{ partial "page_footer" . }}
+  </div>
+</article>
+
+<style>
+  .edp-article-container {
+    width: min(1180px, calc(100% - 2rem));
+    margin-right: auto;
+    margin-left: auto;
+  }
+</style>
+{{- end -}}
