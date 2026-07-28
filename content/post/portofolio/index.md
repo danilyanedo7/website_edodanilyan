@@ -1,116 +1,130 @@
 ---
-title: Data Analysis and Visualization Portfolio 
-subtitle: Communicating science using visual
-summary: Welcome to my visualization gallery. In this post, I posted several visualizations that I created during my undergraduate study. 
+title: Portfolio
+subtitle: Questions I followed further than expected
+summary: A curated collection of data stories, investigations, and experiments by Edo Danilyan.
 projects: []
 date: '2020-12-13T00:00:00Z'
-lastmod: '2020-12-13T00:00:00Z'
+lastmod: '2026-07-28T00:00:00Z'
 draft: false
 featured: false
 image:
-  caption: 'Scroll down for hi res images'
-  focal_point: ''
-  preview_only: false
-
+  caption: ''
+  focal_point: Center
+  preview_only: true
 authors:
   - admin
-
 tags: [Portfolio, r]
 categories:
-
 ---
 
-# Table of Contents  
-1. [Overview](#overview)  
-2. [Static Visualizations](#staticviz)  
-    1. [Storytelling with Data](#subparagraph1)  
-    2. [Spotify Playback 2022 Analysis](#subparagraph2)  
-    3. [Geospatial Visualizations in R](#subparagraph3)  
-    4. [Static Plot Collection](#subparagraph4)  
-3. [Animated Visualizations](#animatedviz)  
-4. [Interactive Visualizations](#interact)  
-5. [Dashboards](#dashboard)  
+<style>
+.edp-portfolio{--edp-accent:#a0442e;--edp-muted:#69716c;--edp-line:rgba(100,105,102,.22);width:100%;margin:-2rem 0 4rem;color:inherit}
+.edp-portfolio *{box-sizing:border-box}
+.edp-portfolio a{color:inherit;text-decoration:none}
+.edp-portfolio a:focus-visible{outline:3px solid var(--edp-accent);outline-offset:5px}
+.edp-intro{display:grid;grid-template-columns:1.2fr .8fr;gap:3rem;padding:2rem 0 3.75rem;border-bottom:1px solid var(--edp-line);align-items:end}
+.edp-intro h2{max-width:760px;margin:0;font-size:clamp(3rem,6vw,5rem);font-weight:470;line-height:.93;letter-spacing:-.06em}
+.edp-intro-copy{max-width:430px;padding-bottom:.7rem}
+.edp-intro-copy p{margin:0 0 1.5rem;color:var(--edp-muted);font-size:1.18rem;line-height:1.55}
+.edp-kicker,.edp-number,.edp-tools{margin:0 0 1rem;color:var(--edp-muted);font-size:.72rem;font-weight:650;letter-spacing:.13em;text-transform:uppercase}
+.edp-case{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(280px,.75fr);gap:clamp(2.5rem,6vw,6rem);padding:clamp(3.5rem,7vw,6rem) 0;border-bottom:1px solid var(--edp-line);align-items:center}
+.edp-case-reverse{grid-template-columns:minmax(280px,.75fr) minmax(0,1.5fr)}
+.edp-case-reverse .edp-visual{order:2}
+.edp-visual{display:block;overflow:hidden;background:rgba(120,120,120,.08)}
+.edp-visual img{display:block;width:100%;height:auto;margin:0;transition:transform .3s ease}
+.edp-visual:hover img{transform:scale(1.012)}
+.edp-copy h2{margin:0 0 1.1rem;font-size:clamp(2.1rem,3.8vw,3.8rem);font-weight:500;line-height:1;letter-spacing:-.045em}
+.edp-question{margin:0 0 1.25rem;color:var(--edp-accent);font-size:clamp(1.1rem,1.6vw,1.35rem);font-weight:540;line-height:1.38}
+.edp-description{margin:0 0 1.4rem;color:var(--edp-muted);font-size:1rem;line-height:1.7}
+.edp-tools{margin-top:1.7rem}
+.edp-link{display:inline-flex;gap:.65rem;padding-bottom:.2rem;border-bottom:1px solid currentColor;font-size:.92rem;font-weight:580}
+.edp-link span,.edp-index a>span:last-child{transition:transform .18s ease}
+.edp-link:hover span,.edp-index a:hover>span:last-child{transform:translate(.15rem,-.15rem)}
+.edp-earlier{display:grid;grid-template-columns:.75fr 1.4fr;gap:clamp(3rem,7vw,7rem);padding-top:clamp(3.5rem,6vw,5rem)}
+.edp-earlier h2{margin:0 0 1rem;font-size:clamp(2rem,3.5vw,3.5rem);font-weight:500;line-height:1.04;letter-spacing:-.045em}
+.edp-earlier-copy>p:last-child{max-width:350px;color:var(--edp-muted)}
+.edp-index{border-top:1px solid var(--edp-line)}
+.edp-index a{display:grid;grid-template-columns:minmax(0,1fr) 170px 1rem;gap:1rem;padding:1.35rem 0;border-bottom:1px solid var(--edp-line);align-items:baseline;transition:color .18s ease,padding .18s ease}
+.edp-index a:hover{padding-left:.4rem;color:var(--edp-accent)}
+.edp-index-title{font-weight:560}
+.edp-index-type{color:var(--edp-muted);font-size:.82rem}
+@media(max-width:800px){.edp-portfolio{margin-top:.5rem}.edp-intro,.edp-case,.edp-case-reverse,.edp-earlier{grid-template-columns:minmax(0,1fr)}.edp-intro{gap:1.5rem;padding:1.5rem 0 3rem}.edp-intro h2{font-size:clamp(3rem,13vw,5rem)}.edp-case-reverse .edp-visual{order:0}.edp-case{gap:2rem;padding:3.25rem 0}.edp-earlier{gap:1.75rem}}
+@media(max-width:520px){.edp-portfolio{width:calc(100vw - 2rem)}.edp-index a{grid-template-columns:minmax(0,1fr) 1rem}.edp-index-type{grid-column:1;grid-row:2}.edp-index a>span:last-child{grid-column:2;grid-row:1/3}}
+@media(prefers-reduced-motion:reduce){.edp-portfolio *{transition:none!important}}
+</style>
 
-# Overview <a name="overview"></a>
-
-I primarily use RStudio for [exploratory data analysis]({{< relref "/dashboard_collection" >}}), visualization, and statistical modeling. My toolkit includes `ggplot2`, `plotly`, `ggstatsplot`, and a range of geospatial and statistical packages.
-
-I’ve applied these tools to diverse projects—from time series and geospatial mapping to statistical inference and bioinformatics pipelines. These experiences have sharpened my ability to turn complex datasets into clear, compelling visual narratives.
-
-I’m also familiar with bioinformatics tools like **BLAST**, **GenBank**, **UniProt**, and the **SILVA NGS** database. My undergraduate thesis focused on microbiome profiling using **Next Generation Sequencing (NGS)** and the **mothur** pipeline. I’ve handled large biological datasets (e.g., genomics, proteomics) and collaborated with researchers across disciplines.
-
-Feel free to explore my [projects]({{< relref "/project" >}}) and [publications]({{< relref "/publication" >}}), and don’t hesitate to [get in touch](https://edodanilyan.com/#contact) if you’re interested in collaboration, consultation, or workshops in data visualization and computational biology.
-
----
-
-# Static Visualizations <a name="staticviz"></a>
-
-### Storytelling with Data <a name="subparagraph1"></a>  
-A collection of before-after redesigns demonstrating principles of effective visual communication.  
-{{< gallery album="story">}}
-
-### Spotify Playback 2022 Analysis <a name="subparagraph2"></a>  
-An exploration of my 2022 music listening habits using `tidyverse` and `ggplot2`.  
-For a full walkthrough, visit [this blog post](https://edodanilyan.com/post/spotify/).  
-![Streaming Hours](/spot_streaminghours.jpeg)  
-![Most Listened Minutes](/spot_minutesmostlistened.jpeg)  
-![Top Artists](/spot_hoursartist.jpeg)  
-![Listening by Time of Day](/spot_timeday.jpeg)  
-![Hours per Day Plot](/spot_plothoursday.jpeg)  
-![Day Type Comparison](/spot_daytype.jpeg)  
-
-### R Geospatial Visualizations <a name="subparagraph3"></a>  
-Geospatial mapping projects created using `ggplot2`, `rayshader`, and `tmap`.  
-![](/mapst.jpeg)  
-![](/mapst1.jpeg)  
-![](/mapst3.jpeg) 
-![](/mapst4.png) 
-![](/mapst6.png) 
-![](/mapst8.png) 
-![](/map.jpeg)  
-![](/java_pops.png) 
-![](/map2.png) 
-![](/map3.png '')  
-![](/map4.jpeg 'Baluran National Park')  
-![](/map5.jpeg 'Semeru Mountain')  
-![](/map6.jpeg 'Bromo Mountain')  
-![](/map7.jpeg 'River of Africa')  
-![](/map8.jpeg)  
-![](/maplas.jpeg 'LiDAR-based Forest Monitoring')  
-
-### Static Plot Collection <a name="subparagraph4"></a>  
-Assorted plots from coursework, side projects, and tutorials.  
-![Line Chart](/lineplot1.jpeg)  
-![Volcano Plot](/vplot.jpeg 'Metabolomic Volcano Plot')  
-![Sequence Analysis](/sequence.png 'Dendrogram of Sequences')  
-![Boxplot](/boxplot.jpeg)  
-![Boxplot with Stats](/boxplotstat.jpeg)  
-![Stacked Bar Plot](/stackedbarplot.png)  
-![Heatmap](/heatmap.jpeg)  
-![Histogram](/histogram.jpeg)  
-![K-means Clustering](/kmeans.jpeg)  
-
----
-
-# Animated Visualizations <a name="animatedviz"></a>  
-Perfect for dynamic presentations and highlighting temporal patterns.  
-![Animated Seed Growth](/seedanimation.gif)  
-![Fire Spread Simulation](/animasifire.gif)  
-![Geospatial Animation](/animasi4.gif)  
-
----
-
-# Dashboards <a name="dashboard"></a>  
-Live dashboards for interactive and real-time data exploration.  
-<iframe width="700" height="500" src="https://danilyanedo7.github.io/dashboard/"></iframe>  
-
-For the best experience, open the dashboard in a new tab:  
-👉 [Launch Full Dashboard](https://danilyanedo7.github.io/dashboard/)  
-👉 [Explore Dashboard Collection]({{< relref "/dashboard_collection" >}})  
-
----
-
-## Let’s Collaborate
-
-Interested in working together on a project or hosting a workshop?  
-Schedule a quick [discovery call](https://edodanilyan.com/#contact) and let’s connect!
+<div class="edp-portfolio">
+<section class="edp-intro" aria-labelledby="edp-intro-title">
+<div>
+<p class="edp-kicker">Selected work</p>
+<h2 id="edp-intro-title">Questions I followed further than expected.</h2>
+</div>
+<div class="edp-intro-copy">
+<p>A few complete investigations into food, music, energy, and the patterns hiding in ordinary data.</p>
+<a class="edp-link" href="#featured-work">See the stories <span aria-hidden="true">↓</span></a>
+</div>
+</section>
+<main id="featured-work" aria-label="Featured work">
+<article class="edp-case">
+<a class="edp-visual" href="https://danilyanedo7.github.io/soto-one-soup-many-islands/" target="_blank" rel="noopener noreferrer" aria-label="Explore One Soup, Many Islands">
+<picture>
+<source media="(max-width:720px)" srcset="soto-900.webp">
+<img src="soto-1600.webp" width="1600" height="1000" loading="eager" fetchpriority="high" alt="Opening screen of One Soup, Many Islands, showing 88 soto variants across 29 regional groups and 25 ingredient profiles">
+</picture>
+</a>
+<div class="edp-copy">
+<p class="edp-number">01 / Food and geography</p>
+<h2>One Soup, Many Islands</h2>
+<p class="edp-question">How can one dish keep the same name while changing from island to island?</p>
+<p class="edp-description">I mapped 88 named soto variants, then compared 25 documented ingredient profiles. Most bowls begin with the same aromatic base, but the less common ingredients reveal regional character and some surprising relatives across islands.</p>
+<p class="edp-tools">D3 · JavaScript · Quarto</p>
+<a class="edp-link" href="https://danilyanedo7.github.io/soto-one-soup-many-islands/" target="_blank" rel="noopener noreferrer">Explore the full story <span aria-hidden="true">↗</span></a>
+</div>
+</article>
+<article class="edp-case edp-case-reverse">
+<a class="edp-visual" href="https://danilyanedo7.github.io/spotify_redesign/" target="_blank" rel="noopener noreferrer" aria-label="Explore A Year in 22,197 Plays">
+<picture>
+<source media="(max-width:720px)" srcset="spotify-900.webp">
+<img src="spotify-1600.webp" width="1600" height="1000" loading="lazy" alt="Opening of the Spotify listening story with a year-long timeline of daily plays">
+</picture>
+</a>
+<div class="edp-copy">
+<p class="edp-number">02 / Personal data</p>
+<h2>A Year in 22,197 Plays</h2>
+<p class="edp-question">What does a year of Spotify history remember that I forgot?</p>
+<p class="edp-description">I revisited my 2022 export as a diary instead of a pile of charts. The timeline traces a 123-day listening streak through my thesis, seven silent days, and the change in rhythm when I moved from Surabaya to Poland.</p>
+<p class="edp-tools">R · JavaScript · Quarto</p>
+<a class="edp-link" href="https://danilyanedo7.github.io/spotify_redesign/" target="_blank" rel="noopener noreferrer">Explore the full story <span aria-hidden="true">↗</span></a>
+</div>
+</article>
+<article class="edp-case">
+<a class="edp-visual" href="https://danilyanedo7.github.io/kaggle-energy/" target="_blank" rel="noopener noreferrer" aria-label="Explore Spain's Power Grid">
+<picture>
+<source media="(max-width:720px)" srcset="spain-900.webp">
+<img src="spain-1600.webp" width="1600" height="796" loading="lazy" alt="Spain's Power Grid dashboard with renewable share, generation mix, and a regional wind map">
+</picture>
+</a>
+<div class="edp-copy">
+<p class="edp-number">03 / Energy systems</p>
+<h2>Spain’s Power Grid</h2>
+<p class="edp-question">What happens to the grid when renewable supply changes?</p>
+<p class="edp-description">I explored hourly demand, generation, prices, and weather from 2015 to 2018. The dashboard follows the generation mix and digs into 2017, when drought reduced hydro generation and fossil sources stepped in as backup.</p>
+<p class="edp-tools">R · Plotly · Leaflet · Quarto</p>
+<a class="edp-link" href="https://danilyanedo7.github.io/kaggle-energy/" target="_blank" rel="noopener noreferrer">Explore the dashboard <span aria-hidden="true">↗</span></a>
+</div>
+</article>
+</main>
+<section class="edp-earlier" aria-labelledby="edp-earlier-title">
+<div class="edp-earlier-copy">
+<p class="edp-kicker">From the archive</p>
+<h2 id="edp-earlier-title">Earlier work and experiments</h2>
+<p>Smaller things I made while learning, teaching, or following a useful detour.</p>
+</div>
+<div class="edp-index">
+<a href="/post/coastal-vulnerability/"><span class="edp-index-title">Where Is Gresik’s Coast Most Vulnerable?</span><span class="edp-index-type">Spatial investigation</span><span aria-hidden="true">→</span></a>
+<a href="https://danilyanedo7.github.io/30dayschartchallenge/" target="_blank" rel="noopener noreferrer"><span class="edp-index-title">30 Day Chart Challenge</span><span class="edp-index-type">Visualisation tutorials</span><span aria-hidden="true">↗</span></a>
+<a href="/project/shinyapp/"><span class="edp-index-title">Species Distribution Mapper</span><span class="edp-index-type">R Shiny experiment</span><span aria-hidden="true">→</span></a>
+<a href="/post/dashboard_collection/"><span class="edp-index-title">Dashboard Collection</span><span class="edp-index-type">Interactive archive</span><span aria-hidden="true">→</span></a>
+</div>
+</section>
+</div>

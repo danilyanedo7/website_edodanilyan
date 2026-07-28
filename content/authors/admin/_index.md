@@ -66,7 +66,6 @@ Some weeks that means a new dashboard or a photo from the field. Other weeks it�
 
 Things got out of hand here long before anyone started calling it a website. Poke around: there’s [code](/tag/r/) if that’s your thing, [research](/tag/research/) for the more serious version, and a [photography portfolio](https://danilyan.myportfolio.com/) if you’d rather look at mud and random lanscapes than at R code. If anything resonates, great. If not, at least the coffee was worth it.
 
-{{< cta cta_text="View my research" cta_link="/publication/" cta_alt_text="Explore my projects" cta_alt_link="#projects" >}}
+{{< cta cta_text="View my research" cta_link="/publication/" cta_extra_text="View my portfolio" cta_extra_link="/post/portofolio/" cta_alt_text="Explore my projects" cta_alt_link="#projects" >}}
 
 {{< about_links >}}
-
