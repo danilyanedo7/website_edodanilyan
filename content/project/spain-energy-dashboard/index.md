@@ -39,11 +39,8 @@ Have a look around and see what you find.
 
 ---
 
-### Work With Me
+### Let’s Connect
 
-I'm always open to:
-- Collaborations
-- Coaching or workshop opportunities
-- Visual design or storytelling projects
+Always happy to meet new people, swap ideas, talk science, design, data, or whatever else we find interesting.
 
-Let's [connect and chat](/#contact)!
+[Come say hi](/#contact)!
