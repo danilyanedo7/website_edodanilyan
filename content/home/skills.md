@@ -15,7 +15,7 @@ feature:
   - description: Reproducible analysis, statistical programming, advanced visualization, automated reporting, and interactive data applications
     icon: r-project
     icon_pack: fab
-    name: R & Reproducible Data Science
+    name: R & Data Science
   - description: Statistical modelling, experimental design, multivariate analysis, hypothesis testing, and clear interpretation of complex data
     icon: chart-line
     icon_pack: fas
