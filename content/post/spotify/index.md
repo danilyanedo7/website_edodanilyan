@@ -221,5 +221,4 @@ daytype
 
 Note: This is the most enjoyable personal project because I can see and understand the pattern of my spotify playback :D. 
 
-Buy me a [coffee](https://bmc.link/danilyanedo)
-See you in the next post and have a beautiful day! 
+Thanks so much for reading, I hope it inspires you to dig into your own Spotify data too. See you in the next post, and have a beautiful day!

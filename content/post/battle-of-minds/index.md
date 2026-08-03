@@ -54,6 +54,4 @@ During awarding night, we made new connections with 9 other teams. We also had t
 
 For those of you who are willing to have a discussion with me, schedule a  <a href="https://edodanilyan.com/#contact">discovery call</a>
 
-Or buy me a [coffee](https://bmc.link/danilyanedo)
-
-Cheers.
+Thanks for reading, and cheers!

@@ -25,7 +25,7 @@ projects: []
 knitr::opts_chunk$set(warning = FALSE, message = FALSE, fig.retina = 2)
 ```
 
-Bacterial growth analysis is a fundamental task in microbiology, allowing researchers to monitor the proliferation of bacteria over time. Optical Density at 600 nm (OD600) is a commonly used method to measure this growth. This is just basic things for a new undergrad biology student and a nice way to start learning microbiology — by the end, you'll have a small, reusable R workflow instead of a one-off spreadsheet calculation.
+Bacterial growth analysis is a fundamental task in microbiology, allowing researchers to monitor the proliferation of bacteria over time. Optical Density at 600 nm (OD600) is a commonly used method to measure this growth. This is just basic things for a new undergrad biology student and a nice way to start learning microbiology. By the end, you'll have a small, reusable R workflow instead of a one-off spreadsheet calculation.
 
 # What you'll learn
 By the end of this tutorial, you'll be able to:
@@ -39,7 +39,7 @@ By the end of this tutorial, you'll be able to:
 You'll need:
 
 - **R** and **RStudio** installed on your machine.
-- Basic familiarity with `dplyr`/`ggplot2` syntax (pipes, `mutate()`, `ggplot()` + geoms) — we won't stop to explain those, just the biology- and growth-curve-specific parts.
+- Basic familiarity with `dplyr`/`ggplot2` syntax (pipes, `mutate()`, `ggplot()` + geoms). We won't stop to explain those, just the biology- and growth-curve-specific parts.
 - Your own OD600 readings, or the example dataset [here](https://drive.google.com/file/d/1O6Y1g-_Z6oRyfYlfth24hm-s7GWBqKhF/view?usp=share_link) (personal data collected during my training at the University of Vienna, using *Vibrio* as a bacterial model grown in marine broth liquid medium) to follow along.
 
 # Libraries we need
@@ -61,12 +61,12 @@ invisible(lapply(libs, library, character.only = TRUE))
 Running that chunk installs anything missing and loads it all: `readr` for reading the CSV, `dplyr`/`tidyr`/`purrr` for wrangling, `lubridate` for parsing the time stamps, `ggplot2`/`ggsci` for static plots, `plotly` for an interactive version, and `knitr` for printing tidy summary tables. You only need to do this once per R session.
 
 # Load and tidy the data
-Next, we'll read in the raw OD600 readings and reshape them into one tidy row per sample/timepoint — the format every plot and calculation later in this tutorial expects. If you're using your own data, export it as a CSV (Excel works too, just keep the same column layout) with the same two columns described below.
+Next, we'll read in the raw OD600 readings and reshape them into one tidy row per sample/timepoint: the format every plot and calculation later in this tutorial expects. If you're using your own data, export it as a CSV (Excel works too, just keep the same column layout) with the same two columns described below.
 
-The raw file has one row per reading, with a `Sample_name` column encoding both the sample and the time it was taken (e.g. `WT_09:15`), plus the raw `Result` (OD600 reading). The workflow below supports any number of samples — nothing has to change if you add more.
+The raw file has one row per reading, with a `Sample_name` column encoding both the sample and the time it was taken (e.g. `WT_09:15`), plus the raw `Result` (OD600 reading). The workflow below supports any number of samples. Nothing has to change if you add more.
 
 ```{r}
-blank_od <- 0.001 # OD600 of your blank/media-only well — adjust to your own measurement
+blank_od <- 0.001 # OD600 of your blank/media-only well, adjust to your own measurement
 
 df <- read_csv("od_data2.csv") %>%
   mutate(
@@ -88,10 +88,10 @@ glimpse(df)
 `glimpse(df)` should show one row per sample/timepoint with four columns: `Sample`, `Time_h`, `Result`, and `Result_log`. A few changes from a "just read the CSV" approach worth calling out:
 
 - The blank correction lives in a named `blank_od` variable instead of a magic number buried in a pipe, so it's obvious what to change for your own plate reader.
-- Any blank-corrected reading `<= 0` is dropped before log-transforming — otherwise `log()` silently returns `-Inf`/`NaN` and breaks the regressions further down.
+- Any blank-corrected reading `<= 0` is dropped before log-transforming. Otherwise `log()` silently returns `-Inf`/`NaN` and breaks the regressions further down.
 - `Time` is converted to **hours elapsed since that sample's first reading** (`Time_h`), computed per sample. That keeps the x-axis in intuitive units and means samples that were started at different clock times still line up at t = 0.
 
-With `df` tidy, every plot and calculation from here on can just reference `Sample`, `Time_h`, and `Result`/`Result_log` — no more parsing needed.
+With `df` tidy, every plot and calculation from here on can just reference `Sample`, `Time_h`, and `Result`/`Result_log`. No more parsing needed.
 
 # Growth curves for all samples
 Now that the data is tidy, let's plot every sample's growth curve on one panel so we can see all of them at a glance.
@@ -137,7 +137,7 @@ In batch culture, growth during the exponential phase follows
 
 $$ \frac{dN}{dt} = \mu N $$
 
-so a straight line fit to `log(N)` vs. time has slope &mu;, the specific growth rate. **&mu;max** is the highest &mu; sustained anywhere in the curve — i.e. the steepest straight stretch of the log-transformed curve.
+so a straight line fit to `log(N)` vs. time has slope &mu;, the specific growth rate. **&mu;max** is the highest &mu; sustained anywhere in the curve, i.e. the steepest straight stretch of the log-transformed curve.
 
 Rather than eyeballing where the exponential phase starts and ends (as I did in an earlier version of this post, and which has to be re-guessed by hand for every new sample), we slide a small window of consecutive time points along each sample's curve, fit a linear regression of `Result_log ~ Time_h` inside every window, and keep the window with the steepest good-quality fit. This is the same idea used by dedicated growth-curve tools like the `growthcurver` package.
 
@@ -162,7 +162,7 @@ find_mu_max <- function(data, window = 5) {
 }
 ```
 
-`window` is the number of consecutive readings used per regression — tune it to your sampling frequency (e.g. a smaller window for coarser sampling, a larger one for very frequent readings) so each window still spans a few minutes of real growth.
+`window` is the number of consecutive readings used per regression. Tune it to your sampling frequency (e.g. a smaller window for coarser sampling, a larger one for very frequent readings) so each window still spans a few minutes of real growth.
 
 We apply this per sample, then for each sample keep the best window: the steepest slope among windows with a good linear fit (`r_squared > 0.98`).
 
