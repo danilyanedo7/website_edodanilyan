@@ -25,11 +25,25 @@ projects: []
 knitr::opts_chunk$set(warning = FALSE, message = FALSE, fig.retina = 2)
 ```
 
-Bacterial growth analysis is a fundamental task in microbiology, allowing researchers to monitor the proliferation of bacteria over time. Optical Density at 600 nm (OD600) is a commonly used method to measure this growth. In this tutorial, we'll walk through the process of analyzing bacterial growth data using R: loading and tidying the data, visualizing growth curves for several samples at once, automatically detecting each sample's exponential phase to estimate its maximum specific growth rate (**&mu;max**), and comparing growth rates across samples. This is just basic things for a new undergrad biology student and a nice way to start learning microbiology.
+Bacterial growth analysis is a fundamental task in microbiology, allowing researchers to monitor the proliferation of bacteria over time. Optical Density at 600 nm (OD600) is a commonly used method to measure this growth. This is just basic things for a new undergrad biology student and a nice way to start learning microbiology — by the end, you'll have a small, reusable R workflow instead of a one-off spreadsheet calculation.
 
+# What you'll learn
+By the end of this tutorial, you'll be able to:
+
+- Load a raw OD600 CSV export and tidy it into one row per sample/timepoint.
+- Plot growth curves for several samples at once, on both a raw and log scale.
+- Automatically detect each sample's exponential phase with a sliding-window regression, instead of eyeballing where it starts and ends.
+- Estimate each sample's maximum specific growth rate (**&mu;max**) and doubling time, and compare them across samples.
+
+# Before you start
+You'll need:
+
+- **R** and **RStudio** installed on your machine.
+- Basic familiarity with `dplyr`/`ggplot2` syntax (pipes, `mutate()`, `ggplot()` + geoms) — we won't stop to explain those, just the biology- and growth-curve-specific parts.
+- Your own OD600 readings, or the example dataset [here](https://drive.google.com/file/d/1O6Y1g-_Z6oRyfYlfth24hm-s7GWBqKhF/view?usp=share_link) (personal data collected during my training at the University of Vienna, using *Vibrio* as a bacterial model grown in marine broth liquid medium) to follow along.
 
 # Libraries we need
-We start by defining the libraries that will be used in our analysis.
+First, let's install and load the packages this analysis depends on.
 
 ```{r}
 libs <- c(
@@ -44,10 +58,10 @@ if (any(installed_libs == FALSE)) {
 invisible(lapply(libs, library, character.only = TRUE))
 ```
 
-`readr` for reading the CSV, `dplyr`/`tidyr`/`purrr` for wrangling, `lubridate` for parsing the time stamps, `ggplot2`/`ggsci` for static plots, `plotly` for an interactive version, and `knitr` for printing tidy summary tables.
+Running that chunk installs anything missing and loads it all: `readr` for reading the CSV, `dplyr`/`tidyr`/`purrr` for wrangling, `lubridate` for parsing the time stamps, `ggplot2`/`ggsci` for static plots, `plotly` for an interactive version, and `knitr` for printing tidy summary tables. You only need to do this once per R session.
 
 # Load and tidy the data
-We load the OD600 data from a CSV file (Excel works too, just keep the same column layout). You can download example data [here](https://drive.google.com/file/d/1O6Y1g-_Z6oRyfYlfth24hm-s7GWBqKhF/view?usp=share_link). This is personal data collected during my training at the University of Vienna, using *Vibrio* as a bacterial model grown in marine broth liquid medium.
+Next, we'll read in the raw OD600 readings and reshape them into one tidy row per sample/timepoint — the format every plot and calculation later in this tutorial expects. If you're using your own data, export it as a CSV (Excel works too, just keep the same column layout) with the same two columns described below.
 
 The raw file has one row per reading, with a `Sample_name` column encoding both the sample and the time it was taken (e.g. `WT_09:15`), plus the raw `Result` (OD600 reading). The workflow below supports any number of samples — nothing has to change if you add more.
 
@@ -71,14 +85,16 @@ df <- read_csv("od_data2.csv") %>%
 glimpse(df)
 ```
 
-A few changes from a "just read the CSV" approach worth calling out:
+`glimpse(df)` should show one row per sample/timepoint with four columns: `Sample`, `Time_h`, `Result`, and `Result_log`. A few changes from a "just read the CSV" approach worth calling out:
 
 - The blank correction lives in a named `blank_od` variable instead of a magic number buried in a pipe, so it's obvious what to change for your own plate reader.
 - Any blank-corrected reading `<= 0` is dropped before log-transforming — otherwise `log()` silently returns `-Inf`/`NaN` and breaks the regressions further down.
 - `Time` is converted to **hours elapsed since that sample's first reading** (`Time_h`), computed per sample. That keeps the x-axis in intuitive units and means samples that were started at different clock times still line up at t = 0.
 
+With `df` tidy, every plot and calculation from here on can just reference `Sample`, `Time_h`, and `Result`/`Result_log` — no more parsing needed.
+
 # Growth curves for all samples
-With tidy data in hand, we can plot every sample's growth curve on one panel.
+Now that the data is tidy, let's plot every sample's growth curve on one panel so we can see all of them at a glance.
 
 ```{r}
 p_raw <- ggplot(df, aes(x = Time_h, y = Result, color = Sample)) +
@@ -94,8 +110,10 @@ p_raw <- ggplot(df, aes(x = Time_h, y = Result, color = Sample)) +
 p_raw
 ```
 
+You should now see a classic growth curve per sample: a flat lag phase, a rising exponential phase, and a plateau once the culture saturates. That exponential stretch is what we actually want to quantify, but it's hard to pinpoint precisely on this raw scale, which is where the next plot helps.
+
 # Log-transformed OD600
-Plotting `log(OD600)` against time is what makes the exponential phase visible as a straight line — that straight segment is exactly what the next section detects automatically.
+Let's re-plot the same data on a log scale, which is what makes the exponential phase visible as a straight line, that straight segment is exactly what the next section detects automatically.
 
 ```{r}
 p_log <- ggplot(df, aes(x = Time_h, y = Result_log, color = Sample)) +
@@ -110,6 +128,8 @@ p_log <- ggplot(df, aes(x = Time_h, y = Result_log, color = Sample)) +
 
 p_log
 ```
+
+Notice how each sample's curve now has a straight-line segment somewhere in the middle, that's its exponential phase. The slope of that segment is what we'll estimate next.
 
 # Finding &mu;max with a sliding-window regression
 
@@ -165,9 +185,11 @@ kable(mu_max_summary, digits = 3,
                     "Window start (h)", "Window end (h)", "Doubling time (min)"))
 ```
 
-The doubling time follows directly from &mu;max:
+You now have one row per sample with its &mu;max, the R² of the fit that produced it, the time window it came from, and the doubling time that follows directly from &mu;max:
 
 $$ t_d = \frac{\ln(2)}{\mu_{max}} $$
+
+That's the core result of this tutorial, but a number is only as trustworthy as the window it came from, so let's double-check it visually before using it.
 
 # Checking the detected exponential phase
 Before trusting these numbers, it's worth visualizing which window was picked for each sample, overlaid on the log-transformed curve.
@@ -189,10 +211,10 @@ ggplot(df, aes(x = Time_h, y = Result_log)) +
   theme_minimal()
 ```
 
-The shaded rectangle is the window `find_mu_max()` selected for that sample. If it looks too short, too noisy, or off to one side, adjust the `window` size or the `r_squared` cutoff above and re-run.
+The shaded rectangle is the window `find_mu_max()` selected for that sample. If it looks too short, too noisy, or off to one side, adjust the `window` size or the `r_squared` cutoff above and re-run. Once the shaded windows line up with what you'd have picked by eye, you can trust the `mu_max_summary` table.
 
 # Comparing growth rate across samples
-This is the part that's easy to lose track of when analyzing one sample at a time: how do the samples actually compare?
+This is the part that's easy to lose track of when analyzing one sample at a time: how do the samples actually compare? Let's turn the summary table into a chart.
 
 ```{r, fig.height=4}
 mu_max_summary %>%
@@ -207,15 +229,27 @@ mu_max_summary %>%
   theme_minimal()
 ```
 
+With that, the two side-by-side panels give you a fast ranking of which sample grew fastest (&mu;max) and which grew slowest to double (doubling time), the two views agree by construction, but seeing both side by side makes outliers obvious.
+
 # Interactive growth curve
-Handy for zooming into a specific stretch of the curve or checking individual points.
+Finally, it's handy to have an interactive version of the raw growth curve for zooming into a specific stretch or checking individual points.
 
 ```{r}
 ggplotly(p_raw)
 ```
 
-# Remarks
-By automating exponential-phase detection with a sliding-window regression, this workflow scales to any number of samples without hand-tuning a `lag_end`/`exp_end` cutoff for each one, and the &mu;max/doubling-time table and every plot above are regenerated straight from the raw CSV whenever this document is knitted. That makes the whole analysis reproducible: re-run it on a new plate and the numbers and figures update themselves.
+Hover over any point to read its exact `Sample`, `Time_h`, and `Result`  useful for sanity-checking a suspicious reading without going back to the raw CSV.
 
-Buy me a [coffee](https://bmc.link/danilyanedo)
+# What you built
+You now have a small, reusable R workflow that takes a raw OD600 CSV and turns it into growth curves, an automatically-detected exponential phase, and a &mu;max/doubling-time table per sample for any number of samples, without hand-tuning a `lag_end`/`exp_end` cutoff for each one. Because every plot and number above is regenerated straight from the CSV when this document is knitted, re-running the whole analysis on a new plate is just a matter of swapping the input file.
+
+# Next steps
+From here, a few things worth trying on your own:
+
+- Swap in your own OD600 CSV (same two-column layout) and re-knit, that's the real test of whether this workflow generalizes beyond the example data.
+- Tune the `window` size and `r_squared` cutoff in `find_mu_max()` for your own sampling frequency, and watch how the detected windows in the "Checking the detected exponential phase" plot shift.
+- Compare your &mu;max estimates against a dedicated tool like the [`growthcurver`](https://cran.r-project.org/package=growthcurver) package, which fits a full logistic growth model instead of a sliding-window regression.
+
+This is the first post in an R-for-biologists serie, I will see you in the next one.
+
 See you in the next post and have a beautiful day!
