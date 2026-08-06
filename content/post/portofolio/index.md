@@ -5,7 +5,7 @@ summary: A curated collection of data stories, investigations, and experiments b
 layout: portfolio
 projects: []
 date: '2020-12-13T00:00:00Z'
-lastmod: '2026-07-28T00:00:00Z'
+lastmod: '2026-07-06T00:00:00Z'
 draft: false
 featured: false
 image:
@@ -112,6 +112,38 @@ categories:
 <p class="edp-description">I explored hourly demand, generation, prices, and weather from 2015 to 2018. The dashboard follows the generation mix and digs into 2017, when drought reduced hydro generation and fossil sources stepped in as backup.</p>
 <p class="edp-tools">R · Plotly · Leaflet · Quarto</p>
 <a class="edp-link" href="https://danilyanedo7.github.io/kaggle-energy/" target="_blank" rel="noopener noreferrer">Explore the dashboard <span aria-hidden="true">↗</span></a>
+</div>
+</article>
+<article class="edp-case edp-case-reverse">
+<a class="edp-visual" href="https://danilyanedo7.github.io/living_with_volcano/" target="_blank" rel="noopener noreferrer" aria-label="Explore Living With Volcanoes">
+<picture>
+<source media="(max-width:720px)" srcset="volcano-900.webp">
+<img src="volcano-1600.webp" width="1600" height="1000" loading="lazy" alt="Opening screen of Living With Volcanoes, a 3D relief map of Java with population spikes rising at each volcano">
+</picture>
+</a>
+<div class="edp-copy">
+<p class="edp-number">04 / Population and geography</p>
+<h2>Living With Volcanoes</h2>
+<p class="edp-question">How close do millions of people actually live to an active volcano?</p>
+<p class="edp-description">I wanted to know how many people in Java live close to a volcano, so I mapped all 31 Holocene volcanoes against population data. Of the island’s 147 million residents, around 60 million live within 30 km of at least one volcano. Nearly 8.8 million live within 30 km of Tangkuban Parahu alone. Those numbers sound alarming, but this is a map of proximity. Living close to a volcano does not automatically mean being in danger, and the official data still left some questions unanswered.</p>
+<p class="edp-tools">R · Leaflet · Rayshader · Quarto</p>
+<a class="edp-link" href="https://danilyanedo7.github.io/living_with_volcano/" target="_blank" rel="noopener noreferrer">Explore the full story <span aria-hidden="true">↗</span></a>
+</div>
+</article>
+<article class="edp-case">
+<a class="edp-visual" href="https://danilyanedo7.github.io/steady_state/" target="_blank" rel="noopener noreferrer" aria-label="Explore The Brief Window of Steady Growth">
+<picture>
+<source media="(max-width:720px)" srcset="steady-900.webp">
+<img src="steady-1600.webp" width="1600" height="1000" loading="lazy" alt="Opening screen of The Brief Window of Steady Growth, the essay title over the start of a single-cell mass growth chart">
+</picture>
+</a>
+<div class="edp-copy">
+<p class="edp-number">05 / Cell biology</p>
+<h2>The Brief Window of Steady Growth</h2>
+<p class="edp-question">Does a smoothly rising growth curve prove a culture has reached steady state?</p>
+<p class="edp-description">Using Roller et al.’s 2023 single-cell mass data, I built a visual data story that traces how median cell mass climbs tenfold, from 47 to 492 femtograms, before a culture actually settles into steady state. That window lasts about 90 minutes under the best conditions, and most of the growth inside it comes from cells gaining mass rather than dividing, a distinction optical density alone can’t show.</p>
+<p class="edp-tools">R · JavaScript · Quarto</p>
+<a class="edp-link" href="https://danilyanedo7.github.io/steady_state/" target="_blank" rel="noopener noreferrer">Explore the full story <span aria-hidden="true">↗</span></a>
 </div>
 </article>
 </main>
