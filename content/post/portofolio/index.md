@@ -1,7 +1,7 @@
 ---
 title: Portfolio
-subtitle: Questions I followed further than expected
-summary: A curated collection of data stories, investigations, and experiments by Edo Danilyan.
+subtitle: A curated collection of data stories, investigations, and experiments
+summary: A curated collection of data stories, investigations, and experiments
 layout: portfolio
 projects: []
 date: '2020-12-13T00:00:00Z'
