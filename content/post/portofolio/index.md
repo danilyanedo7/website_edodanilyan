@@ -5,7 +5,7 @@ summary: A curated collection of data stories, investigations, and experiments
 layout: portfolio
 projects: []
 date: '2020-12-13T00:00:00Z'
-lastmod: '2026-07-06T00:00:00Z'
+lastmod: '2026-08-08T00:00:00Z'
 draft: false
 featured: false
 image:
@@ -19,145 +19,167 @@ categories:
 ---
 
 <style>
-.edp-portfolio{--edp-accent:#a0442e;--edp-muted:#69716c;--edp-line:rgba(100,105,102,.22);width:100%;margin:-2rem 0 4rem;color:inherit}
+.edp-portfolio{--edp-accent:#a0442e;--edp-ink:#202326;--edp-muted:#69716c;--edp-line:rgba(100,105,102,.22);width:100%;margin:2rem 0 4rem;color:var(--edp-ink)}
 .edp-portfolio *{box-sizing:border-box}
 .edp-portfolio a{color:inherit;text-decoration:none}
 .edp-portfolio a:focus-visible{outline:3px solid var(--edp-accent);outline-offset:5px}
-.edp-intro{display:grid;grid-template-columns:1.2fr .8fr;gap:3rem;padding:2rem 0 3.75rem;border-bottom:1px solid var(--edp-line);align-items:end}
-.edp-intro h2{max-width:760px;margin:0;font-size:clamp(3rem,6vw,5rem);font-weight:470;line-height:.93;letter-spacing:-.06em}
-.edp-intro-copy{max-width:430px;padding-bottom:.7rem}
-.edp-intro-copy p{margin:0 0 1.5rem;color:var(--edp-muted);font-size:1.18rem;line-height:1.55}
-.edp-kicker,.edp-number,.edp-tools{margin:0 0 1rem;color:var(--edp-muted);font-size:.72rem;font-weight:650;letter-spacing:.13em;text-transform:uppercase}
+.edp-intro{display:flex;flex-direction:column;gap:1.75rem;padding:2.75rem 0 4.25rem;border-bottom:1px solid var(--edp-line);align-items:center;text-align:center}
+.edp-intro-mark{display:grid;grid-template-columns:repeat(3,5px);gap:5px 7px;width:max-content;margin:0 auto 1.35rem}
+.edp-intro-mark span{display:block;width:5px;height:5px;border-radius:50%;background:var(--edp-ink)}
+.edp-intro-mark span:nth-child(even){background:var(--edp-muted)}
+.edp-intro h2{max-width:14ch;margin:0 auto;color:var(--edp-ink);font-size:clamp(3rem,4.5vw,4rem);font-weight:480;line-height:.96;letter-spacing:-.05em;text-wrap:balance}
+.edp-intro h2 em{display:block;color:var(--edp-muted);font-weight:420}
+.edp-intro-copy{max-width:650px}
+.edp-intro-copy p{margin:0 0 1.5rem;color:var(--edp-muted);font-size:1.08rem;line-height:1.62}
+.edp-intro .edp-link{font-size:.78rem;font-weight:650;letter-spacing:.1em;text-transform:uppercase}
+.edp-kicker,.edp-number,.edp-tools{margin:0 0 1rem;color:var(--edp-muted);font-size:.75rem;font-weight:650;letter-spacing:.13em;text-transform:uppercase}
 .edp-case{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(280px,.75fr);gap:clamp(2.5rem,6vw,6rem);padding:clamp(3.5rem,7vw,6rem) 0;border-bottom:1px solid var(--edp-line);align-items:center}
 .edp-case-reverse{grid-template-columns:minmax(280px,.75fr) minmax(0,1.5fr)}
 .edp-case-reverse .edp-visual{order:2}
 .edp-visual{display:block;overflow:hidden;background:rgba(120,120,120,.08)}
 .edp-visual img{display:block;width:100%;height:auto;margin:0;transition:transform .3s ease}
 .edp-visual:hover img{transform:scale(1.012)}
-.edp-copy h2{margin:0 0 1.1rem;font-size:clamp(2.1rem,3.8vw,3.8rem);font-weight:500;line-height:1;letter-spacing:-.045em}
-.edp-question{margin:0 0 1.25rem;color:var(--edp-accent);font-size:clamp(1.1rem,1.6vw,1.35rem);font-weight:540;line-height:1.38}
-.edp-description{margin:0 0 1.4rem;color:var(--edp-muted);font-size:1rem;line-height:1.7}
-.edp-tools{margin-top:1.7rem}
-.edp-link{display:inline-flex;gap:.65rem;padding-bottom:.2rem;border-bottom:1px solid currentColor;font-size:.92rem;font-weight:580}
-.edp-link span,.edp-index a>span:last-child{transition:transform .18s ease}
-.edp-link:hover span,.edp-index a:hover>span:last-child{transform:translate(.15rem,-.15rem)}
+.edp-copy{max-width:36rem}
+.edp-number{margin-bottom:.85rem}
+.edp-copy h2{margin:0 0 .9rem;color:var(--edp-ink);font-size:clamp(2.1rem,3vw,3.15rem);font-weight:500;line-height:1.04;letter-spacing:-.038em;text-wrap:balance}
+.edp-question{margin:0 0 1.35rem;color:var(--edp-ink);font-size:clamp(1.05rem,1.3vw,1.2rem);font-weight:500;line-height:1.48}
+.edp-description{margin:0 0 1.3rem;color:var(--edp-muted);font-size:1rem;line-height:1.65}
+.edp-tools{margin-top:1.5rem}
+.edp-link{display:inline-block;padding-bottom:.2rem;border-bottom:1px solid currentColor;font-size:.92rem;font-weight:580}
 .edp-earlier{display:grid;grid-template-columns:.75fr 1.4fr;gap:clamp(3rem,7vw,7rem);padding-top:clamp(3.5rem,6vw,5rem)}
-.edp-earlier h2{margin:0 0 1rem;font-size:clamp(2rem,3.5vw,3.5rem);font-weight:500;line-height:1.04;letter-spacing:-.045em}
+.edp-earlier h2{margin:0 0 1rem;font-size:clamp(2rem,3vw,2.8rem);font-weight:500;line-height:1.06;letter-spacing:-.035em}
 .edp-earlier-copy>p:last-child{max-width:350px;color:var(--edp-muted)}
 .edp-index{border-top:1px solid var(--edp-line)}
-.edp-index a{display:grid;grid-template-columns:minmax(0,1fr) 170px 1rem;gap:1rem;padding:1.35rem 0;border-bottom:1px solid var(--edp-line);align-items:baseline;transition:color .18s ease,padding .18s ease}
-.edp-index a:hover{padding-left:.4rem;color:var(--edp-accent)}
+.edp-index a{display:grid;grid-template-columns:minmax(0,1fr) 170px;gap:1rem;padding:1.35rem 0;border-bottom:1px solid var(--edp-line);align-items:baseline;transition:color .18s ease,padding .18s ease}
+.edp-index a:hover{padding-left:.4rem;color:var(--edp-ink)}
 .edp-index-title{font-weight:560}
 .edp-index-type{color:var(--edp-muted);font-size:.82rem}
-@media(max-width:800px){.edp-portfolio{margin-top:.5rem}.edp-intro,.edp-case,.edp-case-reverse,.edp-earlier{grid-template-columns:minmax(0,1fr)}.edp-intro{gap:1.5rem;padding:1.5rem 0 3rem}.edp-intro h2{font-size:clamp(3rem,13vw,5rem)}.edp-case-reverse .edp-visual{order:0}.edp-case{gap:2rem;padding:3.25rem 0}.edp-earlier{gap:1.75rem}}
-@media(max-width:520px){.edp-portfolio{width:calc(100vw - 2rem)}.edp-index a{grid-template-columns:minmax(0,1fr) 1rem}.edp-index-type{grid-column:1;grid-row:2}.edp-index a>span:last-child{grid-column:2;grid-row:1/3}}
+@media(max-width:800px){.edp-portfolio{margin-top:1.5rem}.edp-case,.edp-case-reverse,.edp-earlier{grid-template-columns:minmax(0,1fr)}.edp-intro{gap:1.5rem;padding:1.75rem 0 3.25rem}.edp-intro h2{max-width:11ch;font-size:clamp(2.75rem,11.5vw,3.3rem)}.edp-case-reverse .edp-visual{order:0}.edp-case{gap:2rem;padding:3.25rem 0}.edp-earlier{gap:1.75rem}}
+@media(max-width:520px){.edp-portfolio{width:calc(100vw - 2rem)}.edp-index a{grid-template-columns:minmax(0,1fr)}.edp-index-type{grid-column:1;grid-row:2}}
 @media(prefers-reduced-motion:reduce){.edp-portfolio *{transition:none!important}}
 </style>
 
 <div class="edp-portfolio">
 <section class="edp-intro" aria-labelledby="edp-intro-title">
 <div>
-<p class="edp-kicker">Selected work</p>
-<h2 id="edp-intro-title">Questions I followed further than expected</h2>
+<div class="edp-intro-mark" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+<p class="edp-kicker">Selected data storytelling projects</p>
+<h2 id="edp-intro-title">A few things I have made <em>with data</em></h2>
 </div>
 <div class="edp-intro-copy">
-<p>A few complete investigations into food, music, energy, and the patterns hiding in ordinary data</p>
-<a class="edp-link" href="#featured-work">See the stories <span aria-hidden="true">↓</span></a>
+<p>These projects began with things I was curious about, from the routes birds take and the music I lived with to volcanoes, food, microbes, and electricity.</p>
+<a class="edp-link" href="#featured-work">See the stories</a>
 </div>
 </section>
 <main id="featured-work" aria-label="Featured work">
 <article class="edp-case">
-<a class="edp-visual" href="https://danilyanedo7.github.io/soto-one-soup-many-islands/" target="_blank" rel="noopener noreferrer" aria-label="Explore One Soup, Many Islands">
+<a class="edp-visual" href="https://danilyanedo7.github.io/bird_migration/" target="_blank" rel="noopener noreferrer" aria-label="Explore Bird Migration">
 <picture>
-<source media="(max-width:720px)" srcset="soto-900.webp">
-<img src="soto-1600.webp" width="1600" height="1000" loading="eager" fetchpriority="high" alt="Opening screen of One Soup, Many Islands, showing 88 soto variants across 29 regional groups and 25 ingredient profiles">
+<source media="(max-width:720px)" srcset="bird-900.webp">
+<img src="bird-1600.webp" width="1600" height="1000" loading="eager" fetchpriority="high" alt="Three colored GPS routes trace gull migrations from Belgium along the Atlantic coast to Morocco and Senegal">
 </picture>
 </a>
 <div class="edp-copy">
-<p class="edp-number">01 / Food and geography</p>
-<h2>One Soup, Many Islands</h2>
-<p class="edp-question">How can one dish keep the same name while changing from island to island?</p>
-<p class="edp-description">I mapped 88 named soto variants, then compared 25 documented ingredient profiles. Most bowls begin with the same aromatic base, but the less common ingredients reveal regional character and some surprising relatives across islands.</p>
-<p class="edp-tools">D3 · JavaScript · Quarto</p>
-<a class="edp-link" href="https://danilyanedo7.github.io/soto-one-soup-many-islands/" target="_blank" rel="noopener noreferrer">Explore the full story <span aria-hidden="true">↗</span></a>
+<p class="edp-number">01 / Animal movement</p>
+<h2>Bird Migration</h2>
+<p class="edp-question">How did three gulls from the same coast find different ways south?</p>
+<p class="edp-description">Three gulls from the same coast left up to 78 days apart and wintered in different countries. Their journeys show how timing and stopovers can split a shared migration route.</p>
+<p class="edp-tools">JavaScript · SVG · Scrollytelling</p>
+<a class="edp-link" href="https://danilyanedo7.github.io/bird_migration/" target="_blank" rel="noopener noreferrer">Follow the journeys</a>
 </div>
 </article>
 <article class="edp-case edp-case-reverse">
-<a class="edp-visual" href="https://danilyanedo7.github.io/spotify_redesign/" target="_blank" rel="noopener noreferrer" aria-label="Explore A Year in 22,197 Plays">
+<a class="edp-visual" href="https://danilyanedo7.github.io/spotify_redesign/" target="_blank" rel="noopener noreferrer" aria-label="Explore My Year in Music">
 <picture>
 <source media="(max-width:720px)" srcset="spotify-900.webp">
-<img src="spotify-1600.webp" width="1600" height="1000" loading="lazy" alt="Opening of the Spotify listening story with a year-long timeline of daily plays">
+<img src="spotify-1600.webp" width="1600" height="1000" loading="lazy" alt="The Overture view from My Year in Music, showing a full year of Spotify listening as four rows of daily bars">
 </picture>
 </a>
 <div class="edp-copy">
 <p class="edp-number">02 / Personal data</p>
-<h2>A Year in 22,197 Plays</h2>
-<p class="edp-question">What does a year of Spotify history remember that I forgot?</p>
-<p class="edp-description">I revisited my 2022 export as a diary instead of a pile of charts. The timeline traces a 123-day listening streak through my thesis, seven silent days, and the change in rhythm when I moved from Surabaya to Poland.</p>
+<h2>My Year in Music</h2>
+<p class="edp-question">What can a year of listening history remember that I forgot?</p>
+<p class="edp-description">My listening reached 187.7 hours in July, more than twice the spring average, then eased after I moved to Poland. The pattern turns a year of Spotify history into a record of thesis pressure and changing routines.</p>
 <p class="edp-tools">R · JavaScript · Quarto</p>
-<a class="edp-link" href="https://danilyanedo7.github.io/spotify_redesign/" target="_blank" rel="noopener noreferrer">Explore the full story <span aria-hidden="true">↗</span></a>
+<a class="edp-link" href="https://danilyanedo7.github.io/spotify_redesign/" target="_blank" rel="noopener noreferrer">Explore the full story</a>
 </div>
 </article>
 <article class="edp-case">
-<a class="edp-visual" href="https://danilyanedo7.github.io/kaggle-energy/" target="_blank" rel="noopener noreferrer" aria-label="Explore Spain's Power Grid">
+<a class="edp-visual" href="https://danilyanedo7.github.io/living_with_volcano/" target="_blank" rel="noopener noreferrer" aria-label="Explore Living with Volcano">
 <picture>
-<source media="(max-width:720px)" srcset="spain-900.webp">
-<img src="spain-1600.webp" width="1600" height="796" loading="lazy" alt="Spain's Power Grid dashboard with renewable share, generation mix, and a regional wind map">
+<source media="(max-width:720px)" srcset="volcano-900.webp">
+<img src="volcano-1600.webp" width="1600" height="1000" loading="lazy" alt="Opening view of Living with Volcano, with a dramatic 3D population relief map of Java beneath the title">
 </picture>
 </a>
 <div class="edp-copy">
-<p class="edp-number">03 / Energy systems</p>
-<h2>Spain’s Power Grid</h2>
-<p class="edp-question">What happens to the grid when renewable supply changes?</p>
-<p class="edp-description">I explored hourly demand, generation, prices, and weather from 2015 to 2018. The dashboard follows the generation mix and digs into 2017, when drought reduced hydro generation and fossil sources stepped in as backup.</p>
-<p class="edp-tools">R · Plotly · Leaflet · Quarto</p>
-<a class="edp-link" href="https://danilyanedo7.github.io/kaggle-energy/" target="_blank" rel="noopener noreferrer">Explore the dashboard <span aria-hidden="true">↗</span></a>
+<p class="edp-number">03 / Population exposure</p>
+<h2>Living with Volcano</h2>
+<p class="edp-question">How close do millions of people actually live to an active volcano?</p>
+<p class="edp-description">About 60 million people live within 30 kilometres of a Holocene volcano on Java. The number shows the scale of exposure, while distance alone cannot describe volcanic risk.</p>
+<p class="edp-tools">R · Leaflet · Rayshader · Quarto</p>
+<a class="edp-link" href="https://danilyanedo7.github.io/living_with_volcano/" target="_blank" rel="noopener noreferrer">Explore the full story</a>
 </div>
 </article>
 <article class="edp-case edp-case-reverse">
-<a class="edp-visual" href="https://danilyanedo7.github.io/living_with_volcano/" target="_blank" rel="noopener noreferrer" aria-label="Explore Living With Volcanoes">
+<a class="edp-visual" href="https://danilyanedo7.github.io/soto-one-soup-many-islands/" target="_blank" rel="noopener noreferrer" aria-label="Explore One Soup, Many Islands">
 <picture>
-<source media="(max-width:720px)" srcset="volcano-900.webp">
-<img src="volcano-1600.webp" width="1600" height="1000" loading="lazy" alt="Opening screen of Living With Volcanoes, a 3D relief map of Java with population spikes rising at each volcano">
+<source media="(max-width:720px)" srcset="soto-900.webp">
+<img src="soto-1600.webp" width="1600" height="1000" loading="lazy" alt="Ingredient similarity network linking related soto variants with details for Soto Kebumen">
 </picture>
 </a>
 <div class="edp-copy">
-<p class="edp-number">04 / Population and geography</p>
-<h2>Living With Volcanoes</h2>
-<p class="edp-question">How close do millions of people actually live to an active volcano?</p>
-<p class="edp-description">I wanted to know how many people in Java live close to a volcano, so I mapped all 31 Holocene volcanoes against population data. Of the island’s 147 million residents, around 60 million live within 30 km of at least one volcano. Nearly 8.8 million live within 30 km of Tangkuban Parahu alone. Those numbers sound alarming, but this is a map of proximity. Living close to a volcano does not automatically mean being in danger, and the official data still left some questions unanswered.</p>
-<p class="edp-tools">R · Leaflet · Rayshader · Quarto</p>
-<a class="edp-link" href="https://danilyanedo7.github.io/living_with_volcano/" target="_blank" rel="noopener noreferrer">Explore the full story <span aria-hidden="true">↗</span></a>
+<p class="edp-number">04 / Food and geography</p>
+<h2>One Soup, Many Islands</h2>
+<p class="edp-question">How can one dish keep the same name while changing from island to island?</p>
+<p class="edp-description">Soto Kebumen and Soto Seger Boyolali share eleven recorded ingredients and differ only by galangal. Their similarity shows that names and geography do not always predict how a bowl is made.</p>
+<p class="edp-tools">D3 · JavaScript · Quarto</p>
+<a class="edp-link" href="https://danilyanedo7.github.io/soto-one-soup-many-islands/" target="_blank" rel="noopener noreferrer">Explore the full story</a>
 </div>
 </article>
 <article class="edp-case">
-<a class="edp-visual" href="https://danilyanedo7.github.io/steady_state/" target="_blank" rel="noopener noreferrer" aria-label="Explore The Brief Window of Steady Growth">
+<a class="edp-visual" href="https://danilyanedo7.github.io/steady_state/" target="_blank" rel="noopener noreferrer" aria-label="Explore Growing, but Not Yet Steady">
 <picture>
 <source media="(max-width:720px)" srcset="steady-900.webp">
-<img src="steady-1600.webp" width="1600" height="1000" loading="lazy" alt="Opening screen of The Brief Window of Steady Growth, the essay title over the start of a single-cell mass growth chart">
+<img src="steady-1600.webp" width="1600" height="1000" loading="lazy" alt="Paired charts compare median single cell mass with variation across cells and mark the effective steady state window">
 </picture>
 </a>
 <div class="edp-copy">
-<p class="edp-number">05 / Cell biology</p>
-<h2>The Brief Window of Steady Growth</h2>
-<p class="edp-question">Does a smoothly rising growth curve prove a culture has reached steady state?</p>
-<p class="edp-description">Using Roller et al.’s 2023 single-cell mass data, I built a visual data story that traces how median cell mass climbs tenfold, from 47 to 492 femtograms, before a culture actually settles into steady state. That window lasts about 90 minutes under the best conditions, and most of the growth inside it comes from cells gaining mass rather than dividing, a distinction optical density alone can’t show.</p>
+<p class="edp-number">05 / Microbial growth</p>
+<h2>Growing, but Not Yet Steady</h2>
+<p class="edp-question">When does a growing microbial population actually become steady?</p>
+<p class="edp-description">At a 1 to 10,000 dilution, effective steady state lasted about 90 minutes, while a 1 to 100 culture never reached it despite an exponential optical density curve. The result shows why cloudiness alone can make a changing population appear steady.</p>
 <p class="edp-tools">R · JavaScript · Quarto</p>
-<a class="edp-link" href="https://danilyanedo7.github.io/steady_state/" target="_blank" rel="noopener noreferrer">Explore the full story <span aria-hidden="true">↗</span></a>
+<a class="edp-link" href="https://danilyanedo7.github.io/steady_state/" target="_blank" rel="noopener noreferrer">Explore the full story</a>
+</div>
+</article>
+<article class="edp-case edp-case-reverse">
+<a class="edp-visual" href="https://danilyanedo7.github.io/kaggle-energy/" target="_blank" rel="noopener noreferrer" aria-label="Explore Spain's Power Grid">
+<picture>
+<source media="(max-width:720px)" srcset="spain-900.webp">
+<img src="spain-1600.webp" width="1600" height="1000" loading="lazy" alt="Spain dashboard showing the electricity generation mix above a map of regional wind capacity and weather station cities">
+</picture>
+</a>
+<div class="edp-copy">
+<p class="edp-number">06 / Energy systems</p>
+<h2>Spain’s Power Grid</h2>
+<p class="edp-question">How do weather and renewable supply reshape Spain’s electricity mix?</p>
+<p class="edp-description">During the 2017 drought, hydro generation fell 44 percent and fossil generation rose 23 percent. The shift shows how weather can quickly reshape Spain’s power mix.</p>
+<p class="edp-tools">R · Plotly · Leaflet · Quarto</p>
+<a class="edp-link" href="https://danilyanedo7.github.io/kaggle-energy/" target="_blank" rel="noopener noreferrer">Explore the dashboard</a>
 </div>
 </article>
 </main>
 <section class="edp-earlier" aria-labelledby="edp-earlier-title">
 <div class="edp-earlier-copy">
 <p class="edp-kicker">From the archive</p>
-<h2 id="edp-earlier-title">Earlier work and experiments</h2>
-<p>Smaller things I made while learning, teaching, or following a useful detour.</p>
+<h2 id="edp-earlier-title">Older work</h2>
+<p>Some of these projects are unfinished, and I can see plenty I would do differently now. I keep them here because they show how my work has changed over time.</p>
 </div>
 <div class="edp-index">
-<a href="/post/coastal-vulnerability/"><span class="edp-index-title">Where Is Gresik’s Coast Most Vulnerable?</span><span class="edp-index-type">Spatial investigation</span><span aria-hidden="true">→</span></a>
-<a href="https://danilyanedo7.github.io/30dayschartchallenge/" target="_blank" rel="noopener noreferrer"><span class="edp-index-title">30 Day Chart Challenge</span><span class="edp-index-type">Visualisation tutorials</span><span aria-hidden="true">↗</span></a>
-<a href="/project/shinyapp/"><span class="edp-index-title">Species Distribution Mapper</span><span class="edp-index-type">R Shiny experiment</span><span aria-hidden="true">→</span></a>
-<a href="/post/dashboard_collection/"><span class="edp-index-title">Dashboard Collection</span><span class="edp-index-type">Interactive archive</span><span aria-hidden="true">→</span></a>
+<a href="/post/coastal-vulnerability/"><span class="edp-index-title">Where Is Gresik’s Coast Most Vulnerable?</span><span class="edp-index-type">Spatial investigation</span></a>
+<a href="https://danilyanedo7.github.io/30dayschartchallenge/" target="_blank" rel="noopener noreferrer"><span class="edp-index-title">30 Day Chart Challenge</span><span class="edp-index-type">Visualisation tutorials</span></a>
+<a href="/project/shinyapp/"><span class="edp-index-title">Species Distribution Mapper</span><span class="edp-index-type">R Shiny experiment</span></a>
+<a href="/post/dashboard_collection/"><span class="edp-index-title">Dashboard Collection</span><span class="edp-index-type">Interactive archive</span></a>
 </div>
 </section>
 </div>
