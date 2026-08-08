@@ -1,0 +1,31 @@
+{{- define "main" -}}
+
+<main class="edp-notes">
+  <header class="edp-notes-intro">
+    <div>
+      <h1>
+        {{ .Params.intro_title | default .Title }}
+        {{ with .Params.intro_emphasis }}<em>{{ . }}</em>{{ end }}
+      </h1>
+    </div>
+    {{ with .Params.subtitle }}
+    <div class="edp-notes-intro-copy">
+      <p class="edp-notes-dek">{{ . }}</p>
+    </div>
+    {{ end }}
+  </header>
+
+  {{ $paginator := .Paginate .Pages }}
+
+  <section class="edp-notes-archive" aria-label="All notes">
+    <div class="edp-notes-list">
+      {{ range $paginator.Pages }}
+        {{ partial "note_row.html" . }}
+      {{ end }}
+    </div>
+  </section>
+
+  {{ partial "pagination" . }}
+</main>
+
+{{- end -}}

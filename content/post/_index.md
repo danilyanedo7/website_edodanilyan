@@ -1,5 +1,8 @@
 ---
-title: Blog
+title: Notes
+intro_title: Things I wrote
+intro_emphasis: down
+subtitle: Research, code, places, and whatever stayed on my mind long enough to become a page.
 cms_exclude: true
 
 # View.

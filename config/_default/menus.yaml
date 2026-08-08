@@ -3,7 +3,7 @@ main:
   - name: Home
     url: '#about'
     weight: 10
-  - name: Blog
+  - name: Notes
     url: '/post/'
     weight: 60
   - name: Experience

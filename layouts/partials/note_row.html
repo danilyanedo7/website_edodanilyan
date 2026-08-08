@@ -1,0 +1,29 @@
+{{ $item := . }}
+{{ $link := $item.RelPermalink }}
+{{ if $item.Params.external_link }}
+  {{ $link = $item.Params.external_link }}
+{{ end }}
+{{ $summary := $item.Params.summary }}
+{{ if not $summary }}
+  {{ $summary = $item.Summary | plainify }}
+{{ end }}
+{{ $resource := ($item.Resources.ByType "image").GetMatch "*featured*" }}
+
+<article class="edp-note-row{{ with $resource }} has-image{{ end }}">
+  <p class="edp-note-row-meta">
+    <time datetime="{{ $item.Date.Format "2006-01-02" }}">{{ $item.Date.Format "2 Jan 2006" }}</time>
+    <span>{{ $item.ReadingTime }} min read</span>
+  </p>
+  <div class="edp-note-row-copy">
+    <h3><a href="{{ $link }}"{{ if $item.Params.external_link }} target="_blank" rel="noopener"{{ end }}>{{ $item.Title }}</a></h3>
+    {{ with $summary }}
+    <p>{{ . | plainify | htmlUnescape | truncate 210 }}</p>
+    {{ end }}
+  </div>
+  {{ with $resource }}
+    {{ $image := .Resize "240x webp" }}
+    <a class="edp-note-row-media" href="{{ $link }}"{{ if $item.Params.external_link }} target="_blank" rel="noopener"{{ end }} tabindex="-1" aria-hidden="true">
+      <img src="{{ $image.RelPermalink }}" width="{{ $image.Width }}" height="{{ $image.Height }}" alt="" loading="lazy">
+    </a>
+  {{ end }}
+</article>
