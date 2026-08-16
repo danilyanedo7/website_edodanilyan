@@ -35,7 +35,7 @@ Before my PhD, I earned my bachelor’s and master’s degrees in biology from I
 
 I care about making science more accessible, through clear data visualizations, reproducible code, and open-source tools that others can reuse, adapt, or improve.
 
-When I’m not working, I like to wander around with a sketchbook or camera, obsess over [maps](/post/portofolio/#subparagraph3), or dive into old-school biology textbooks for inspiration.
+When I’m not working, I like to wander around with a sketchbook or camera, obsess over [maps](/post/portfolio/#subparagraph3), or dive into old-school biology textbooks for inspiration.
 ![](/java_pops.png '') 
 
 I’m also passionate about **R programming** and education. I create tutorials to help life science researchers make sense of their data using [R](https://github.com/danilyanedo7/biocomp) and build dynamic, interactive, and reproducible reports with R Markdown. Check out my [projects](/#projects) for examples of my work, browse through some of my [educational presentations](https://edodanilyan.com/post/dashboard_collection/), or explore my full [curriculum vitae](https://edodanilyan.com/uploads/resume.pdf).  
@@ -49,5 +49,4 @@ I'm interested in collaborations involving microbial ecology, quantitative biolo
 2. English (Full-professional Proficiency)
 3. German (I can order coffee and complain about grammar)
 4. Japanese (I can say ‘thank you’ like a pro)
-
 

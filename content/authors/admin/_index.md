@@ -64,6 +64,6 @@ Hi there, I’m Edo. I study living systems and explain complex things through d
 
 Some weeks that means a new dashboard or a photo from the field. Other weeks it’s just one plot I’m proud of, or a page I forgot to update for a year. Things got out of hand here long before anyone started calling it a website. Poke around: there’s [code](/tag/r/) if that’s your thing, [research](/tag/research/) for the more serious version, and a [photography portfolio](https://danilyan.myportfolio.com/) if you’d rather look at mud and random lanscapes than at R code. If anything resonates, great. If not, at least the coffee was worth it.
 
-{{< cta cta_text="View my portfolio" cta_link="/post/portofolio/" cta_extra_text="View my research" cta_extra_link="/publication/" >}}
+{{< cta cta_text="View my portfolio" cta_link="/post/portfolio/" cta_extra_text="View my research" cta_extra_link="/publication/" >}}
 
 {{< about_links >}}

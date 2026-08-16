@@ -64,7 +64,7 @@ Courses can give you structure but you do not need to wait until you complete a 
 
 # Where it led me
 
-Learning R has brought me into projects I would not have been able to take on before. Those personal and professional projects eventually became part of my [portfolio](https://edodanilyan.com/post/portofolio/), but the bigger change is how I approach data now. When I encounter a messy dataset, my first reaction is no longer, “I have no idea how to do this.” It is, “Okay, how can I break this into smaller problems?”
+Learning R has brought me into projects I would not have been able to take on before. Those personal and professional projects eventually became part of my [portfolio](https://edodanilyan.com/post/portfolio/), but the bigger change is how I approach data now. When I encounter a messy dataset, my first reaction is no longer, “I have no idea how to do this.” It is, “Okay, how can I break this into smaller problems?”
 
 I learned R in a messy, inefficient order. I copied code I barely understood, produced errors I could not explain, and definitely made some ugly graphs. Still, each project left me knowing a little more than the previous one and i think that is enough.
 

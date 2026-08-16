@@ -1,5 +1,6 @@
 ---
-title: Portfolio
+title: portfolio
+slug: portfolio
 subtitle: Interactive stories about climate, movement, music, food, microbes, and energy
 summary: Interactive stories about climate, movement, music, food, microbes, and energy
 layout: portfolio
@@ -107,6 +108,22 @@ body.dark .edp-intro{background:transparent}
 <section class="edp-showcase" id="selected-work" aria-label="Selected work">
 <div class="edp-rail" id="edp-project-rail" tabindex="0" aria-label="Selected projects">
 <article class="edp-card">
+<div class="edp-card-meta"><time class="edp-meta" datetime="2026">2026</time><p class="edp-meta">Earth science · Visual essay</p></div>
+<a class="edp-card-visual" href="https://danilyanedo7.github.io/ring_of_fire/" target="_blank" rel="noopener noreferrer" aria-label="Explore The Pacific's broken ring">
+<picture>
+<source media="(max-width:720px)" srcset="ring-of-fire-900.webp">
+<img src="ring-of-fire-1600.webp" width="1600" height="1000" loading="eager" fetchpriority="high" alt="Hero view of The Pacific's broken ring showing earthquake lights around the Pacific and summary statistics">
+</picture>
+</a>
+<h3>The ring of fire</h3>
+<p class="edp-question">What do 358,673 earthquakes reveal about the shape, depth, and pulse of the Ring of Fire?</p>
+<p class="edp-description">An interactive visual essay about the uneven horseshoe of earthquakes around the Pacific, the tectonic processes beneath it, and the limits of drawing a single Ring of Fire boundary.</p>
+<div class="edp-card-footer">
+<p class="edp-tools">R · D3 · Quarto</p>
+<a class="edp-link" href="https://danilyanedo7.github.io/ring_of_fire/" target="_blank" rel="noopener noreferrer">Explore the full story</a>
+</div>
+</article>
+<article class="edp-card">
 <div class="edp-card-meta"><time class="edp-meta" datetime="2026">2026</time><p class="edp-meta">Climate · Interactive story</p></div>
 <a class="edp-card-visual" href="https://danilyanedo7.github.io/pacific_dataviz_challenge/" target="_blank" rel="noopener noreferrer" aria-label="Explore Living with a Changing Climate Across the Pacific">
 <picture>
@@ -114,7 +131,7 @@ body.dark .edp-intro{background:transparent}
 <img src="pacific-1600.webp" width="1600" height="1000" loading="eager" fetchpriority="high" alt="Opening of the Pacific climate story with the title and two figures comparing emissions and cyclone exposure">
 </picture>
 </a>
-<h3>Living with a Changing Climate Across the Pacific</h3>
+<h3>Living with a changing climate across the Pacific</h3>
 <p class="edp-question">How does climate exposure look when a region’s contribution is measured at global scale?</p>
 <p class="edp-description">A careful journey through emissions, ocean warming, cyclones, reef heat stress, rainfall, sea level, disasters, and the changing electricity mix across the Pacific.</p>
 <div class="edp-card-footer">
@@ -124,13 +141,13 @@ body.dark .edp-intro{background:transparent}
 </article>
 <article class="edp-card">
 <div class="edp-card-meta"><time class="edp-meta" datetime="2026">2026</time><p class="edp-meta">Movement · Visual essay</p></div>
-<a class="edp-card-visual" href="https://danilyanedo7.github.io/bird_migration/" target="_blank" rel="noopener noreferrer" aria-label="Explore Bird Migration">
+<a class="edp-card-visual" href="https://danilyanedo7.github.io/bird_migration/" target="_blank" rel="noopener noreferrer" aria-label="Explore Bird migration">
 <picture>
 <source media="(max-width:720px)" srcset="bird-900.webp">
 <img src="bird-1600.webp" width="1600" height="1000" loading="lazy" alt="Three colored GPS routes trace gull migrations from Belgium along the Atlantic coast to Morocco and Senegal">
 </picture>
 </a>
-<h3>Bird Migration</h3>
+<h3>Bird migration</h3>
 <p class="edp-question">How did three gulls from the same coast find different ways south?</p>
 <p class="edp-description">Three gulls from the same coast left up to 78 days apart and wintered in different countries. Their journeys show how timing and stopovers can split a shared migration route.</p>
 <div class="edp-card-footer">
@@ -140,13 +157,13 @@ body.dark .edp-intro{background:transparent}
 </article>
 <article class="edp-card">
 <div class="edp-card-meta"><time class="edp-meta" datetime="2025">2025</time><p class="edp-meta">Geospatial · Visual essay</p></div>
-<a class="edp-card-visual" href="https://danilyanedo7.github.io/living_with_volcano/" target="_blank" rel="noopener noreferrer" aria-label="Explore Living with Volcano">
+<a class="edp-card-visual" href="https://danilyanedo7.github.io/living_with_volcano/" target="_blank" rel="noopener noreferrer" aria-label="Explore Living with volcano">
 <picture>
 <source media="(max-width:720px)" srcset="volcano-900.webp">
-<img src="volcano-1600.webp" width="1600" height="1000" loading="lazy" alt="Opening view of Living with Volcano, with a dramatic 3D population relief map of Java beneath the title">
+<img src="volcano-1600.webp" width="1600" height="1000" loading="lazy" alt="Opening view of Living with volcano, with a dramatic 3D population relief map of Java beneath the title">
 </picture>
 </a>
-<h3>Living with Volcano</h3>
+<h3>Living with volcano</h3>
 <p class="edp-question">How close do millions of people actually live to an active volcano?</p>
 <p class="edp-description">About 60 million people live within 30 kilometres of a Holocene volcano on Java. The number shows the scale of exposure, while distance alone cannot describe volcanic risk.</p>
 <div class="edp-card-footer">
@@ -156,13 +173,13 @@ body.dark .edp-intro{background:transparent}
 </article>
 <article class="edp-card">
 <div class="edp-card-meta"><time class="edp-meta" datetime="2026">2026</time><p class="edp-meta">Microbiology · Data story</p></div>
-<a class="edp-card-visual" href="https://danilyanedo7.github.io/steady_state/" target="_blank" rel="noopener noreferrer" aria-label="Explore Growing, but Not Yet Steady">
+<a class="edp-card-visual" href="https://danilyanedo7.github.io/steady_state/" target="_blank" rel="noopener noreferrer" aria-label="Explore Growing, but not yet steady">
 <picture>
 <source media="(max-width:720px)" srcset="steady-900.webp">
 <img src="steady-1600.webp" width="1600" height="1000" loading="lazy" alt="Paired charts compare median single cell mass with variation across cells and mark the effective steady state window">
 </picture>
 </a>
-<h3>Growing, but Not Yet Steady</h3>
+<h3>Growing, but not yet steady</h3>
 <p class="edp-question">When does a growing microbial population actually become steady?</p>
 <p class="edp-description">At a 1 to 10,000 dilution, effective steady state lasted about 90 minutes, while a 1 to 100 culture never reached it. The result shows why cloudiness alone can make a changing population appear steady.</p>
 <div class="edp-card-footer">
@@ -172,13 +189,13 @@ body.dark .edp-intro{background:transparent}
 </article>
 <article class="edp-card">
 <div class="edp-card-meta"><time class="edp-meta" datetime="2026">2026</time><p class="edp-meta">Personal data · Visual essay</p></div>
-<a class="edp-card-visual" href="https://danilyanedo7.github.io/spotify_redesign/" target="_blank" rel="noopener noreferrer" aria-label="Explore My Year in Music">
+<a class="edp-card-visual" href="https://danilyanedo7.github.io/spotify_redesign/" target="_blank" rel="noopener noreferrer" aria-label="Explore My year in music">
 <picture>
 <source media="(max-width:720px)" srcset="spotify-900.webp">
-<img src="spotify-1600.webp" width="1600" height="1000" loading="lazy" alt="The Overture view from My Year in Music, showing a full year of Spotify listening as four rows of daily bars">
+<img src="spotify-1600.webp" width="1600" height="1000" loading="lazy" alt="The Overture view from My year in music, showing a full year of Spotify listening as four rows of daily bars">
 </picture>
 </a>
-<h3>My Year in Music</h3>
+<h3>My year in music</h3>
 <p class="edp-question">What can a year of listening history remember that I forgot?</p>
 <p class="edp-description">My listening reached 187.7 hours in July, more than twice the spring average, then eased after I moved to Poland. The pattern turns a year of Spotify history into a record of thesis pressure and changing routines.</p>
 <div class="edp-card-footer">
@@ -188,34 +205,18 @@ body.dark .edp-intro{background:transparent}
 </article>
 <article class="edp-card">
 <div class="edp-card-meta"><time class="edp-meta" datetime="2026">2026</time><p class="edp-meta">Food · Network story</p></div>
-<a class="edp-card-visual" href="https://danilyanedo7.github.io/soto-one-soup-many-islands/" target="_blank" rel="noopener noreferrer" aria-label="Explore One Soup, Many Islands">
+<a class="edp-card-visual" href="https://danilyanedo7.github.io/soto-one-soup-many-islands/" target="_blank" rel="noopener noreferrer" aria-label="Explore One soup, many islands">
 <picture>
 <source media="(max-width:720px)" srcset="soto-900.webp">
 <img src="soto-1600.webp" width="1600" height="1000" loading="lazy" alt="Ingredient similarity network linking related soto variants with details for Soto Kebumen">
 </picture>
 </a>
-<h3>One Soup, Many Islands</h3>
+<h3>One soup, many islands</h3>
 <p class="edp-question">How can one dish keep the same name while changing from island to island?</p>
 <p class="edp-description">Soto Kebumen and Soto Seger Boyolali share eleven recorded ingredients and differ only by galangal. Their similarity shows that names and geography do not always predict how a bowl is made.</p>
 <div class="edp-card-footer">
 <p class="edp-tools">D3 · JavaScript · Quarto</p>
 <a class="edp-link" href="https://danilyanedo7.github.io/soto-one-soup-many-islands/" target="_blank" rel="noopener noreferrer">Explore the full story</a>
-</div>
-</article>
-<article class="edp-card">
-<div class="edp-card-meta"><time class="edp-meta" datetime="2026">2026</time><p class="edp-meta">Energy · Dashboard</p></div>
-<a class="edp-card-visual" href="https://danilyanedo7.github.io/kaggle-energy/" target="_blank" rel="noopener noreferrer" aria-label="Explore Spain's Power Grid">
-<picture>
-<source media="(max-width:720px)" srcset="spain-900.webp">
-<img src="spain-1600.webp" width="1600" height="1000" loading="lazy" alt="Spain dashboard showing the electricity generation mix above a map of regional wind capacity and weather station cities">
-</picture>
-</a>
-<h3>Spain’s Power Grid</h3>
-<p class="edp-question">How do weather and renewable supply reshape Spain’s electricity mix?</p>
-<p class="edp-description">During the 2017 drought, hydro generation fell 44 percent and fossil generation rose 23 percent. The shift shows how weather can quickly reshape Spain’s power mix.</p>
-<div class="edp-card-footer">
-<p class="edp-tools">R · Plotly · Leaflet · Quarto</p>
-<a class="edp-link" href="https://danilyanedo7.github.io/kaggle-energy/" target="_blank" rel="noopener noreferrer">Explore the dashboard</a>
 </div>
 </article>
 </div>
@@ -227,10 +228,11 @@ body.dark .edp-intro{background:transparent}
 <p>Smaller and earlier projects that trace how my interests in spatial analysis, R, dashboards, and teaching have developed.</p>
 </div>
 <div class="edp-index">
-<a href="/post/coastal-vulnerability/"><span class="edp-index-date">2025</span><span class="edp-index-title">Where Is Gresik’s Coast Most Vulnerable?</span><span class="edp-index-type">Spatial investigation</span></a>
-<a href="https://danilyanedo7.github.io/30dayschartchallenge/" target="_blank" rel="noopener noreferrer"><span class="edp-index-date">2023</span><span class="edp-index-title">30 Day Chart Challenge</span><span class="edp-index-type">Visualisation tutorials</span></a>
-<a href="/project/shinyapp/"><span class="edp-index-date">2024</span><span class="edp-index-title">Species Distribution Mapper</span><span class="edp-index-type">R Shiny experiment</span></a>
-<a href="/post/dashboard_collection/"><span class="edp-index-date">2023</span><span class="edp-index-title">Dashboard Collection</span><span class="edp-index-type">Interactive archive</span></a>
+<a href="/post/coastal-vulnerability/"><span class="edp-index-date">2025</span><span class="edp-index-title">Where is Gresik’s coast most vulnerable?</span><span class="edp-index-type">Spatial investigation</span></a>
+<a href="https://danilyanedo7.github.io/30dayschartchallenge/" target="_blank" rel="noopener noreferrer"><span class="edp-index-date">2023</span><span class="edp-index-title">30 day chart challenge</span><span class="edp-index-type">Visualisation tutorials</span></a>
+<a href="/project/shinyapp/"><span class="edp-index-date">2024</span><span class="edp-index-title">Species distribution mapper</span><span class="edp-index-type">R Shiny experiment</span></a>
+<a href="/post/dashboard_collection/"><span class="edp-index-date">2023</span><span class="edp-index-title">Dashboard collection</span><span class="edp-index-type">Interactive archive</span></a>
+<a href="https://danilyanedo7.github.io/kaggle-energy/" target="_blank" rel="noopener noreferrer"><span class="edp-index-date">2026</span><span class="edp-index-title">Spain’s power grid</span><span class="edp-index-type">Energy dashboard</span></a>
 </div>
 </section>
 </div>
