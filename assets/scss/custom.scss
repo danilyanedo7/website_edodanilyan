@@ -1,8 +1,17 @@
 @font-face {
   font-family: 'Satoshi';
-  src: url('/fonts/Satoshi-Variable.ttf') format('truetype');
+  src: url('/fonts/Satoshi-Variable.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/fonts/Satoshi-VariableItalic.woff2') format('woff2');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
 }
 
 body {
@@ -387,6 +396,16 @@ body {
   padding: 0;
 }
 
+#contact > .container > .row {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+#contact > .container > .row > .col-12 {
+  padding-right: 0;
+  padding-left: 0;
+}
+
 .closing-contact {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(18rem, 0.75fr);
@@ -426,6 +445,11 @@ body {
   line-height: 1.5;
 }
 
+.closing-contact-copy,
+.closing-contact-actions {
+  min-width: 0;
+}
+
 .closing-contact-actions {
   display: flex;
   flex-direction: column;
@@ -439,12 +463,18 @@ body {
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  min-width: 0;
   padding: 0.55rem 0;
   color: #fff !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.4);
   font-size: clamp(0.95rem, 1.4vw, 1.1rem);
   text-decoration: none !important;
   transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.closing-email span:first-child {
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .closing-email:hover,
@@ -647,6 +677,7 @@ body {
   #about .about-hero-copy {
     width: 100%;
     max-width: none;
+    min-width: 0;
     padding-right: 0;
     padding-left: 0;
   }

@@ -60,12 +60,12 @@ locale:
 
 features:
   syntax_highlighter:
-    enable: true
+    enable: false
     extra_languages:
       - r
       - latex
   math:
-    enable: true
+    enable: false
   privacy_pack:
     enable: false
   repository:

@@ -9,6 +9,8 @@ date: 2024-08-08T18:23:23+07:00
 lastmod: 2024-08-08T18:23:23+07:00
 featured: false
 draft: false
+highlight: true
+math: true
 output:
   blogdown::html_page:
     toc: false

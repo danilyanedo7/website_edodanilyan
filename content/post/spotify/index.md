@@ -9,6 +9,7 @@ date: 2023-06-10T18:23:23+07:00
 lastmod: 2023-06-10T18:23:23+07:00
 featured: false
 draft: false
+highlight: true
 
 image:
   caption: ""

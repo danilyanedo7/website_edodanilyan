@@ -33,10 +33,13 @@
                src="https://s.gravatar.com/avatar/{{ md5 $person.email }}?s=320"
                alt="Portrait of {{ $person_page.Title }}" loading="eager" fetchpriority="high" decoding="async">
         {{ else if $avatar }}
-          {{ $avatar_image := $avatar.Fill "320x320 Center" }}
+          {{ $avatar_image_sm := $avatar.Fill "240x240 webp Center" }}
+          {{ $avatar_image_lg := $avatar.Fill "320x320 webp Center" }}
           <img class="avatar {{ if eq $avatar_shape "square" }}avatar-square{{ else }}avatar-circle{{ end }}"
-               width="{{ $avatar_image.Width }}" height="{{ $avatar_image.Height }}"
-               src="{{ $avatar_image.RelPermalink }}" alt="Portrait of {{ $person_page.Title }}"
+               width="{{ $avatar_image_lg.Width }}" height="{{ $avatar_image_lg.Height }}"
+               srcset="{{ $avatar_image_sm.RelPermalink }} 240w, {{ $avatar_image_lg.RelPermalink }} 320w"
+               sizes="165px" src="{{ $avatar_image_lg.RelPermalink }}"
+               alt="Portrait of {{ $person_page.Title }}"
                loading="eager" fetchpriority="high" decoding="async">
         {{ end }}
 
