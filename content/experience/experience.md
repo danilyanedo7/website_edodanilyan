@@ -15,8 +15,13 @@ experience:
     date_start: '2024-07-01'
     date_end: ''
     description: |2-
-        * Conducting research as part of the FWF Cluster of Excellence – Microplanet: Microbiomes Drive Planetary Health.
-        * Studying microbial biomass and metabolism, with a focus on aquatic systems.
+        * Redesigned an **experimental workflow** from \~12 L of medium for 1 data point/week to \~2 L for 7 data points/week, increasing **throughput 7×** while reducing **medium use per result by \~98%** and cutting **consumable costs**
+        * Developed a **low-perturbation sampling strategy** for pulsed chemostats, enabling repeated sampling without exceeding the disturbance of routine dilution cycles
+        * Performed **root-cause analysis** across **fluidics, mixing, sampling, sensors, and culture conditions** to diagnose failures and improve **automated bioreactor reliability**
+        * Designed and analyzed **multi-condition microbial physiology experiments** using **automated cultivation** and **single-cell measurements**, supported by reproducible **R-based data pipelines**
+        * Built **automated quality-control checks** to detect process deviations, assess **experimental stability**, and define **data-driven sampling** and downstream analysis decisions
+        * **Secured funding** and led a **multi-institution science outreach program** across three educational institutions in Indonesia
+        * Developed and maintained the **research group website** since 2025, translating research outputs into **accessible digital content** and managing ongoing **technical updates**
 
   - title: Super Mentor
     company: Dealls – Jobs & Mentoring
