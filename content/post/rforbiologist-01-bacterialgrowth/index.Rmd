@@ -27,7 +27,7 @@ projects: []
 knitr::opts_chunk$set(warning = FALSE, message = FALSE, fig.retina = 2)
 ```
 
-Bacterial growth analysis is a fundamental task in microbiology, allowing researchers to monitor the proliferation of bacteria over time. Optical Density at 600 nm (OD600) is a commonly used method to measure this growth. This is just basic things for a new undergrad biology student and a nice way to start learning microbiology. By the end, you'll have a small, reusable R workflow instead of a one-off spreadsheet calculation.
+Bacterial growth analysis is a fundamental task in microbiology, allowing researchers to monitor the proliferation of bacteria over time. Optical Density at 600 nm (OD600) is a commonly used method to measure this growth. Growth-curve analysis is a useful starting point for biology students learning quantitative microbiology. By the end, you'll have a small, reusable R workflow instead of a one-off spreadsheet calculation.
 
 # What you'll learn
 By the end of this tutorial, you'll be able to:
@@ -41,7 +41,7 @@ By the end of this tutorial, you'll be able to:
 You'll need:
 
 - **R** and **RStudio** installed on your machine.
-- Basic familiarity with `dplyr`/`ggplot2` syntax (pipes, `mutate()`, `ggplot()` + geoms). We won't stop to explain those, just the biology- and growth-curve-specific parts.
+- Basic familiarity with `dplyr`/`ggplot2` syntax (pipes, `mutate()`, `ggplot()` + geoms). This tutorial assumes some familiarity with those concepts and focuses on the biology- and growth-curve-specific steps.
 - Your own OD600 readings, or the example dataset [here](https://drive.google.com/file/d/1O6Y1g-_Z6oRyfYlfth24hm-s7GWBqKhF/view?usp=share_link) (personal data collected during my training at the University of Vienna, using *Vibrio* as a bacterial model grown in marine broth liquid medium) to follow along.
 
 # Libraries we need

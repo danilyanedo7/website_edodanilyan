@@ -24,7 +24,7 @@ slides: ""
 
 The [Global Ambassador Program (GAP)](https://www.microplanet.at/), launched by the Scientific Committee for Equal Opportunities (SCEO) of the **Cluster of Excellence MicroPlanet**, supports international trainees who have overcome educational or socioeconomic barriers and enables them to strengthen scientific links between the CoE and their home countries. This outreach program was carried out over six days across two partner institutions in Indonesia, combining scientific dissemination, practical skill transfer, and structured academic mentoring.
 
-Undergraduate biology education at many Indonesian universities remains disconnected from contemporary research practice. Computational biology and reproducible analysis are largely absent from the curriculum, which relies heavily on click-based software such as SPSS. This obscures analytical logic and prevents students from understanding how results are constructed or reproduced. In parallel, pathways to international MSc and PhD programs are opaque — students lack the framework to identify funded positions, understand evaluation criteria, or communicate effectively with potential supervisors. These barriers are structural and often unspoken, causing talent to be lost before it is ever fairly evaluated.
+At the partner institutions, students and faculty identified opportunities to expand training in computational biology and reproducible analysis. The program introduced open-source workflows and offered practical guidance on funded graduate programs and academic applications.
 
 
 The program was delivered at two institutions, with three full days of activities at each.
@@ -33,7 +33,7 @@ The program was delivered at two institutions, with three full days of activitie
 Introduction to microbial growth kinetics, bioreactors, and the integration of computation in microbiology, drawing from MicroPlanet WP 7.1 research themes. Around **200 students** joined in a hybrid format at Institut Teknologi Sepuluh Nopember (ITS), and it turned into a lively discussion about microbiology, research, and career paths in science. The session at ITS was delivered together with [Catalin Rusnac](https://www.linkedin.com/in/cata7in/) from Replifactory.
 
 **Day 2 – R for Biologists: Data Wrangling, Visualization, and Reproducible Analysis**\
-Participants worked through an R exercise covering data cleaning with the `tidyverse`, visualization with `ggplot2`, and reproducible reporting with R Markdown, moving away from click-based tools like SPSS.
+Participants worked through an R exercise covering data cleaning with the `tidyverse`, visualization with `ggplot2`, and reproducible reporting with R Markdown, introducing a code-based complement to menu-driven analysis tools such as SPSS.
 
 **Day 3 – Preparing for Graduate Studies Overseas: Applications, Funding, and Mentorship Session**\
 We went through how to find funded MSc and PhD positions, what selection committees look for, how to write emails to potential supervisors, and the scholarship landscape (Erasmus+, FWF, DAAD), followed by one-on-one mentoring.

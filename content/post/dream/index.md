@@ -139,7 +139,7 @@ In 2022, things took another positive turn. I was offered a full-time remote job
 <div class="row align-items-center">
   <div class="col-md-8">
     <p>
-      The opportunities kept coming. I had already been awarded a fast-track scholarship that allowed me to accelerate my studies, and with all the support and experiences I had gathered, I eventually graduated with a master’s degree, earning the title of best graduate in my cohort. Sometimes I pause and try to trace the path back to where it started. It still surprises me. Who would’ve imagined that an extremely poor kid from a tiny, forgotten corner of Bondowoso, who once struggled just to stay in school, would end up here?
+      The opportunities kept coming. I had already been awarded a fast-track scholarship that allowed me to accelerate my studies, and with all the support and experiences I had gathered, I eventually graduated with a master’s degree, earning the title of best graduate in my cohort. Sometimes I pause and try to trace the path back to where it started. Looking back at the financial hardship and uncertainty of my childhood in Bondowoso, I still find it difficult to believe how far that path has taken me.
     </p>
   </div>
 
@@ -159,7 +159,7 @@ In 2022, things took another positive turn. I was offered a full-time remote job
 </div>
 
 
-A few months later, I applied for PhD programs at many prestigious universities abroad, including ETH Zurich, University of Zurich, and University of Vienna. Finally, I received the news I got an LoA (Letter of Acceptance) from all three universities for my PhD studies. 
+A few months later, I applied to PhD programs at ETH Zurich, the University of Zurich, and the University of Vienna, and I was grateful to receive offers from all three.
 
 My time at ITS taught me that dreams are not limited by one's background or circumstances. They are shaped by **luck**, determination, hard work, and the willingness to seize every opportunity. Higher education was the catalyst that transformed my life, opening doors I never knew **existed** and allowing me to achieve goals that once seemed impossible. Education was the key that unlocked this potential, and my experiences at ITS were the foundation upon which I built my dreams.
 
@@ -205,7 +205,6 @@ People sometimes assume I come from a comfortable place, that things simply work
 > '*Dreams are like wings, they're what will carry you wherever you want to go*'
 
 Terima kasih :))
-
 
 
 

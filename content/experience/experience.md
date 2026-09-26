@@ -32,8 +32,8 @@ experience:
     date_end: ''
     description: |2-
         * Conducted one-on-one online mentoring sessions (30–60 minutes) to help mentees navigate career transitions, academic challenges, and personal development.
-        * Shared expertise in bioinformatics, data science, and research to guide aspiring scientists and professionals toward their goals.
-        * Inspired and supported talents seeking direction by drawing on lived experience across international programs and multi-disciplinary research.
+        * Shared practical experience in bioinformatics, data science, and research to guide aspiring scientists and professionals toward their goals.
+        * Supported mentees seeking direction by sharing lessons from international programs and interdisciplinary research.
         * Contributed to a community-driven platform addressing the gap where 65% of workers lack meaningful career guidance.
 
   - title: Business Development Specialist
@@ -55,7 +55,7 @@ experience:
     date_start: '2022-10-01'
     date_end: '2023-02-19'
     description: |2-
-        * Participated in a semester-long exchange program in the Biology Department through the **Erasmus+ Scholarship**, achieving a perfect GPA (4/4).
+        * Participated in a semester-long exchange program in the Biology Department through the **Erasmus+ Scholarship**, earning a GPA of 4.0/4.0.
         * Conducted collaborative research in computational biology, focusing on miRNA as a biomarker, leading to a [publication](https://edodanilyan.com/publication/mirna/).
         * Detailed grading and experiences can be found in the [report](uploads/erasmus.jpg).
 
@@ -90,7 +90,7 @@ experience:
     date_start: '2021-01-01'
     date_end: '2021-04-01'
     description: |2-
-        * Built expertise in drug discovery and development, focusing on natural product exploration and computational molecular docking.
+        * Gained introductory experience in drug discovery and development, focusing on natural product exploration and computational molecular docking.
         * Completed pre-internship research projects, laying the groundwork for a career in pharmaceuticals and drug development.
 
   - title: Collaborative Online International Learning
@@ -116,7 +116,7 @@ experience:
     description: |2-
         * Participated in a semester-long exchange program in the Biology Department through the **ASEAN & NON-ASEAN Scholarship**.
         * Achieved high [GPA](uploads/chula.pdf) and worked on a special project about biological control for _Michania mirachanta_ in Saraburi, Thailand, under Prof. Chatchawan Chaisuekul.
-        * Gained hands-on expertise in microbial infection, immunity, biodiversity, and environmental science.
+        * Completed practical coursework in microbial infection, immunity, biodiversity, and environmental science.
 
 design:
   columns: '2'
