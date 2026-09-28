@@ -75,6 +75,7 @@ design:
     padding: ["15px", "0", "15px", "0"]
 ---
 ## **Honor and Award**
+* Selected to attend the ACM Second Asian School on HPC and AI, held in Kobe, Japan, from January 30 to February 3, 2026
 * The Most Outstanding Graduate at the Institut Teknologi Sepuluh Nopember (Master's Degree)
 * Best presenter at The International Conference of Science and Technology (ICOST) 2023
 * Erasmus+ Scholarship Awardee
