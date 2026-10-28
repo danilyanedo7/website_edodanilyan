@@ -4,7 +4,7 @@ title: "Beyond horizons: The sky speaks in many colours"
 subtitle: ""
 summary: ""
 authors: [admin]
-tags: [Portfolio, Photography]
+tags: [photography]
 categories: []
 date: 2024-01-24T11:21:44+07:00
 lastmod: 2024-01-24T11:21:44+07:00

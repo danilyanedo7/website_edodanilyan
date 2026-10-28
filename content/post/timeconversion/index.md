@@ -3,7 +3,7 @@ title: "Timeconversion"
 subtitle: ""
 summary: ""
 authors: []
-tags: [Thoughts]
+tags: [reflections]
 categories: []
 date: 2023-07-30T11:06:11+07:00
 lastmod: 2023-07-30T11:06:11+07:00

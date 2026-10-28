@@ -16,7 +16,7 @@ date: '2025-01-10T09:00:00Z'
 all_day: false
 
 authors: [admin]
-tags: [Talk, Workshop, dataviz, R]
+tags: [data visualization, r, teaching]
 featured: false
 
 image: 

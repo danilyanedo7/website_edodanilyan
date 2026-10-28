@@ -38,7 +38,7 @@ abstract: "Melanoma is the most serious type of skin cancer, causing a large maj
 # Summary. An optional shortened abstract.
 summary: ""
 
-tags: [Publication]
+tags: []
 categories: []
 featured: true
 

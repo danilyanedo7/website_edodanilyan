@@ -14,7 +14,7 @@ date_end: "2026-04-21T12:00:00+07:00"
 all_day: false
 publishDate: "2026-04-21T00:00:00+07:00"
 authors: ["Edo Danilyan"]
-tags: ["Talk", "Workshop", "dataviz", "R", "CoE MicroPlanet"]
+tags: [data visualization, r, teaching, microplanet]
 featured: false
 image:
   caption: ""

@@ -4,7 +4,7 @@
 title: "Mentoring for Undergraduate Student"
 summary: "I mentored undergraduate and graduate students on study planning, research skills, data analysis, graduate applications, and early career decisions."
 authors: [admin]
-tags: [ComDev]
+tags: [community development, teaching]
 categories: []
 date: 2023-06-25T17:36:08+07:00
 

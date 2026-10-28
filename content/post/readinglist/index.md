@@ -4,7 +4,7 @@ title: "Books that you need to read at least once in a lifetime"
 subtitle: ""
 summary: ""
 authors: [admin]
-tags: [Thoughts]
+tags: [reflections]
 categories: []
 date: 2023-11-07T15:53:14+07:00
 lastmod: 2023-11-07T15:53:14+07:00

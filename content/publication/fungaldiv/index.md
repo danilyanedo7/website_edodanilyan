@@ -27,7 +27,7 @@ abstract: "Red bricks and andesite stones comprise most of Indonesia's temple ar
 
 summary: ""
 
-tags: [Publication]
+tags: []
 categories: []
 featured: true
 

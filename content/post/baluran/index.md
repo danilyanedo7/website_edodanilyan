@@ -4,7 +4,7 @@ title: "Discovering the Natural Beauty of Baluran National Park and Enjoying A M
 subtitle: ""
 summary: ""
 authors: [admin]
-tags: [Travel]
+tags: [travel]
 categories: []
 date: 2022-12-14T22:37:36+01:00
 lastmod: 2022-12-14T22:37:36+01:00

@@ -45,7 +45,7 @@ abstract: "Traditional oil mining poses negative effects on the environment thro
 
 summary: ""
 
-tags: [Publication]
+tags: []
 categories: []
 featured: true
 

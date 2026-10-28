@@ -4,7 +4,7 @@ title: "Study Abroad Series: Beasiswa S2 dan S3 di Austria"
 subtitle: "Ini adalah bagian ketiga dari Study Abroad Series yang berisi tentang opsi beasiswa di austria"
 summary: ""
 authors: [admin]
-tags: [Experience, Study Abroad]
+tags: [study abroad]
 categories: []
 date: 2026-01-04T18:29:19+07:00
 lastmod: 2026-02-04T18:29:19+07:00

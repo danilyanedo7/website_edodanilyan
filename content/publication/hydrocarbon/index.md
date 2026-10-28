@@ -26,7 +26,7 @@ abstract: "Total petroleum hydrocarbon (TPH) contamination is a serious problem,
 
 summary: ""
 
-tags: [Publication]
+tags: []
 categories: []
 featured: true
 

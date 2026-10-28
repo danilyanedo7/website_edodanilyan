@@ -5,7 +5,7 @@ title: "My undergrad years: busy, messy, and some of the best years of my life"
 subtitle: ""
 summary: ""
 authors: [admin]
-tags: [Experience]
+tags: [academic life]
 categories: []
 date: 2025-05-26T09:47:21+07:00
 lastmod: 2025-05-26T09:47:21+07:00

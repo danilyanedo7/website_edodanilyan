@@ -2,8 +2,9 @@
 title: "CoE MicroPlanet Global Ambassador Program"
 summary: "Representing the Cluster of Excellence MicroPlanet through targeted outreach and capacity building across two universities and a high school in Indonesia, reaching over 200 students and faculty members."
 authors: [admin]
-tags: [ComDev, Academic, Experience, Research, Teaching, Featured]
+tags: [community development, research, teaching, microplanet]
 categories: []
+featured: true
 date: 2026-04-15T10:00:00+07:00
 external_link: ""
 links:
@@ -47,9 +48,9 @@ To measure the impact of the program, participants completed a self-assessment q
 
 ![Mean Pre vs Post Self-Assessment across three days of the GAP outreach program](CoE_GAP_combined_dumbbell.png)
 
-**Day 1 (Guest Lecture)** showed modest gains in kinetics knowledge (3.65 → 3.89), economic trade-offs (3.63 → 3.90), and quantitative models (3.43 → 3.78), reflecting increased conceptual exposure.
+**Day 1 (Guest Lecture)** showed modest gains in kinetics knowledge (3.65 to 3.89), economic trade-offs (3.63 to 3.90), and quantitative models (3.43 to 3.78), reflecting increased conceptual exposure.
 
-**Day 2 (Technical Workshop)** saw improvements across all four metrics: R familiarity (2.90 → 3.50), data wrangling (2.73 → 3.35), reproducibility (3.02 → 3.38), and data visualization (2.67 → 3.38), indicating meaningful skill development during the hands-on session.
+**Day 2 (Technical Workshop)** saw improvements across all four metrics: R familiarity (2.90 to 3.50), data wrangling (2.73 to 3.35), reproducibility (3.02 to 3.38), and data visualization (2.67 to 3.38), indicating meaningful skill development during the hands-on session.
 
 **Day 3 (Graduate Preparation)** recorded the largest shifts. Confidence level jumped from 2.00 to 4.36, application document knowledge from 1.91 to 4.36, program identification from 2.18 to 4.45, and scholarship awareness from 2.55 to 4.00. Participants reported higher confidence and knowledge after the session, although the questionnaire measured self-perception rather than independently tested learning.
 

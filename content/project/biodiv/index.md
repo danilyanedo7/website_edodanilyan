@@ -4,7 +4,7 @@
 title: "Alas Karetan Forest Biodiversity Project"
 summary: "This project documented plant and animal diversity in the Alas Karetan forest. We combined field observations with spatial data to map habitats and examine patterns in species richness."
 authors: [admin]
-tags: [Research]
+tags: [research]
 categories: []
 date: 2021-10-04T09:15:48+07:00
 

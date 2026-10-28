@@ -4,7 +4,7 @@ title: "Study Abroad Series: Mulai dari mana?"
 subtitle: "Bagian pertama dari Study Abroad Series"
 summary: ""
 authors: [admin]
-tags: [Experience, Study Abroad]
+tags: [study abroad]
 categories: []
 date: 2024-02-15T10:42:51+07:00
 lastmod: 2024-02-15T10:42:51+07:00

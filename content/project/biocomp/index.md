@@ -2,7 +2,7 @@
 title: "biocomp: Github repository for learning biocomputations"
 summary: ""
 authors: [admin]
-tags: [Portfolio, R, dataviz]
+tags: [r, teaching]
 categories: []
 date: 2024-06-10T16:07:33+07:00
 

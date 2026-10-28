@@ -28,7 +28,7 @@ abstract: "Geopolymer concrete is a promising alternative to traditional cement 
 
 summary: ""
 
-tags: [Publication]
+tags: []
 categories: []
 featured: true
 

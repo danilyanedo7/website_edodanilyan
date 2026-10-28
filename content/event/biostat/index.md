@@ -19,7 +19,7 @@ date: '2023-05-23T13:00:00Z'
 all_day: false
 
 authors: [admin, Aulia Kharis R]
-tags: [Academic]
+tags: [statistics, teaching]
 
 featured: true
 

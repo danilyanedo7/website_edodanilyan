@@ -14,7 +14,7 @@ date_end: "2026-04-20T12:00:00+07:00"
 all_day: false
 publishDate: "2026-04-20T00:00:00+07:00"
 authors: ["Edo Danilyan"]
-tags: ["Talk", "Research", "Teaching", "Workshop", "CoE MicroPlanet"]
+tags: [research, teaching, microplanet]
 featured: false
 image:
   caption: ""

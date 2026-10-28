@@ -2,11 +2,10 @@
 title: "Module: Microbial Systematics Course"
 summary: A hands-on learning module on computational microbiology, focused on microbial taxonomy, classification, and phylogenetic analysis using R.
 tags:
-  - Research
-  - Portfolio
-  - R
-  - dataviz
-  - Teaching
+  - research
+  - r
+  - data visualization
+  - teaching
 date: '2021-02-27T00:00:00Z'
 external_link: ''
 authors: [admin, Sabila Fatimah, Enny Zulaika]

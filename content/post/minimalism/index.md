@@ -3,7 +3,7 @@ title: "My Thought on Minimalism and Minimalistic Life"
 subtitle: ""
 summary: ""
 authors: [admin]
-tags: [Thoughts]
+tags: [reflections]
 categories: []
 date: 2022-08-28T11:04:28+07:00
 lastmod: 2022-08-28T11:04:28+07:00

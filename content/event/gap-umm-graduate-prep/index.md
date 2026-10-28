@@ -14,7 +14,7 @@ date_end: "2026-04-22T12:00:00+07:00"
 all_day: false
 publishDate: "2026-04-22T00:00:00+07:00"
 authors: ["Edo Danilyan"]
-tags: ["Talk", "Teaching", "Study Abroad", "CoE MicroPlanet"]
+tags: [teaching, study abroad, microplanet]
 featured: false
 image:
   caption: ""

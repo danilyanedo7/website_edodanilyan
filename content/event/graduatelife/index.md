@@ -18,7 +18,7 @@ date: '2023-08-18T09:00:00Z'
 all_day: false
 
 authors: [admin]
-tags: [Academic]
+tags: [academic life]
 featured: false
 
 

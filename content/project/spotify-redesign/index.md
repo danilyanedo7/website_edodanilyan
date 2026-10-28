@@ -2,8 +2,9 @@
 title: "A Year in 22,197 Plays"
 summary: ""
 authors: [admin]
-tags: [Portfolio, R, dataviz, Featured]
+tags: [r, data visualization]
 categories: []
+featured: true
 date: 2026-08-01T00:00:00+07:00
 
 external_link: ""

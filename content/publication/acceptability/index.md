@@ -32,7 +32,7 @@ abstract: "Skin is one of the abundance side products of the striped catfish (Pa
 
 summary: ""
 
-tags: [Publication]
+tags: []
 categories: []
 featured: true
 

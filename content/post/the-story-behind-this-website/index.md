@@ -3,7 +3,7 @@ title: "I kept adding things"
 subtitle: "Five years of sharing what I have been learning"
 summary: "Five years of sharing what I have been learning"
 authors: [admin]
-tags: [Thoughts]
+tags: [reflections]
 categories: []
 date: 2026-09-03T00:00:00+02:00
 lastmod: 2026-09-03T00:00:00+02:00

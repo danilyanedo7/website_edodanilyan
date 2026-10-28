@@ -2,7 +2,7 @@
 title: Microbiome Profiling
 summary: Microbiome profiling in hydrocarbon polluted soil in traditional oil mine in Wonocolo, Bojonegoro, East Java. This project employed next generation sequencing method using 16srRNA amplicon of V3-V4 region.
 tags:
-  - Research
+  - research
 date: '2021-02-27T00:00:00Z'
 external_link: ''
 authors: [admin]

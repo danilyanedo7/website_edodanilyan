@@ -5,7 +5,7 @@ title: "Jam karet: Why are we so chill about being late?"
 subtitle: ""
 summary: ""
 authors: [admin]
-tags: [Thoughts]
+tags: [reflections]
 categories: []
 date: 2025-04-18T09:47:21+07:00
 lastmod: 2025-04-18T09:47:21+07:00

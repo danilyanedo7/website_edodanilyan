@@ -40,7 +40,7 @@ abstract: "The study examines microbial communities and bioactive compounds in w
 
 summary: ""
 
-tags: [Publication]
+tags: []
 categories: []
 featured: true
 

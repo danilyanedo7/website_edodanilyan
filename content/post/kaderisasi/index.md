@@ -3,7 +3,7 @@ title: "Kaderisasi Mahasiswa Baru yang Ideal"
 subtitle: ""
 summary: ""
 authors: [admin]
-tags: [Thoughts]
+tags: [reflections]
 categories: []
 date: 2023-07-30T10:49:11+07:00
 lastmod: 2023-07-30T10:49:11+07:00

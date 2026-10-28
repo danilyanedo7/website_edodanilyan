@@ -3,7 +3,7 @@ title: "Lakoni: on becoming and continuing to be"
 subtitle: ""
 summary: ""
 authors: [admin]
-tags: [Thoughts]
+tags: [reflections]
 categories: []
 date: 2026-06-05T00:00:00+00:00
 lastmod: 2026-06-05T00:00:00+00:00

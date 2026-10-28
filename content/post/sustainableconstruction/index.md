@@ -4,7 +4,7 @@ title: "I spent a whole year to understand sustainable construction, here is wha
 subtitle: ""
 summary: ""
 authors: []
-tags: [Research]
+tags: [research]
 categories: []
 date: 2023-07-30T10:56:56+07:00
 lastmod: 2023-07-30T10:56:56+07:00

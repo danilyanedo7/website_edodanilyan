@@ -11,8 +11,7 @@ subtitle: 'A selection of recent research, outreach, and data work'
 content:
   page_type: project
   filters:
-    tags:
-      - Featured
+    featured_only: true
 
   # Default filter index (e.g. 0 corresponds to the first `filter_button` instance below).
   filter_default: 0
@@ -36,4 +35,4 @@ design:
   flip_alt_rows: false
 ---
 
-[View all projects →](/project/)
+[View the full portfolio](/projects/)

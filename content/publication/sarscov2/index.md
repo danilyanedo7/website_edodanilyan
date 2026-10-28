@@ -30,7 +30,7 @@ abstract: ""
 # Summary. An optional shortened abstract.
 summary: ""
 
-tags: [Publication]
+tags: []
 categories: []
 featured: true
 url_pdf:

@@ -2,7 +2,7 @@
 title: "30 Day Chart Challenge: my contribution and tutorial"
 summary: ""
 authors: [admin]
-tags: [Portfolio, R, dataviz]
+tags: [r, data visualization]
 categories: []
 date: 2023-12-23T16:07:33+07:00
 

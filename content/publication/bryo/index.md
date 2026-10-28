@@ -46,7 +46,7 @@ abstract: "Tropical forests in Indonesia are spread all over the region, one of 
 # Summary. An optional shortened abstract.
 summary: ""
 
-tags: [Publication]
+tags: []
 categories: []
 featured: true
 

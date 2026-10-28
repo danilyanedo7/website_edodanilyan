@@ -18,7 +18,7 @@ date: '2022-03-24T13:00:00Z'
 all_day: false
 
 authors: [admin]
-tags: [Academic]
+tags: [r, teaching]
 featured: false
 
 

@@ -1,0 +1,760 @@
+---
+title: "Understanding data distribution"
+subtitle: "A practical introduction to center, spread, shape, and grouping in R"
+summary: "Use tidyverse and palmerpenguins to see what a single average leaves out about body-mass observations."
+authors: [admin]
+tags: [r, data visualization, statistics, tidyverse]
+categories: []
+date: 2026-10-23T09:00:00+02:00
+lastmod: 2026-10-23T09:00:00+02:00
+featured: false
+draft: true
+highlight: true
+output:
+  blogdown::html_page:
+    toc: false
+
+image:
+  caption: "Body-mass observations from the palmerpenguins dataset"
+  focal_point: "Center"
+  preview_only: false
+
+projects: []
+---
+
+
+
+<p>Across all penguins with a recorded body mass, the average is about <strong>4,202 g</strong>.</p>
+<pre class="r"><code>overall_mean &lt;- penguins |&gt;
+  summarise(
+    usable_n = sum(!is.na(body_mass_g)),
+    mean_body_mass_g = mean(body_mass_g, na.rm = TRUE)
+  )
+
+knitr::kable(overall_mean, digits = 2)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="right">usable_n</th>
+<th align="right">mean_body_mass_g</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">342</td>
+<td align="right">4201.75</td>
+</tr>
+</tbody>
+</table>
+<p>Before looking further, make a prediction: does 4,202 g describe most of the penguins reasonably well? Write down what you expect the individual measurements to look like around that number. We will return to the prediction after separating the observations into groups.</p>
+<p>This tutorial takes about 35 minutes. The question guiding the analysis is:</p>
+<blockquote>
+<p><strong>What do we miss when we describe a dataset with just its average?</strong></p>
+</blockquote>
+<div id="what-you-will-learn" class="section level2">
+<h2>What you will learn</h2>
+<p>By the end, you will be able to:</p>
+<ul>
+<li>plot individual observations before summarising them;</li>
+<li>describe a distribution using its center, spread, asymmetry, tails, and possible concentrations;</li>
+<li>check how histogram bin width affects the shape you see;</li>
+<li>compare distributions across groups without confusing description with causation; and</li>
+<li>choose a summary that answers a specific question rather than reporting a mean by default.</li>
+</ul>
+</div>
+<div id="before-you-begin" class="section level2">
+<h2>Before you begin</h2>
+<p>You will need R and an editor such as RStudio. The code assumes that you can run an R script and have seen <code>|&gt;</code>, <code>filter()</code>, <code>summarise()</code>, and <code>ggplot()</code> before. No formal statistics is required.</p>
+<p>Install the two packages once if they are not already on your computer:</p>
+<pre class="r"><code>install.packages(c(&quot;tidyverse&quot;, &quot;palmerpenguins&quot;))</code></pre>
+<p>Package installation adds files to your R library. Loading makes those packages available in the current R session:</p>
+<pre class="r"><code>library(tidyverse)
+library(palmerpenguins)</code></pre>
+<p>You can <a href="distributions-with-penguins.R">download the complete R script</a> and run it from this post’s folder. It recreates every table and figure in <code>figures/</code>, then prints <code>sessionInfo()</code>.</p>
+</div>
+<div id="meet-the-observations" class="section level2">
+<h2>Meet the observations</h2>
+<p>The <code>penguins</code> data contain measurements for 344 adult foraging penguins from three species in the Palmer Archipelago, Antarctica. One row represents one penguin. We will use four columns:</p>
+<ul>
+<li><code>body_mass_g</code>: body mass in grams;</li>
+<li><code>species</code>: Adélie, Chinstrap, or Gentoo;</li>
+<li><code>sex</code>: female or male where recorded; and</li>
+<li><code>flipper_length_mm</code>: flipper length in millimetres.</li>
+</ul>
+<p>The data were collected and made available by Dr Kristen Gorman and Palmer Station Antarctica LTER. Allison Horst, Alison Hill, and Kristen Gorman prepared the <code>palmerpenguins</code> package. The <a href="https://allisonhorst.github.io/palmerpenguins/">official package documentation</a> gives the full data provenance, variable definitions, licence, and citations.</p>
+<p>Inspect only the columns used in this tutorial:</p>
+<pre class="r"><code>relevant_penguins &lt;- penguins |&gt;
+  select(species, body_mass_g, sex, flipper_length_mm)
+
+relevant_penguins |&gt;
+  slice_head(n = 6) |&gt;
+  knitr::kable()</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">species</th>
+<th align="right">body_mass_g</th>
+<th align="left">sex</th>
+<th align="right">flipper_length_mm</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Adelie</td>
+<td align="right">3750</td>
+<td align="left">male</td>
+<td align="right">181</td>
+</tr>
+<tr class="even">
+<td align="left">Adelie</td>
+<td align="right">3800</td>
+<td align="left">female</td>
+<td align="right">186</td>
+</tr>
+<tr class="odd">
+<td align="left">Adelie</td>
+<td align="right">3250</td>
+<td align="left">female</td>
+<td align="right">195</td>
+</tr>
+<tr class="even">
+<td align="left">Adelie</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">Adelie</td>
+<td align="right">3450</td>
+<td align="left">female</td>
+<td align="right">193</td>
+</tr>
+<tr class="even">
+<td align="left">Adelie</td>
+<td align="right">3650</td>
+<td align="left">male</td>
+<td align="right">190</td>
+</tr>
+</tbody>
+</table>
+<p>The fourth row in this preview has missing measurements. <code>NA</code> means that a value was not recorded; it does not mean zero. Count missing values before deciding which rows an analysis can use:</p>
+<pre class="r"><code>missing_relevant &lt;- relevant_penguins |&gt;
+  summarise(across(everything(), ~ sum(is.na(.x)))) |&gt;
+  pivot_longer(
+    everything(),
+    names_to = &quot;variable&quot;,
+    values_to = &quot;missing_n&quot;
+  )
+
+knitr::kable(missing_relevant)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">variable</th>
+<th align="right">missing_n</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">species</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">body_mass_g</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="left">sex</td>
+<td align="right">11</td>
+</tr>
+<tr class="even">
+<td align="left">flipper_length_mm</td>
+<td align="right">2</td>
+</tr>
+</tbody>
+</table>
+<p>There are two missing body masses, 11 missing sex values, and two missing flipper lengths. Species is complete. For the first part, only body mass is needed, so filter on that column and retain 342 observations. Dropping every row with an <code>NA</code> anywhere would discard valid body masses because an unrelated measurement was missing.</p>
+<pre class="r"><code>penguin_mass &lt;- penguins |&gt;
+  filter(!is.na(body_mass_g))
+
+penguin_mass |&gt;
+  summarise(usable_n = n()) |&gt;
+  knitr::kable()</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="right">usable_n</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">342</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="start-with-every-measured-body-mass" class="section level2">
+<h2>Start with every measured body mass</h2>
+<p>Where are the 342 measurements relative to the mean? The horizontal positions below are the recorded values. Vertical jitter prevents identical or nearby observations from covering one another; it has no biological meaning.</p>
+<pre class="r"><code>set.seed(20261023)
+</code></pre>
+<div class="figure"><span style="display:block;" id="fig:show-individual-observations"></span>
+<img src="figures/individual-body-mass.svg" alt="A jitter plot of 342 penguin body masses spread from 2700 to 6300 grams. A dashed vertical line marks the mean at 4202 grams." width="100%" />
+<p class="caption">
+Figure 1: Individual body-mass observations with the pooled mean marked by a dashed line.
+</p>
+</div>
+<p><code>body_mass_g</code> is a <strong>variable</strong>: a characteristic recorded for each penguin. Its <strong>distribution</strong> is the pattern formed by all 342 observed values, including where they concentrate, how far they spread, and whether one side extends farther than the other.</p>
+<p>The point plot already shows why the mean is incomplete. Values span 2,700 to 6,300 g, and they do not form a tight, symmetric cloud around 4,202 g. Try changing <code>height = 0.16</code> to <code>height = 0</code>. The data stay the same, but overlapping points become harder to count.</p>
+</div>
+<div id="put-nearby-values-into-histogram-bins" class="section level2">
+<h2>Put nearby values into histogram bins</h2>
+<p>A histogram groups a numeric variable into intervals. With a 250 g bin width, the bar from 3,500 up to but not including 3,750 g counts penguins in that interval. The x-axis measures body mass; the y-axis measures the number of observations in each bin.</p>
+<pre class="r"><code>p_histogram &lt;- ggplot(penguin_mass, aes(x = body_mass_g)) +
+  geom_histogram(
+    binwidth = 250,
+    boundary = 0,
+    closed = &quot;left&quot;,
+    fill = &quot;#374E55&quot;,
+    colour = &quot;white&quot;,
+    linewidth = 0.35
+  ) +
+  geom_vline(
+    xintercept = overall_mean$mean_body_mass_g,
+    colour = &quot;#B24745&quot;,
+    linewidth = 0.8,
+    linetype = &quot;dashed&quot;
+  ) +
+  coord_cartesian(xlim = c(2500, 6500)) +
+  scale_x_continuous(
+    breaks = seq(2500, 6500, by = 500),
+    labels = scales::label_comma()
+  ) +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.08))) +
+  labs(
+    title = &quot;Body mass across all three species&quot;,
+    subtitle = &quot;250 g bins with boundaries at multiples of 250 g&quot;,
+    x = &quot;Body mass (g)&quot;,
+    y = &quot;Number of penguins&quot;,
+    caption = &quot;The dashed line marks the pooled mean. n = 342.&quot;
+  ) +
+  theme_penguin</code></pre>
+<div class="figure"><span style="display:block;" id="fig:show-pooled-histogram"></span>
+<img src="figures/pooled-histogram.svg" alt="Histogram of penguin body masses using 250 gram bins. Counts are highest between roughly 3250 and 4000 grams and continue unevenly to 6300 grams. The pooled mean is 4202 grams." width="100%" />
+<p class="caption">
+Figure 2: A histogram of body mass for all measured penguins.
+</p>
+</div>
+<p>The highest counts occur between about 3,250 and 4,000 g. Counts then decline unevenly, and measurements continue through 6,300 g. The heavier side extends farther from the main lower-mass concentration than the lighter side, so the pooled distribution is asymmetric. There may be more than one concentration of values, but a single histogram is not enough to declare distinct modes or a theoretical distribution such as the normal distribution.</p>
+<div id="change-the-bin-width-without-changing-the-data" class="section level3">
+<h3>Change the bin width without changing the data</h3>
+<p>Does that description survive a different bin width? The next code calculates aligned bins at 100, 250, and 500 g. All panels use the same observations, x-axis limits, and zero-based boundaries.</p>
+<pre class="r"><code>bin_widths &lt;- tibble(
+  bin_width = c(100, 250, 500),
+  panel = factor(
+    c(&quot;100 g bins&quot;, &quot;250 g bins&quot;, &quot;500 g bins&quot;),
+    levels = c(&quot;100 g bins&quot;, &quot;250 g bins&quot;, &quot;500 g bins&quot;)
+  )
+)
+
+mass_bins &lt;- tidyr::expand_grid(
+  penguin_mass |&gt; select(body_mass_g),
+  bin_widths
+) |&gt;
+  mutate(
+    bin_left = floor(body_mass_g / bin_width) * bin_width
+  ) |&gt;
+  count(panel, bin_width, bin_left, name = &quot;count&quot;)</code></pre>
+<div class="figure"><span style="display:block;" id="fig:show-bin-width-comparison"></span>
+<img src="figures/bin-width-comparison.svg" alt="Three vertically aligned histograms of the same penguin body masses using 100, 250, and 500 gram bins. Fine bins look jagged; broad bins smooth over local variation." width="100%" />
+<p class="caption">
+Figure 3: The same body-mass observations shown with three histogram bin widths.
+</p>
+</div>
+<p>The 100 g version is jagged because small changes in counts are visible. The 500 g version suppresses much of that local variation. The broad pattern—many observations below 4,000 g and a substantial set of heavier observations—persists, but the prominence and location of individual peaks change.</p>
+<p>Modify <code>bin_widths</code> to compare 200 and 400 g. If a feature disappears when the bin width moves slightly, treat it as uncertain rather than as a stable property of the data.</p>
+</div>
+</div>
+<div id="describe-center-and-spread-together" class="section level2">
+<h2>Describe center and spread together</h2>
+<p>Use several summaries on the pooled observations before adding groups:</p>
+<pre class="r"><code>pooled_summary &lt;- penguin_mass |&gt;
+  summarise(
+    usable_n = n(),
+    mean_g = mean(body_mass_g),
+    median_g = median(body_mass_g),
+    sd_g = sd(body_mass_g),
+    q1_g = quantile(body_mass_g, 0.25),
+    q3_g = quantile(body_mass_g, 0.75),
+    iqr_g = IQR(body_mass_g),
+    min_g = min(body_mass_g),
+    max_g = max(body_mass_g)
+  )
+
+knitr::kable(pooled_summary, digits = 1)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="right">usable_n</th>
+<th align="right">mean_g</th>
+<th align="right">median_g</th>
+<th align="right">sd_g</th>
+<th align="right">q1_g</th>
+<th align="right">q3_g</th>
+<th align="right">iqr_g</th>
+<th align="right">min_g</th>
+<th align="right">max_g</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">342</td>
+<td align="right">4201.8</td>
+<td align="right">4050</td>
+<td align="right">802</td>
+<td align="right">3550</td>
+<td align="right">4750</td>
+<td align="right">1200</td>
+<td align="right">2700</td>
+<td align="right">6300</td>
+</tr>
+</tbody>
+</table>
+<p>The mean, 4,201.8 g, is the balance point of the observed values. The median is 4,050 g: half the measured penguins fall below it and half above it. The higher mean is consistent with heavier observations pulling the balance point to the right.</p>
+<p>The first and third quartiles are 3,550 and 4,750 g. Their difference, the interquartile range (IQR), is 1,200 g and covers the middle half of the measurements. The standard deviation (SD) is 802.0 g; it describes the scale of variation among individual body masses around their mean. It does <strong>not</strong> measure uncertainty in the estimated mean. Questions about uncertainty require another quantity, such as a standard error or confidence interval, and assumptions about how the observations were sampled.</p>
+</div>
+<div id="separate-the-species" class="section level2">
+<h2>Separate the species</h2>
+<p>The pooled histogram combines three species. Do their distributions occupy the same part of the scale? Use the same 250 g bins and fixed axes so bar heights and positions remain comparable.</p>
+<pre class="r"><code>p_species_histograms &lt;- ggplot(
+  penguin_mass,
+  aes(x = body_mass_g, fill = species)
+) +
+  geom_histogram(
+    binwidth = 250,
+    boundary = 0,
+    closed = &quot;left&quot;,
+    colour = &quot;white&quot;,
+    linewidth = 0.35,
+    show.legend = FALSE
+  ) +
+  facet_wrap(~ species, ncol = 1) +
+  coord_cartesian(xlim = c(2500, 6500), ylim = c(0, 32)) +
+  scale_x_continuous(
+    breaks = seq(2500, 6500, by = 500),
+    labels = scales::label_comma()
+  ) +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.08))) +
+  scale_fill_manual(values = species_colours) +
+  labs(
+    title = &quot;Body-mass distributions differ by species&quot;,
+    subtitle = &quot;Matching 250 g bins and fixed axes&quot;,
+    x = &quot;Body mass (g)&quot;,
+    y = &quot;Number of penguins&quot;,
+    caption = &quot;Usable n: Adélie 151, Chinstrap 68, Gentoo 123.&quot;
+  ) +
+  theme_penguin</code></pre>
+<div class="figure"><span style="display:block;" id="fig:show-species-histograms"></span>
+<img src="figures/body-mass-by-species.svg" alt="Three vertically aligned histograms show Adélie and Chinstrap masses centered near 3700 grams and Gentoo masses centered near 5000 grams. The axes and 250 gram bins match." width="100%" />
+<p class="caption">
+Figure 4: Body-mass histograms separated by species with matching bins and axes.
+</p>
+</div>
+<p>Gentoo observations are shifted toward higher masses. Adélie and Chinstrap occupy similar ranges and have similar centers. Combining them with Gentoo produces much of the uneven structure in the pooled histogram. The pooled mean of 4,202 g falls between the Gentoo center and the centers of the other two species, so it is not especially representative of any one species.</p>
+<p>Now calculate the same summaries within species. Because <code>penguin_mass</code> was filtered only for body mass, this comparison uses every row that has the measurement it needs.</p>
+<pre class="r"><code>species_summary &lt;- penguin_mass |&gt;
+  group_by(species) |&gt;
+  summarise(
+    usable_n = n(),
+    mean_g = mean(body_mass_g),
+    median_g = median(body_mass_g),
+    sd_g = sd(body_mass_g),
+    q1_g = quantile(body_mass_g, 0.25),
+    q3_g = quantile(body_mass_g, 0.75),
+    iqr_g = IQR(body_mass_g),
+    .groups = &quot;drop&quot;
+  )
+
+knitr::kable(species_summary, digits = 1)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">species</th>
+<th align="right">usable_n</th>
+<th align="right">mean_g</th>
+<th align="right">median_g</th>
+<th align="right">sd_g</th>
+<th align="right">q1_g</th>
+<th align="right">q3_g</th>
+<th align="right">iqr_g</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Adelie</td>
+<td align="right">151</td>
+<td align="right">3700.7</td>
+<td align="right">3700</td>
+<td align="right">458.6</td>
+<td align="right">3350.0</td>
+<td align="right">4000</td>
+<td align="right">650.0</td>
+</tr>
+<tr class="even">
+<td align="left">Chinstrap</td>
+<td align="right">68</td>
+<td align="right">3733.1</td>
+<td align="right">3700</td>
+<td align="right">384.3</td>
+<td align="right">3487.5</td>
+<td align="right">3950</td>
+<td align="right">462.5</td>
+</tr>
+<tr class="odd">
+<td align="left">Gentoo</td>
+<td align="right">123</td>
+<td align="right">5076.0</td>
+<td align="right">5000</td>
+<td align="right">504.1</td>
+<td align="right">4700.0</td>
+<td align="right">5500</td>
+<td align="right">800.0</td>
+</tr>
+</tbody>
+</table>
+<p>Each column answers a different descriptive question. <code>usable_n</code> records how many penguins contributed. The mean and median locate the center. SD describes spread around the mean, while the quartiles and IQR describe the middle half without depending strongly on the most extreme observations.</p>
+<p>Gentoo has a mean of 5,076.0 g and a median of 5,000 g. The corresponding centers are 3,700.7 and 3,700 g for Adélie, and 3,733.1 and 3,700 g for Chinstrap. The IQRs—650, 462.5, and 800 g—also show that the amount of within-species spread differs. Change <code>group_by(species)</code> to <code>group_by(island)</code> as a quick modification, but remember that species and island are not independent in these data.</p>
+</div>
+<div id="similar-means-can-accompany-different-spreads" class="section level2">
+<h2>Similar means can accompany different spreads</h2>
+<p>Adélie and Chinstrap provide a useful comparison because their means differ by only 32.4 g and both medians are 3,700 g. Start from the summaries rather than assuming the plots will show a dramatic contrast.</p>
+<pre class="r"><code>adelie_chinstrap_summary &lt;- species_summary |&gt;
+  filter(species %in% c(&quot;Adelie&quot;, &quot;Chinstrap&quot;))
+
+knitr::kable(adelie_chinstrap_summary, digits = 1)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">species</th>
+<th align="right">usable_n</th>
+<th align="right">mean_g</th>
+<th align="right">median_g</th>
+<th align="right">sd_g</th>
+<th align="right">q1_g</th>
+<th align="right">q3_g</th>
+<th align="right">iqr_g</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Adelie</td>
+<td align="right">151</td>
+<td align="right">3700.7</td>
+<td align="right">3700</td>
+<td align="right">458.6</td>
+<td align="right">3350.0</td>
+<td align="right">4000</td>
+<td align="right">650.0</td>
+</tr>
+<tr class="even">
+<td align="left">Chinstrap</td>
+<td align="right">68</td>
+<td align="right">3733.1</td>
+<td align="right">3700</td>
+<td align="right">384.3</td>
+<td align="right">3487.5</td>
+<td align="right">3950</td>
+<td align="right">462.5</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>adelie_chinstrap &lt;- penguin_mass |&gt;
+  filter(species %in% c(&quot;Adelie&quot;, &quot;Chinstrap&quot;))
+</code></pre>
+<div class="figure"><span style="display:block;" id="fig:show-adelie-chinstrap-plot"></span>
+<img src="figures/adelie-chinstrap-comparison.svg" alt="Two aligned histograms show strongly overlapping Adélie and Chinstrap body-mass distributions. Adélie has more observations and a somewhat wider spread." width="100%" />
+<p class="caption">
+Figure 5: Histograms comparing Adélie and Chinstrap body mass.
+</p>
+</div>
+<p>The two distributions overlap substantially. Adélie has the larger SD (458.6 versus 384.3 g) and IQR (650 versus 462.5 g), indicating somewhat greater spread in these observations. The different sample sizes also affect how smooth and tall the histograms look, so bar height alone should not be read as evidence that one population is more variable.</p>
+<p>Before continuing, predict what will happen if Adélie penguins are separated by sex. Will the two centers remain close, and will their ranges overlap?</p>
+</div>
+<div id="add-sex-within-adélie-penguins" class="section level2">
+<h2>Add sex within Adélie penguins</h2>
+<p>First account for missingness. The dataset contains 152 Adélie rows; six have no recorded sex and one has no body mass. Requiring both variables leaves 146 observations.</p>
+<pre class="r"><code>adelie_missingness &lt;- penguins |&gt;
+  filter(species == &quot;Adelie&quot;) |&gt;
+  summarise(
+    total_rows = n(),
+    missing_body_mass = sum(is.na(body_mass_g)),
+    missing_sex = sum(is.na(sex)),
+    usable_for_comparison = sum(
+      !is.na(body_mass_g) &amp; !is.na(sex)
+    )
+  )
+
+knitr::kable(adelie_missingness)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="right">total_rows</th>
+<th align="right">missing_body_mass</th>
+<th align="right">missing_sex</th>
+<th align="right">usable_for_comparison</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">152</td>
+<td align="right">1</td>
+<td align="right">6</td>
+<td align="right">146</td>
+</tr>
+</tbody>
+</table>
+<p>Filter on both variables only now, when the analysis needs both:</p>
+<pre class="r"><code>adelie_sex &lt;- penguins |&gt;
+  filter(
+    species == &quot;Adelie&quot;,
+    !is.na(body_mass_g),
+    !is.na(sex)
+  )
+
+adelie_sex_summary &lt;- adelie_sex |&gt;
+  group_by(sex) |&gt;
+  summarise(
+    usable_n = n(),
+    mean_g = mean(body_mass_g),
+    median_g = median(body_mass_g),
+    min_g = min(body_mass_g),
+    max_g = max(body_mass_g),
+    .groups = &quot;drop&quot;
+  )
+
+knitr::kable(adelie_sex_summary, digits = 1)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">sex</th>
+<th align="right">usable_n</th>
+<th align="right">mean_g</th>
+<th align="right">median_g</th>
+<th align="right">min_g</th>
+<th align="right">max_g</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">female</td>
+<td align="right">73</td>
+<td align="right">3368.8</td>
+<td align="right">3400</td>
+<td align="right">2850</td>
+<td align="right">3900</td>
+</tr>
+<tr class="even">
+<td align="left">male</td>
+<td align="right">73</td>
+<td align="right">4043.5</td>
+<td align="right">4000</td>
+<td align="right">3325</td>
+<td align="right">4775</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>set.seed(20261023)
+</code></pre>
+<div class="figure"><span style="display:block;" id="fig:show-adelie-sex-plot"></span>
+<img src="figures/adelie-body-mass-by-sex.svg" alt="Two horizontal jittered rows compare Adélie body mass by recorded sex. Female observations center near 3400 grams and male observations near 4000 grams, with overlap from about 3325 to 3900 grams." width="100%" />
+<p class="caption">
+Figure 6: Individual Adélie body masses separated by recorded sex.
+</p>
+</div>
+<p>The female and male groups each contain 73 observations. Their means are 3,368.8 and 4,043.5 g, and their medians differ by 600 g. The observed ranges overlap between 3,325 and 3,900 g, so recorded sex does not determine the mass of an individual penguin. These are descriptive comparisons from an observational dataset; they do not by themselves establish what caused the difference.</p>
+<p>Species corresponds to the largest separation in the pooled body-mass plot. Within Adélie penguins, the distributions also shift by recorded sex.</p>
+</div>
+<div id="check-unusual-measurements-in-context" class="section level2">
+<h2>Check unusual measurements in context</h2>
+<p>A boxplot gives a compact view of medians, quartiles, and values beyond the whiskers. Overlay the observations so the summary does not hide the sample sizes or repeated measurements.</p>
+<pre class="r"><code>set.seed(20261023)
+</code></pre>
+<div class="figure"><span style="display:block;" id="fig:show-unusual-values-plot"></span>
+<img src="figures/unusual-values-by-species.svg" alt="Boxplots with overlaid points show Gentoo penguins shifted to higher body masses than Adélie and Chinstrap. Two Chinstrap points lie beyond their group's boxplot whiskers." width="100%" />
+<p class="caption">
+Figure 7: Boxplots and individual body masses for each species.
+</p>
+</div>
+<p>Values of 5,500 g or more may look unusual relative to the pooled mean. Count them by species before deciding how to interpret them:</p>
+<pre class="r"><code>high_mass_by_species &lt;- penguin_mass |&gt;
+  filter(body_mass_g &gt;= 5500) |&gt;
+  count(species, name = &quot;n_at_least_5500_g&quot;)
+
+knitr::kable(high_mass_by_species)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">species</th>
+<th align="right">n_at_least_5500_g</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Gentoo</td>
+<td align="right">33</td>
+</tr>
+</tbody>
+</table>
+<p>All 33 are Gentoo, and 5,500 g is the Gentoo third quartile. They belong to the upper quarter of a heavier species rather than forming automatic errors.</p>
+<p>Under the usual 1.5 × IQR rule, two Chinstrap observations fall beyond the species-specific boxplot whiskers:</p>
+<pre class="r"><code>species_boxplot_flags &lt;- penguin_mass |&gt;
+  group_by(species) |&gt;
+  mutate(
+    q1_g = quantile(body_mass_g, 0.25),
+    q3_g = quantile(body_mass_g, 0.75),
+    iqr_g = q3_g - q1_g
+  ) |&gt;
+  filter(
+    body_mass_g &lt; q1_g - 1.5 * iqr_g |
+      body_mass_g &gt; q3_g + 1.5 * iqr_g
+  ) |&gt;
+  select(species, body_mass_g)
+
+knitr::kable(species_boxplot_flags)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">species</th>
+<th align="right">body_mass_g</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Chinstrap</td>
+<td align="right">4800</td>
+</tr>
+<tr class="even">
+<td align="left">Chinstrap</td>
+<td align="right">2700</td>
+</tr>
+</tbody>
+</table>
+<p>The rule marks 2,700 and 4,800 g for review. A whisker is a plotting convention, not a biological boundary or a deletion instruction. Check the original record, measurement procedure, and scientific context before excluding any observation. Keeping a valid extreme value is often necessary to describe the observed variation accurately.</p>
+</div>
+<div id="independent-exercise-flipper-length" class="section level2">
+<h2>Independent exercise: flipper length</h2>
+<p>Apply the same sequence to <code>flipper_length_mm</code> without copying the interpretation from body mass.</p>
+<ol style="list-style-type: decimal">
+<li>Predict which species will have the longest typical flippers and whether within-species spread will differ much.</li>
+<li>Filter only rows missing flipper length.</li>
+<li>Plot individual observations by species with matching axes.</li>
+<li>Calculate usable n, mean, median, SD, quartiles, and IQR by species.</li>
+<li>Write two sentences: one about the group centers and one about spread.</li>
+</ol>
+<p>Start with this scaffold:</p>
+<pre class="r"><code>flipper_data &lt;- penguins |&gt;
+  filter(!is.na(flipper_length_mm))
+
+ggplot(
+  flipper_data,
+  aes(x = species, y = flipper_length_mm, colour = species)
+) +
+  geom_jitter(width = 0.14, height = 0)
+
+flipper_data |&gt;
+  group_by(species) |&gt;
+  summarise(
+    usable_n = n(),
+    mean_mm = mean(flipper_length_mm),
+    median_mm = median(flipper_length_mm),
+    # Add SD, quartiles, and IQR here.
+    .groups = &quot;drop&quot;
+  )</code></pre>
+<details>
+<summary>
+<strong>Worked answer</strong>
+</summary>
+<pre class="r"><code>flipper_data &lt;- penguins |&gt;
+  filter(!is.na(flipper_length_mm))
+
+flipper_summary &lt;- flipper_data |&gt;
+  group_by(species) |&gt;
+  summarise(
+    usable_n = n(),
+    mean_mm = mean(flipper_length_mm),
+    median_mm = median(flipper_length_mm),
+    sd_mm = sd(flipper_length_mm),
+    q1_mm = quantile(flipper_length_mm, 0.25),
+    q3_mm = quantile(flipper_length_mm, 0.75),
+    iqr_mm = IQR(flipper_length_mm),
+    .groups = &quot;drop&quot;
+  )
+
+knitr::kable(flipper_summary, digits = 1)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">species</th>
+<th align="right">usable_n</th>
+<th align="right">mean_mm</th>
+<th align="right">median_mm</th>
+<th align="right">sd_mm</th>
+<th align="right">q1_mm</th>
+<th align="right">q3_mm</th>
+<th align="right">iqr_mm</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Adelie</td>
+<td align="right">151</td>
+<td align="right">190.0</td>
+<td align="right">190</td>
+<td align="right">6.5</td>
+<td align="right">186</td>
+<td align="right">195</td>
+<td align="right">9</td>
+</tr>
+<tr class="even">
+<td align="left">Chinstrap</td>
+<td align="right">68</td>
+<td align="right">195.8</td>
+<td align="right">196</td>
+<td align="right">7.1</td>
+<td align="right">191</td>
+<td align="right">201</td>
+<td align="right">10</td>
+</tr>
+<tr class="odd">
+<td align="left">Gentoo</td>
+<td align="right">123</td>
+<td align="right">217.2</td>
+<td align="right">216</td>
+<td align="right">6.5</td>
+<td align="right">212</td>
+<td align="right">221</td>
+<td align="right">9</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>set.seed(20261023)
+</code></pre>
+<div class="figure"><span style="display:block;" id="fig:show-flipper-worked-plot"></span>
+<img src="figures/flipper-length-by-species.svg" alt="Boxplots with individual points show Gentoo flipper lengths centered near 216 millimetres, Chinstrap near 196 millimetres, and Adélie near 190 millimetres. Within-species spreads are similar." width="100%" />
+<p class="caption">
+Figure 8: Flipper-length observations and boxplots by species.
+</p>
+</div>
+<p>Gentoo penguins have the longest flippers in these observations (mean 217.2 mm; median 216 mm), followed by Chinstrap (195.8; 196 mm) and Adélie (190.0; 190 mm). Within-species SDs are similar at 6.5–7.1 mm and IQRs are 9–10 mm, so the separation in group centers—especially for Gentoo—is large relative to the spread within each species.</p>
+</details>
+</div>
+<div id="return-to-the-average" class="section level2">
+<h2>Return to the average</h2>
+<p>The pooled mean of 4,202 g did not describe most penguins particularly well. Body mass covered a 3,600 g range, the pooled distribution was asymmetric, and the mean sat between a heavier Gentoo group and two lighter species. Within Adélie penguins, the distributions also differed by recorded sex.</p>
+<p>The average remains useful, provided it is reported with the population being averaged, the usable sample size, and a measure of spread. A plot of the observations helps determine whether that compact summary omits structure that matters to the research question.</p>
+<p>Possible next steps include empirical cumulative distribution functions for reading proportions below a threshold, density estimates with explicit bandwidth checks, uncertainty intervals for estimated group means, and regression models that consider several variables together. Formal distribution fitting and normality tests answer narrower questions and should follow, rather than replace, inspection of the observations and sampling design.</p>
+</div>
+<div id="data-credit" class="section level2">
+<h2>Data credit</h2>
+<p>The data originate from Gorman KB, Williams TD, and Fraser WR (2014), <em>Ecological Sexual Dimorphism and Environmental Variability within a Community of Antarctic Penguins (Genus Pygoscelis)</em>, PLOS ONE 9(3): e90081, and the Palmer Station Antarctica LTER datasets listed in the <a href="https://allisonhorst.github.io/palmerpenguins/reference/penguins.html">palmerpenguins documentation</a>. Package citation: Horst AM, Hill AP, and Gorman KB (2020), <em>palmerpenguins: Palmer Archipelago (Antarctica) penguin data</em>, doi: <a href="https://doi.org/10.5281/zenodo.3960218">10.5281/zenodo.3960218</a>.</p>
+</div>

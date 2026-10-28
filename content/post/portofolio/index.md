@@ -1,6 +1,7 @@
 ---
-title: portfolio
+title: Projects
 slug: portfolio
+url: /projects/
 subtitle: Interactive stories about climate, movement, music, food, microbes, and energy
 summary: Interactive stories about climate, movement, music, food, microbes, and energy
 layout: portfolio
@@ -15,7 +16,7 @@ image:
   preview_only: true
 authors:
   - admin
-tags: [Portfolio, r]
+tags: [r, data visualization]
 categories:
 ---
 
@@ -66,16 +67,22 @@ body.dark .edp-intro{background:transparent}
 .edp-card-footer{margin-top:auto;padding-top:1.6rem}
 .edp-tools{margin-bottom:1rem;line-height:1.55}
 .edp-portfolio .edp-link{display:inline-block;padding-bottom:.2rem;border-bottom:1px solid currentColor;color:var(--primary);font-size:.92rem;font-weight:580}
-.edp-earlier{display:grid;grid-template-columns:.72fr 1.5fr;gap:clamp(3rem,7vw,7rem);padding-top:clamp(3.5rem,6vw,5rem)}
-.edp-earlier h2{margin:0 0 1rem;font-size:clamp(2rem,3vw,2.8rem);font-weight:500;line-height:1.06;letter-spacing:-.035em}
-.edp-earlier-copy>p:last-child{max-width:350px;color:var(--edp-muted)}
+.edp-directory{padding-top:clamp(3.5rem,6vw,5rem)}
+.edp-directory-intro,.edp-project-group{display:grid;grid-template-columns:.72fr 1.5fr;gap:clamp(3rem,7vw,7rem)}
+.edp-directory-intro{padding-bottom:clamp(2.5rem,5vw,4rem)}
+.edp-directory-intro h2{margin:0 0 1rem;font-size:clamp(2rem,3vw,2.8rem);font-weight:500;line-height:1.06;letter-spacing:-.035em}
+.edp-directory-copy>p{max-width:620px;margin:0;color:var(--edp-muted);font-size:1rem;line-height:1.65}
+.edp-project-group{padding:clamp(2.25rem,4vw,3.25rem) 0;border-top:1px solid var(--edp-line)}
+.edp-group-heading h3{margin:0 0 .75rem;font-size:clamp(1.45rem,2.3vw,2rem);font-weight:520;line-height:1.12;letter-spacing:-.025em}
+.edp-group-heading p{max-width:310px;margin:0;color:var(--edp-muted);font-size:.9rem;line-height:1.58}
+.edp-group-note{margin-top:1.1rem!important;padding-left:1rem;border-left:2px solid var(--edp-accent);color:var(--edp-ink)!important}
 .edp-index{border-top:1px solid var(--edp-line)}
 .edp-index a{display:grid;grid-template-columns:70px minmax(0,1fr) 155px;gap:1rem;padding:1.35rem 0;border-bottom:1px solid var(--edp-line);align-items:baseline;transition:color .18s ease,padding .18s ease}
 .edp-index a:hover{padding-left:.35rem;color:var(--edp-accent)}
 .edp-index-date{color:var(--edp-muted);font-size:.77rem;letter-spacing:.06em;text-transform:uppercase}
 .edp-index-title{font-weight:560}
 .edp-index-type{color:var(--edp-muted);font-size:.82rem}
-@media(max-width:800px){.edp-portfolio{margin-top:.25rem}.edp-intro,.edp-earlier{grid-template-columns:minmax(0,1fr)}.edp-intro{gap:1.75rem;padding:clamp(1.4rem,5vw,2rem) 0}.edp-intro-flow{display:none}.edp-intro h2{max-width:11ch;font-size:clamp(2.8rem,11.5vw,4rem)}.edp-intro-copy{max-width:36rem}.edp-card{min-height:640px}.edp-earlier{gap:1.75rem}}
+@media(max-width:800px){.edp-portfolio{margin-top:.25rem}.edp-intro,.edp-directory-intro,.edp-project-group{grid-template-columns:minmax(0,1fr)}.edp-intro{gap:1.75rem;padding:clamp(1.4rem,5vw,2rem) 0}.edp-intro-flow{display:none}.edp-intro h2{max-width:11ch;font-size:clamp(2.8rem,11.5vw,4rem)}.edp-intro-copy{max-width:36rem}.edp-card{min-height:640px}.edp-directory-intro,.edp-project-group{gap:1.75rem}}
 @media(max-width:600px){.edp-portfolio{width:calc(100vw - 2rem)}.edp-controls{display:none}.edp-intro-label{margin-top:1rem}.edp-intro-browse{width:max-content;max-width:100%;margin-top:1.2rem;padding-top:0}.edp-rail{grid-auto-columns:84vw;gap:1.1rem;margin-right:-1rem;padding-right:1rem}.edp-card{min-height:610px}.edp-card h3{font-size:1.8rem}.edp-index a{grid-template-columns:58px minmax(0,1fr)}.edp-index-type{grid-column:2;grid-row:2}}
 @media(prefers-reduced-motion:reduce){.edp-portfolio *{scroll-behavior:auto!important;transition:none!important}.edp-intro-flow{animation:none!important}}
 </style>
@@ -99,8 +106,8 @@ body.dark .edp-intro{background:transparent}
 <path d="M2 81 C58 40 103 92 154 66 S245 37 318 60"></path>
 </svg>
 <div class="edp-controls" aria-label="Project navigation">
-<button class="edp-control" type="button" aria-label="Previous projects" onclick="document.getElementById('edp-project-rail').scrollBy({left:-420})">←</button>
-<button class="edp-control" type="button" aria-label="Next projects" onclick="document.getElementById('edp-project-rail').scrollBy({left:420})">→</button>
+<button class="edp-control" type="button" aria-label="Previous projects" onclick="document.getElementById('edp-project-rail').scrollBy({left:-420})">&lt;</button>
+<button class="edp-control" type="button" aria-label="Next projects" onclick="document.getElementById('edp-project-rail').scrollBy({left:420})">&gt;</button>
 </div>
 </div>
 </div>
@@ -221,18 +228,56 @@ body.dark .edp-intro{background:transparent}
 </article>
 </div>
 </section>
-<section class="edp-earlier" aria-labelledby="edp-earlier-title">
-<div class="edp-earlier-copy">
-<p class="edp-kicker">From the archive</p>
-<h2 id="edp-earlier-title">More experiments</h2>
-<p>Smaller and earlier projects that trace how my interests in spatial analysis, R, dashboards, and teaching have developed.</p>
+<section class="edp-directory" aria-labelledby="edp-directory-title">
+<div class="edp-directory-intro">
+<div>
+<p class="edp-kicker">The full collection</p>
+<h2 id="edp-directory-title">Project directory</h2>
+</div>
+<div class="edp-directory-copy">
+<p>The selected stories above are only one part of my work. This directory also brings together earlier coding experiments, research and fieldwork, teaching, mentoring, and community projects.</p>
+</div>
+</div>
+
+<section class="edp-project-group" aria-labelledby="edp-data-title">
+<div class="edp-group-heading">
+<h3 id="edp-data-title">Tools, dashboards &amp; experiments</h3>
+<p>Apart from storytelling, here are a few other things I have built with data and code.</p>
 </div>
 <div class="edp-index">
+<a href="/project/spain-energy-dashboard/"><span class="edp-index-date">2026</span><span class="edp-index-title">Spain energy generation</span><span class="edp-index-type">Energy dashboard</span></a>
 <a href="/post/coastal-vulnerability/"><span class="edp-index-date">2025</span><span class="edp-index-title">Where is Gresik’s coast most vulnerable?</span><span class="edp-index-type">Spatial investigation</span></a>
-<a href="https://danilyanedo7.github.io/30dayschartchallenge/" target="_blank" rel="noopener noreferrer"><span class="edp-index-date">2023</span><span class="edp-index-title">30 day chart challenge</span><span class="edp-index-type">Visualisation tutorials</span></a>
-<a href="/project/shinyapp/"><span class="edp-index-date">2024</span><span class="edp-index-title">Species distribution mapper</span><span class="edp-index-type">R Shiny experiment</span></a>
+<a href="/project/shinyapp/"><span class="edp-index-date">2024</span><span class="edp-index-title">Species distribution mapper</span><span class="edp-index-type">R Shiny application</span></a>
+<a href="/project/biocomp/"><span class="edp-index-date">2024</span><span class="edp-index-title">Biocomp</span><span class="edp-index-type">Learning repository</span></a>
+<a href="/project/30daychartc/"><span class="edp-index-date">2023</span><span class="edp-index-title">30 day chart challenge</span><span class="edp-index-type">Visualisation tutorials</span></a>
 <a href="/post/dashboard_collection/"><span class="edp-index-date">2023</span><span class="edp-index-title">Dashboard collection</span><span class="edp-index-type">Interactive archive</span></a>
-<a href="https://danilyanedo7.github.io/kaggle-energy/" target="_blank" rel="noopener noreferrer"><span class="edp-index-date">2026</span><span class="edp-index-title">Spain’s power grid</span><span class="edp-index-type">Energy dashboard</span></a>
 </div>
+</section>
+
+<section class="edp-project-group" aria-labelledby="edp-research-title">
+<div class="edp-group-heading">
+<h3 id="edp-research-title">Research &amp; fieldwork</h3>
+<p>Projects grounded in environmental microbiology, biodiversity, field observation, and spatial analysis.</p>
+</div>
+<div class="edp-index">
+<a href="/project/biodiv/"><span class="edp-index-date">2021</span><span class="edp-index-title">Alas Karetan forest biodiversity</span><span class="edp-index-type">Field research &amp; mapping</span></a>
+<a href="/project/microbiome/"><span class="edp-index-date">2021</span><span class="edp-index-title">Microbiome profiling</span><span class="edp-index-type">Environmental microbiology</span></a>
+</div>
+</section>
+
+<section class="edp-project-group" aria-labelledby="edp-community-title">
+<div class="edp-group-heading">
+<h3 id="edp-community-title">Teaching &amp; community</h3>
+<p>Education, mentoring, outreach, and capacity-building projects created with students and communities.</p>
+<p class="edp-group-note">Some of these projects are less about code and more about learning with others through teaching, mentoring, and community work.</p>
+</div>
+<div class="edp-index">
+<a href="/project/coe-gap/"><span class="edp-index-date">2026</span><span class="edp-index-title">CoE MicroPlanet Global Ambassador Program</span><span class="edp-index-type">Outreach &amp; capacity building</span></a>
+<a href="/project/mentoring/"><span class="edp-index-date">2023</span><span class="edp-index-title">Mentoring for undergraduate students</span><span class="edp-index-type">Academic mentoring</span></a>
+<a href="/project/bitsmengajar/"><span class="edp-index-date">2022</span><span class="edp-index-title">BITS Mengajar</span><span class="edp-index-type">Science education</span></a>
+<a href="/project/mangrovess/"><span class="edp-index-date">2022</span><span class="edp-index-title">Mangrove Sister School</span><span class="edp-index-type">Community education</span></a>
+<a href="/project/sismik/"><span class="edp-index-date">2021</span><span class="edp-index-title">Microbial Systematics course module</span><span class="edp-index-type">Computational teaching</span></a>
+</div>
+</section>
 </section>
 </div>
