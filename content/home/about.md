@@ -3,7 +3,7 @@ widget: about
 active: true
 headless: true
 weight: 20
-title: 'Curious about data, technology, and the natural world'
+title: 'Curious about nature, technology, and art'
 author: admin
 design:
   columns: '2'

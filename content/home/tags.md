@@ -10,8 +10,8 @@ active: true
 # Order that this section appears on the page.
 weight: 90
 
-title: Popular Topics
-subtitle: 'A living map of the subjects that keep showing up in my work'
+title: Topics
+subtitle: ''
 
 content:
   # Choose the taxonomy from `config.toml` to display (e.g. tags, categories)

@@ -1,6 +1,6 @@
 ---
 title: "The Pacific's Broken Ring"
-summary: "An interactive visual essay exploring 358,673 earthquakes around the Pacific from 2000 to 2025."
+summary: "An analysis of 358,673 earthquakes around the Pacific from 2000 to 2025."
 authors: [admin]
 tags: [data visualization]
 categories: []

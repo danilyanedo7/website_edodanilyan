@@ -29,9 +29,7 @@ slides: ''
 
 ## Module: Computational Microbiology in the Microbial Systematics Course
 
-Welcome to **Computational Microbiology**, a core component of the *Microbial Systematics* course. This module was developed to give students practical experience in analyzing microbial diversity and understanding the principles of taxonomy and classification using real-world data.
-
-> This project was created during my time as a **lab assistant** in the Microbial Systematics course at **Institut Teknologi Sepuluh Nopember (ITS) Surabaya**.
+This is a practical computational module I helped develop while working as a lab assistant in the *Microbial Systematics* course at Institut Teknologi Sepuluh Nopember. It introduces microbial diversity, taxonomy, and classification through guided exercises in R.
 
 ---
 
@@ -71,6 +69,6 @@ Students will explore microbial samples from various environments, ranging from 
 
 ---
 
-### Want to Collaborate?
+### Feedback
 
-I'm always open to discussing education projects, bioinformatics modules, or teaching collaborations. Feel free to [get in touch](/#contact)!
+If you use the module, I’d be glad to hear what worked well and what could be clearer.

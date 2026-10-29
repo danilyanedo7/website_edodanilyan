@@ -23,9 +23,9 @@ url_video: ""
 slides: ""
 ---
 
-The [Global Ambassador Program (GAP)](https://www.microplanet.at/), launched by the Scientific Committee for Equal Opportunities (SCEO) of the **Cluster of Excellence MicroPlanet**, supports international trainees who have overcome educational or socioeconomic barriers and enables them to strengthen scientific links between the CoE and their home countries. This outreach program was carried out over six days across two partner institutions in Indonesia, combining scientific dissemination, practical skill transfer, and structured academic mentoring.
+The [Global Ambassador Program (GAP)](https://www.microplanet.at/), launched by the Scientific Committee for Equal Opportunities (SCEO) of the **Cluster of Excellence MicroPlanet**, supports international trainees who have overcome educational or socioeconomic barriers and helps them maintain scientific links with their home countries. This six-day program in Indonesia combined guest lectures, an R workshop, and conversations about graduate study and funding.
 
-At the partner institutions, students and faculty identified opportunities to expand training in computational biology and reproducible analysis. The program introduced open-source workflows and offered practical guidance on funded graduate programs and academic applications.
+Sessions focused on computational biology, reproducible analysis, funded graduate programs, and academic applications. Participants worked with open-source tools and discussed how these approaches could fit their own teaching and research.
 
 
 The program was delivered at two institutions, with three full days of activities at each.
@@ -68,24 +68,9 @@ To gather participant feedback, participants completed a self-assessment questio
 Talking with students and early-career researchers reminded me that scientific careers are rarely straightforward. I am grateful to CoE MicroPlanet and the partner institutions for making these conversations possible, and to the communities that welcomed us.
 
 
-### The Journey from Vienna to East Java
+### Program Itinerary
 
-> 11,000 km by air. 610 km by road. Two weeks across three cities.
-
-The journey began with a roughly 21-hour flight from Vienna to Surabaya, about 11,000 km with one stopover. We arrived on a Sunday and hit the ground running. Starting Monday, we spent four days at Institut Teknologi Sepuluh Nopember (ITS), delivering the program back-to-back through Thursday.
-
-On Friday we packed up and drove about 100 km south to Malang, roughly a 2-hour drive through East Java's countryside. The sessions at Universitas Muhammadiyah Malang (UMM) ran on Monday and Tuesday of the second week, covering similar ground but with a different audience of faculty members and researchers.
-
-Then came the longest road leg, Wednesday we drove another 210 km east from Malang to Bondowoso, about 4 hours through the mountains and beaches. After a day of settling in and reconnecting with the town, the final session took place on Friday at my old high school. In total, the program covered roughly 11,610 km.
-
-### Continue the Conversation
-
-I'm always glad to hear about:
-- Collaborations on outreach and capacity building
-- Guest lectures or workshop invitations
-- Mentoring partnerships
-
-Let's [connect and chat](/#contact)!
+The program took place over two weeks across Surabaya, Malang, and Bondowoso. We spent four days at Institut Teknologi Sepuluh Nopember, continued with two days at Universitas Muhammadiyah Malang, and ended with a session at my former high school.
 
 
 ### Some Documentations

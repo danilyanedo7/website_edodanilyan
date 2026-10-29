@@ -36,15 +36,10 @@ It's still a work in progress, built mainly so field researchers and students ca
 
 ### Why I Built This
 
-As a biologist, I often wished for lightweight, user-friendly tools that didn’t require advanced programming knowledge to analyze spatial biodiversity data. Shiny gives us a way to build just that **interactive dashboards powered by R**.
-
-I hope these apps can help others explore their ecological data more intuitively, even as I continue to refine and expand their features.
+I built the app to test a simple way of mapping biodiversity records without requiring users to write code. It remains a work in progress, and I continue to refine it as I learn more about Shiny and spatial data.
 
 ---
 
-### Let’s Collaborate
+### Feedback
 
-Interested in using or customizing these apps for your own work? Want to build something together?
-
-I’m open to collaborations, projects, or teaching opportunities.  
-Let’s [get in touch](/#contact)!
+If you try the app, I’d be glad to hear what worked and where you ran into problems.

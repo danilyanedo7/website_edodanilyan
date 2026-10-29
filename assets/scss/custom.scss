@@ -14,8 +14,33 @@
   font-display: swap;
 }
 
+html,
+body,
+button,
+input,
+optgroup,
+select,
+textarea,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.navbar-light,
+.section-subheading,
+pre,
+code,
+kbd,
+samp {
+  font-family: 'Satoshi';
+}
+
+.text-monospace {
+  font-family: 'Satoshi' !important;
+}
+
 body {
-  font-family: 'Satoshi', sans-serif;
   line-height: 1.65;
 }
 
@@ -71,7 +96,7 @@ body {
 #about .typing-text {
   color: $sta-primary;
   font-style: italic;
-  font-weight: 550;
+  font-weight: 400;
 }
 
 #about .about-profile {
@@ -427,8 +452,8 @@ body {
   color: #e58500;
   font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-transform: none;
 }
 
 .closing-contact h2 {

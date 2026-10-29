@@ -1,6 +1,6 @@
 ---
 title: "BITS Mengajar"
-summary: "BITS Mengajar is a supporting program under social development division in Biology ITS student association at Institut Teknologi Sepuluh Nopember"
+summary: "An education program organized by the Biology Student Association at Institut Teknologi Sepuluh Nopember through study sessions, mentoring, and learning materials."
 authors: [admin]
 tags: [community development, teaching]
 categories: []
@@ -26,14 +26,8 @@ url_slides: ""
 url_video: ""
 slides: ""
 ---
-BITS Mengajar is a supporting program under social development division in Biology ITS student association at Institut Teknologi Sepuluh Nopember, this program is targetting SD Kampung Binaan and aimed to:
+BITS Mengajar was an education program run by the social development division of the Biology Student Association at Institut Teknologi Sepuluh Nopember. It worked with students in a partner community through study sessions, mentoring, and academic-skills activities.
 
-* provide assistances and services for society in both academic and non-academic matters.
-* assist students to improve their academic and large variety of skills.
-* conduct various activities to support locals to have a better acces to education.
+Biology students volunteered as mentors, helping participants study different subjects and providing a place to discuss academic and non-academic questions. The program also organized learning groups where participants could study and support one another.
 
-To improve Biology students’ self-development, this program provides a Personal Development Program by organizing various activities such as Academic Study Skills Training. Those activities are conducted to support Biology Students to be able to recognize their potential and have a positive impact in the society.
-
-BITS mengajar also provides Mentoring Program to help locals to improve their academic achievement. In this program, Biology Student Association facilitates students to create learning communities where they have opportunities to learn various subjects, to share academic and non academic matters and to motivate one another for better achievement. This program also gives opportunities for students to enroll themselves as mentors to supervise locals.
-
-During Covid-19 Pandemic, this program shifted to online activity. This program provides various online larning material through various platform avaiable online.
+During the COVID-19 pandemic, the activities moved online and the team shared learning materials through digital platforms.

@@ -1,17 +1,26 @@
 <script>
   (() => {
+    document.querySelectorAll('.navbar-brand').forEach((brand) => {
+      if (!brand.querySelector('img')) {
+        brand.textContent = 'Home';
+        brand.setAttribute('aria-label', 'Home');
+      }
+    });
+  })();
+
+  (() => {
     const heading = document.querySelector('#about .about-hero-copy > h1');
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
     if (!heading || reduceMotion.matches) return;
 
-    const phrases = ['data', 'technology', 'the natural world'];
+    const phrases = ['nature', 'technology', 'art'];
     let phraseIndex = 0;
     let characterIndex = 0;
     let deleting = false;
 
     heading.classList.add('typing-heading');
-    heading.setAttribute('aria-label', 'Curious about data, technology, and the natural world');
+    heading.setAttribute('aria-label', 'Curious about nature, technology, and art');
     heading.textContent = '';
 
     const prefix = document.createElement('span');

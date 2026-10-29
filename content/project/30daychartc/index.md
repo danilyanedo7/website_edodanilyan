@@ -27,26 +27,16 @@ url_video: ""
 slides: ""
 ---
 
-Welcome! This is a **friendly and beginner-accessible open-source book** created to help you explore the fascinating world of data visualization, one chart at a time.
+This is a collection of my **30 Day Chart Challenge** contributions, with beginner-friendly R notes and reproducible examples.
 
 Through this project, I share:
 - My personal contributions to the **30 Day Chart Challenge**
 - Step-by-step **R tutorials**
 - Clean, reproducible code
-- Practical tips for making compelling and effective charts
+- Notes on chart design and presentation
 
-Whether you're just starting your data journey or looking to sharpen your data storytelling skills, this book is designed to guide you in an approachable, hands-on way.
-
-> Let’s turn data into stories—together.
+The material is organized as a practical reference for people learning data visualization with R.
 
 Check out the full project here:  
 [Read the tutorials](https://danilyanedo7.github.io/30dayschartchallenge/)  
 [Browse the code on GitHub](https://github.com/danilyanedo7/30dayschartchallenge)
-
----
-
-### Let’s Connect
-
-Always happy to meet new people, swap ideas, talk science, design, data, or whatever else we find interesting.
-
-[Come say hi](/#contact)!

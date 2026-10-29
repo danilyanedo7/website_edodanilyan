@@ -5,18 +5,21 @@ widget: featurette
 
 headless: true
 
+# Kept in source history for possible future use, but intentionally hidden from the website.
+active: false
+
 weight: 40
 
 title: Skills
-subtitle: 'Tools and ways of working that connect research, data, and visual storytelling'
+subtitle: ''
 
 
 feature:
-  - description: Reproducible analysis, statistical programming, advanced visualization, automated reporting, and interactive data applications
+  - description: R, data cleaning, statistical analysis, visualization, reproducible reporting, and interactive applications
     icon: r-project
     icon_pack: fab
     name: R & Data Science
-  - description: Statistical modelling, experimental design, multivariate analysis, hypothesis testing, and clear interpretation of complex data
+  - description: Statistical modelling, experimental design, multivariate analysis, and hypothesis testing
     icon: chart-line
     icon_pack: fas
     name: Statistics

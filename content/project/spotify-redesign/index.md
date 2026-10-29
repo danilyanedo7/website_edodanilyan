@@ -32,11 +32,3 @@ I revisited my 2022 Spotify export as a diary instead of a pile of charts. The t
 
 [https://danilyanedo7.github.io/spotify_redesign/](https://danilyanedo7.github.io/spotify_redesign/)
 
----
-
-### Let’s Connect
-
-Always happy to meet new people, swap ideas, talk science, design, data, or whatever else we find interesting.
-
-[Come say hi](/#contact)!
-

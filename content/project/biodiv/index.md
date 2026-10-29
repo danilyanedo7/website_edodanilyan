@@ -30,13 +30,13 @@ Alas Karetan is a forest located in Kediri, East Java, Indonesia.  This forest p
 ![](/alaska3.jpeg 'Pigeon Orchid')
 ![](/alaska4.jpeg 'Ink Cap Mushroom')
 
-Because of its very important function, it is necessary to carry out biodiversity research to determine the potential of Alas Karetan forests and can become a basic reference for conservation management.  The research team under the supervision of Iska Desmawati, M.Si., and Indah Trisnawati Ph.D carried out profiling of the diversity of trees, shrubs, insects, epiphytic plants and also fungi.  Not only that, a tree mortality assessment was also carried out to determine the condition of tree mortality in the forest.  The method used in tree mortality analysis can be checked at the following [link](https://forestgeo.si.edu/protocols/tree-mortality-damage-protocol). 
+Under the supervision of Iska Desmawati, M.Si., and Indah Trisnawati, Ph.D., the research team surveyed trees, shrubs, insects, epiphytic plants, and fungi. The team also assessed tree mortality using the [ForestGEO mortality and damage protocol](https://forestgeo.si.edu/protocols/tree-mortality-damage-protocol).
 
 ![](/alaska5.jpeg 'Tree Mortality Assesment')
 
-Additionally, the project assesses the impact of human activities, climate change, and habitat degradation on these ecosystems. The findings from this research are crucial for informing conservation strategies, sustainable forest management practices, and policy decisions, ensuring the preservation of biodiversity and the overall health of forest ecosystems.
+The project documented biodiversity patterns and explored how environmental conditions and human activity may relate to them. The resulting field records can serve as a reference for future monitoring and local conservation work.
 ![](/alaska6.jpeg 'Tree scientist, botanist, and entomologist in the field')
 
-During this reseacrh project, I assisted tree scientist to asses tree mortaility and damage and create a strategy to tag and map the tree in mentioned area. Apart from that, I also worked as a photograph documenter that has responsibility to properly take the specimen pictures. A glimps of research activities can be seen from [this youtube video](https://youtu.be/8T7dhok7qD8?si=xXgrv0QmZeu-NtOR).
+During the project, I helped assess tree mortality and damage, tag and map trees, and photograph specimens. A short [video](https://youtu.be/8T7dhok7qD8?si=xXgrv0QmZeu-NtOR) shows some of the fieldwork.
 
-I also took part in the analysis of tree mortality using K means clustering method to see environmental factor that might have impacted tree mortality status the most and see whether any certain pattern or cluster in this area.
+I also helped analyze tree mortality using k-means clustering to explore whether environmental variables were associated with mortality patterns.

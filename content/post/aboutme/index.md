@@ -1,6 +1,6 @@
 ---
-title: "Hey there!"
-subtitle: "So glad you're here"
+title: "About"
+subtitle: "Thanks for stopping by"
 summary: ""
 authors: []
 tags: []
@@ -18,35 +18,67 @@ image:
 projects: []
 ---
 
-<div class="row">
-  <div class="col-md-4">
-    <img src="/aboutme.jpeg" alt="Master's Graduation" style="width:100%; border-radius:12px;">
+<style>
+  .about-intro {
+    display: grid;
+    grid-template-columns: minmax(220px, 300px) minmax(0, 1fr);
+    align-items: center;
+    gap: clamp(2rem, 5vw, 4rem);
+    margin-bottom: 2.5rem;
+  }
+
+  .about-intro img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+  }
+
+  .about-intro__copy {
+    max-width: 44rem;
+  }
+
+  .about-intro__copy p {
+    margin: 0;
+  }
+
+  @media (max-width: 767px) {
+    .about-intro {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .about-intro img {
+      width: min(100%, 320px);
+      margin-inline: auto;
+    }
+  }
+</style>
+
+<div class="about-intro">
+  <div>
+    <img src="/aboutme.jpeg" alt="Edo at his master's graduation">
   </div>
-  <div class="col-md-8">
-    <h2> _</h2>
-    <p>I’m a PhD researcher at the University of Vienna. My work focuses on microbial growth, cell size, and metabolism, using a combination of laboratory experiments, automated bioreactors, and computational analysis.</p>
-    <p><a href="/post/dream">Read the full story</a></p>
+  <div class="about-intro__copy">
+    <p>Hi, I’m Edo. I’m a PhD researcher at the University of Vienna, where I study microbial growth, cell size, and metabolism in aquatic systems. Most days involve chemostats, automated bioreactors, single-cell measurements, and R.</p>
   </div>
 </div>
 
-Right now, I’m pursuing my PhD as part of the **FWF Cluster of Excellence - Microplanet: Microbiomes Drive Planetary Health** project, where I study microbial biomass and metabolism, particularly in aquatic systems. I spend a good amount of time tinkering with lifescale, running chemostats, culturing microbes, and writing code to make sense of all the data.
+I studied biology at Institut Teknologi Sepuluh Nopember in Indonesia. Before moving to Vienna, I worked on projects in environmental microbiology and microbial applications in sustainable construction. That mix of laboratory work and data analysis still shapes how I approach research.
 
-Before my PhD, I earned my bachelor’s and master’s degrees in biology from Institut Teknologi Sepuluh Nopember. During that time, I worked on projects ranging from microbial applications in sustainable construction to environmental microbiology. [Read the full story here](/post/dream)
+I use **R** for analysis, visualization, and reproducible reporting. Sometimes I turn what I learn into [notes and examples](https://github.com/danilyanedo7/biocomp), small tools, or tutorials. You can browse my [projects](/projects/), [presentations](/post/dashboard_collection/), or [curriculum vitae](/uploads/resume.pdf).
 
-I care about making science more accessible, through clear data visualizations, reproducible code, and open-source tools that others can reuse, adapt, or improve.
-
-When I’m not working, I like to wander around with a sketchbook or camera, obsess over [maps](/projects/#selected-work), or dive into old-school biology textbooks for inspiration.
-![](/java_pops.png '') 
-
-I’m also passionate about **R programming** and education. I create tutorials to help life science researchers make sense of their data using [R](https://github.com/danilyanedo7/biocomp) and build dynamic, interactive, and reproducible reports with R Markdown. Check out my [projects](/projects/) for examples of my work, browse through some of my [educational presentations](https://edodanilyan.com/post/dashboard_collection/), or explore my full [curriculum vitae](https://edodanilyan.com/uploads/resume.pdf).
-
-My current research combines microbial cultivation, automated bioreactors, single-cell measurements, and data analysis. Outside the lab, I enjoy documenting fieldwork, teaching biological data analysis, and experimenting with small open-source projects.
-
-I'm interested in collaborations involving microbial ecology, quantitative biology, environmental data, scientific visualization, and research education. You can [reach out](https://edodanilyan.com/#contact) through the links on this website.
+Outside academia, I try to remember that not everything has to be productive. I enjoy reading, digital drawing, [photography](https://danilyan.myportfolio.com/), bouldering, hiking, cooking, and meeting new people. None of these things needs to become a project, a skill, or an achievement. I simply enjoy doing them.
 
 ## Language
 1. Bahasa Indonesia (Native)
-2. English (Full-professional Proficiency)
-3. German (I can order coffee and complain about grammar)
-4. Japanese (I can say ‘thank you’ like a pro)
+2. Madurese (Native)
+3. Javanese (Native)
+4. English (Full-professional Proficiency)
+5. German (I can order coffee and complain about grammar)
+6. Japanese (I can say ‘thank you’ like a pro)
+
+Maybe you arrived through a research project, some code, a map, or a photograph. However you found this page, thank you for spending a little time in this corner of the internet. I’m glad you stopped by.
+
+If you also enjoy cooking, send me a recipe you keep coming back to. Or share a photograph you took, a trail you enjoyed, a drawing, or a book you think I should read. It doesn’t have to be about work. I’d be happy to hear from you.
 

@@ -1,6 +1,6 @@
 ---
 title: "Living with a Changing Climate Across the Pacific"
-summary: "A journey through emissions, ocean warming, cyclones, reef heat stress, rainfall, sea level, disasters, and the changing electricity mix across the Pacific."
+summary: "An analysis of emissions, ocean warming, cyclones, reef heat stress, rainfall, sea level, disasters, and electricity across the Pacific."
 authors: [admin]
 tags: [data visualization]
 categories: []

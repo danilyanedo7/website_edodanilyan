@@ -10,7 +10,7 @@ organizations:
   - name: Universität Wien - Austria
     url: https://cemess.univie.ac.at
 
-bio: Microbial ecologist, data scientist and researcher.
+bio: Microbial ecology, data science and research.
 
 interests:
   - Computational Biology
@@ -60,9 +60,9 @@ email: ''
 highlight_name: true
 ---
 
-Hi there, I’m Edo. I study living systems and explain complex things through data, code, and visual storytelling. I like good company and bad ideas in equal measure. Experiments, code, cameras, and questionable life choices all end up here sooner or later. Tho I'm still convinced this all makes sense.
+Hi there, I’m Edo. I study living systems using experiments, data, code, and visualization. I like good company and bad ideas in equal measure. Experiments, code, cameras, and questionable life choices all end up here sooner or later. Tho I’m still convinced this all makes sense.
 
-Some weeks that means a new dashboard or a photo from the field. Other weeks it’s just one plot I’m proud of, or a page I forgot to update for a year. Things got out of hand here long before anyone started calling it a website. Poke around: there’s [code](/tag/r/) if that’s your thing, [research](/tag/research/) for a closer look at my academic work, and a [photography portfolio](https://danilyan.myportfolio.com/) featuring field, nature, and landscape work. If something catches your interest, I’d be glad to hear from you.
+Some weeks I add a dashboard or a photo from the field. Other weeks it is just one plot I liked, or a page I remembered to update. You can browse my [code](/tag/r/), [research](/publication/), and [photography](https://danilyan.myportfolio.com/). If something catches your interest, I’d be glad to hear from you.
 
 {{< cta cta_text="View my projects" cta_link="/projects/" cta_extra_text="View my research" cta_extra_link="/publication/" >}}
 
