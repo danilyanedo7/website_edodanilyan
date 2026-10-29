@@ -4,7 +4,7 @@ summary: "A journey through emissions, ocean warming, cyclones, reef heat stress
 authors: [admin]
 tags: [data visualization]
 categories: []
-featured: true
+featured: false
 date: 2026-08-14T12:26:07+02:00
 external_link: "https://danilyanedo7.github.io/pacific_dataviz_challenge/"
 image:

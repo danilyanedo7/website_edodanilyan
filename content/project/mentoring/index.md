@@ -25,8 +25,8 @@ url_video: ""
 slides: ""
 ---
 
-I mentored several undergraduate students on academic planning, research skills, and career decisions. Sessions covered topics like international exposure, personal branding, and data analytics, adapted to what each student needed at the time.
- 
-Another mentees won an international academic competition and went on to be accepted into graduate programs at Oxford and ETH Zurich with full scholarships, plus an offer from LMU Munich. I can't take credit for their success, but I hope the mentoring helped, and it's part of how I try to pay forward the guidance I received.
+I mentored undergraduate and graduate students as they worked through academic planning, research skills, data analysis, and graduate applications. The sessions were adapted to what each person needed at the time.
+
+Their later paths were shaped by their own work and many sources of support. I was glad to contribute a small part and to pass forward some of the guidance I once received.
 
 If you're working on something related to climate, community development, or sociopreneurship and want to talk it through, [reach out](https://edodanilyan.com/#contact).

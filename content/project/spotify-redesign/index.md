@@ -4,7 +4,7 @@ summary: ""
 authors: [admin]
 tags: [r, data visualization]
 categories: []
-featured: true
+featured: false
 date: 2026-08-01T00:00:00+07:00
 
 external_link: ""

@@ -7,7 +7,7 @@ summary: Interactive stories about climate, movement, music, food, microbes, and
 layout: portfolio
 projects: []
 date: '2020-12-13T00:00:00Z'
-lastmod: '2026-08-14T00:00:00Z'
+lastmod: '2026-10-29T00:00:00Z'
 draft: false
 featured: false
 image:
@@ -93,7 +93,7 @@ body.dark .edp-intro{background:transparent}
 <h2 id="edp-intro-title">A few things I have made <em>with data</em></h2>
 <div class="edp-intro-label">
 <p class="edp-kicker">Selected data stories</p>
-<p class="edp-intro-count">07 projects · 2025–2026</p>
+<p class="edp-intro-count">08 projects · 2025–2026</p>
 </div>
 </div>
 <div class="edp-intro-copy">
@@ -115,11 +115,27 @@ body.dark .edp-intro{background:transparent}
 <section class="edp-showcase" id="selected-work" aria-label="Selected work">
 <div class="edp-rail" id="edp-project-rail" tabindex="0" aria-label="Selected projects">
 <article class="edp-card">
+<div class="edp-card-meta"><time class="edp-meta" datetime="2026">2026</time><p class="edp-meta">Citizen science · Data story</p></div>
+<a class="edp-card-visual" href="https://danilyanedo7.github.io/kampar-peninsula-inaturalist/" target="_blank" rel="noopener noreferrer" aria-label="Explore To See a Forest">
+<picture>
+<source media="(max-width:720px)" srcset="kampar-900.webp">
+<img src="kampar-1600.webp" width="1600" height="1000" loading="eager" fetchpriority="high" alt="The Canopy of Life visualization groups 3,120 taxon IDs into colorful branching forms for plants, insects, birds, fungi, and other life">
+</picture>
+</a>
+<h3>To See a Forest</h3>
+<p class="edp-question">What can 10,461 shared sightings reveal about life in the Kampar Peninsula?</p>
+<p class="edp-description">This visual report is my contribution to the Kampar Peninsula Biodiversity iNaturalist citizen-science initiative. It turns 10,461 sightings from 92 people, spanning 3,120 taxon IDs, into a shared view of life in Kampar.</p>
+<div class="edp-card-footer">
+<p class="edp-tools">R · D3 · Quarto</p>
+<a class="edp-link" href="https://danilyanedo7.github.io/kampar-peninsula-inaturalist/" target="_blank" rel="noopener noreferrer">Come explore the story</a>
+</div>
+</article>
+<article class="edp-card">
 <div class="edp-card-meta"><time class="edp-meta" datetime="2026">2026</time><p class="edp-meta">Earth science · Visual essay</p></div>
 <a class="edp-card-visual" href="https://danilyanedo7.github.io/ring_of_fire/" target="_blank" rel="noopener noreferrer" aria-label="Explore The Pacific's broken ring">
 <picture>
 <source media="(max-width:720px)" srcset="ring-of-fire-900.webp">
-<img src="ring-of-fire-1600.webp" width="1600" height="1000" loading="eager" fetchpriority="high" alt="Hero view of The Pacific's broken ring showing earthquake lights around the Pacific and summary statistics">
+<img src="ring-of-fire-1600.webp" width="1600" height="1000" loading="lazy" alt="Hero view of The Pacific's broken ring showing earthquake lights around the Pacific and summary statistics">
 </picture>
 </a>
 <h3>The ring of fire</h3>
@@ -127,7 +143,7 @@ body.dark .edp-intro{background:transparent}
 <p class="edp-description">An interactive visual essay about the uneven horseshoe of earthquakes around the Pacific, the tectonic processes beneath it, and the limits of drawing a single Ring of Fire boundary.</p>
 <div class="edp-card-footer">
 <p class="edp-tools">R · D3 · Quarto</p>
-<a class="edp-link" href="https://danilyanedo7.github.io/ring_of_fire/" target="_blank" rel="noopener noreferrer">Explore the full story</a>
+<a class="edp-link" href="https://danilyanedo7.github.io/ring_of_fire/" target="_blank" rel="noopener noreferrer">Come explore the story</a>
 </div>
 </article>
 <article class="edp-card">
@@ -135,7 +151,7 @@ body.dark .edp-intro{background:transparent}
 <a class="edp-card-visual" href="https://danilyanedo7.github.io/pacific_dataviz_challenge/" target="_blank" rel="noopener noreferrer" aria-label="Explore Living with a Changing Climate Across the Pacific">
 <picture>
 <source media="(max-width:720px)" srcset="pacific-900.webp">
-<img src="pacific-1600.webp" width="1600" height="1000" loading="eager" fetchpriority="high" alt="Opening of the Pacific climate story with the title and two figures comparing emissions and cyclone exposure">
+<img src="pacific-1600.webp" width="1600" height="1000" loading="lazy" alt="Opening of the Pacific climate story with the title and two figures comparing emissions and cyclone exposure">
 </picture>
 </a>
 <h3>Living with a changing climate across the Pacific</h3>
@@ -143,7 +159,7 @@ body.dark .edp-intro{background:transparent}
 <p class="edp-description">A careful journey through emissions, ocean warming, cyclones, reef heat stress, rainfall, sea level, disasters, and the changing electricity mix across the Pacific.</p>
 <div class="edp-card-footer">
 <p class="edp-tools">R · D3 · JavaScript · Quarto</p>
-<a class="edp-link" href="https://danilyanedo7.github.io/pacific_dataviz_challenge/" target="_blank" rel="noopener noreferrer">Explore the climate story</a>
+<a class="edp-link" href="https://danilyanedo7.github.io/pacific_dataviz_challenge/" target="_blank" rel="noopener noreferrer">Come explore the story</a>
 </div>
 </article>
 <article class="edp-card">
@@ -159,7 +175,7 @@ body.dark .edp-intro{background:transparent}
 <p class="edp-description">Three gulls from the same coast left up to 78 days apart and wintered in different countries. Their journeys show how timing and stopovers can split a shared migration route.</p>
 <div class="edp-card-footer">
 <p class="edp-tools">JavaScript · SVG · Interactive map</p>
-<a class="edp-link" href="https://danilyanedo7.github.io/bird_migration/" target="_blank" rel="noopener noreferrer">Follow the journeys</a>
+<a class="edp-link" href="https://danilyanedo7.github.io/bird_migration/" target="_blank" rel="noopener noreferrer">Come explore the story</a>
 </div>
 </article>
 <article class="edp-card">
@@ -175,7 +191,7 @@ body.dark .edp-intro{background:transparent}
 <p class="edp-description">About 60 million people live within 30 kilometres of a Holocene volcano on Java. The number shows the scale of exposure, while distance alone cannot describe volcanic risk.</p>
 <div class="edp-card-footer">
 <p class="edp-tools">R · Leaflet · Rayshader · Quarto</p>
-<a class="edp-link" href="https://danilyanedo7.github.io/living_with_volcano/" target="_blank" rel="noopener noreferrer">Explore the full story</a>
+<a class="edp-link" href="https://danilyanedo7.github.io/living_with_volcano/" target="_blank" rel="noopener noreferrer">Come explore the story</a>
 </div>
 </article>
 <article class="edp-card">
@@ -191,7 +207,7 @@ body.dark .edp-intro{background:transparent}
 <p class="edp-description">At a 1 to 10,000 dilution, effective steady state lasted about 90 minutes, while a 1 to 100 culture never reached it. The result shows why cloudiness alone can make a changing population appear steady.</p>
 <div class="edp-card-footer">
 <p class="edp-tools">R · JavaScript · Quarto</p>
-<a class="edp-link" href="https://danilyanedo7.github.io/steady_state/" target="_blank" rel="noopener noreferrer">Explore the full story</a>
+<a class="edp-link" href="https://danilyanedo7.github.io/steady_state/" target="_blank" rel="noopener noreferrer">Come explore the story</a>
 </div>
 </article>
 <article class="edp-card">
@@ -207,7 +223,7 @@ body.dark .edp-intro{background:transparent}
 <p class="edp-description">My listening reached 187.7 hours in July, more than twice the spring average, then eased after I moved to Poland. The pattern turns a year of Spotify history into a record of thesis pressure and changing routines.</p>
 <div class="edp-card-footer">
 <p class="edp-tools">R · JavaScript · Quarto</p>
-<a class="edp-link" href="https://danilyanedo7.github.io/spotify_redesign/" target="_blank" rel="noopener noreferrer">Explore the full story</a>
+<a class="edp-link" href="https://danilyanedo7.github.io/spotify_redesign/" target="_blank" rel="noopener noreferrer">Come explore the story</a>
 </div>
 </article>
 <article class="edp-card">
@@ -223,7 +239,7 @@ body.dark .edp-intro{background:transparent}
 <p class="edp-description">Soto Kebumen and Soto Seger Boyolali share eleven recorded ingredients and differ only by galangal. Their similarity shows that names and geography do not always predict how a bowl is made.</p>
 <div class="edp-card-footer">
 <p class="edp-tools">D3 · JavaScript · Quarto</p>
-<a class="edp-link" href="https://danilyanedo7.github.io/soto-one-soup-many-islands/" target="_blank" rel="noopener noreferrer">Explore the full story</a>
+<a class="edp-link" href="https://danilyanedo7.github.io/soto-one-soup-many-islands/" target="_blank" rel="noopener noreferrer">Come explore the story</a>
 </div>
 </article>
 </div>
@@ -272,6 +288,7 @@ body.dark .edp-intro{background:transparent}
 <p class="edp-group-note">Some of these projects are less about code and more about learning with others through teaching, mentoring, and community work.</p>
 </div>
 <div class="edp-index">
+<a href="https://danilyanedo7.github.io/kampar-peninsula-inaturalist/" target="_blank" rel="noopener noreferrer"><span class="edp-index-date">2026</span><span class="edp-index-title">To See a Forest</span><span class="edp-index-type">Citizen science &amp; biodiversity</span></a>
 <a href="/project/coe-gap/"><span class="edp-index-date">2026</span><span class="edp-index-title">CoE MicroPlanet Global Ambassador Program</span><span class="edp-index-type">Outreach &amp; capacity building</span></a>
 <a href="/project/mentoring/"><span class="edp-index-date">2023</span><span class="edp-index-title">Mentoring for undergraduate students</span><span class="edp-index-type">Academic mentoring</span></a>
 <a href="/project/bitsmengajar/"><span class="edp-index-date">2022</span><span class="edp-index-title">BITS Mengajar</span><span class="edp-index-type">Science education</span></a>

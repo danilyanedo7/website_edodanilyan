@@ -1,6 +1,6 @@
 ---
 title: "CoE MicroPlanet Global Ambassador Program"
-summary: "Representing the Cluster of Excellence MicroPlanet through targeted outreach and capacity building across two universities and a high school in Indonesia, reaching over 200 students and faculty members."
+summary: "A six-day outreach and capacity-building program at two universities and a high school in Indonesia, attended by more than 200 students and faculty members."
 authors: [admin]
 tags: [community development, research, teaching, microplanet]
 categories: []
@@ -42,17 +42,17 @@ We went through how to find funded MSc and PhD positions, what selection committ
 
 At [Universitas Muhammadiyah Malang (UMM)](https://www.umm.ac.id/), we held sessions with faculty members from several departments. The discussion covered similar topics and turned into a thoughtful exchange about research, studying overseas, and scientific collaboration.
 
-On the last day, I returned to my hometown and visited my old high school. Standing there again, but this time sharing my journey as someone who left, studied abroad, and is now doing a PhD, felt quite emotional. It made me reflect on how far the journey has been, and how important it is for younger students to see that **pursuing a university degree is possible**.
+On the last day, I returned to my hometown and visited my old high school. It was meaningful to meet students there and talk honestly about university, studying abroad, and the many routes into science. The visit reinforced how much access to information and relatable examples can matter when students are considering what comes next.
 
-To measure the impact of the program, participants completed a self-assessment questionnaire before and after the sessions (scale 1–5). The results are summarized in the dumbbell chart below.
+To gather participant feedback, participants completed a self-assessment questionnaire before and after the sessions (scale 1–5). The results are summarized in the dumbbell chart below.
 
 ![Mean Pre vs Post Self-Assessment across three days of the GAP outreach program](CoE_GAP_combined_dumbbell.png)
 
-**Day 1 (Guest Lecture)** showed modest gains in kinetics knowledge (3.65 to 3.89), economic trade-offs (3.63 to 3.90), and quantitative models (3.43 to 3.78), reflecting increased conceptual exposure.
+**Day 1 (Guest Lecture)** received slightly higher self-assessment ratings for kinetics knowledge (3.65 to 3.89), economic trade-offs (3.63 to 3.90), and quantitative models (3.43 to 3.78).
 
-**Day 2 (Technical Workshop)** saw improvements across all four metrics: R familiarity (2.90 to 3.50), data wrangling (2.73 to 3.35), reproducibility (3.02 to 3.38), and data visualization (2.67 to 3.38), indicating meaningful skill development during the hands-on session.
+**Day 2 (Technical Workshop)** received higher self-assessment ratings across all four metrics: R familiarity (2.90 to 3.50), data wrangling (2.73 to 3.35), reproducibility (3.02 to 3.38), and data visualization (2.67 to 3.38).
 
-**Day 3 (Graduate Preparation)** recorded the largest shifts. Confidence level jumped from 2.00 to 4.36, application document knowledge from 1.91 to 4.36, program identification from 2.18 to 4.45, and scholarship awareness from 2.55 to 4.00. Participants reported higher confidence and knowledge after the session, although the questionnaire measured self-perception rather than independently tested learning.
+**Day 3 (Graduate Preparation)** recorded the largest self-reported shifts. Confidence rose from 2.00 to 4.36, application document knowledge from 1.91 to 4.36, program identification from 2.18 to 4.45, and scholarship awareness from 2.55 to 4.00. These results describe changes in participants' self-assessments, not independently tested learning.
 
 ### Partner Institutions
 
@@ -65,7 +65,7 @@ To measure the impact of the program, participants completed a self-assessment q
 
 > This experience reminded me why science outreach matters.
 
-Standing in front of students and early-career researchers like me, I wanted to show that a path in science, even the unconventional and messy kind, is something real and within reach. I am grateful for the chance to represent CoE MicroPlanet, and it meant a lot to come back and reconnect with the communities that shaped where I started.
+Talking with students and early-career researchers reminded me that scientific careers are rarely straightforward. I am grateful to CoE MicroPlanet and the partner institutions for making these conversations possible, and to the communities that welcomed us.
 
 
 ### The Journey from Vienna to East Java
@@ -78,9 +78,9 @@ On Friday we packed up and drove about 100 km south to Malang, roughly a 2-hour 
 
 Then came the longest road leg, Wednesday we drove another 210 km east from Malang to Bondowoso, about 4 hours through the mountains and beaches. After a day of settling in and reconnecting with the town, the final session took place on Friday at my old high school. In total, the program covered roughly 11,610 km.
 
-### Work With Me!
+### Continue the Conversation
 
-I'm always open to:
+I'm always glad to hear about:
 - Collaborations on outreach and capacity building
 - Guest lectures or workshop invitations
 - Mentoring partnerships
