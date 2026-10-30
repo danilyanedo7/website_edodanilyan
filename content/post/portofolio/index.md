@@ -250,7 +250,6 @@ body.dark .edp-intro{background:transparent}
 <div class="edp-group-heading">
 <h3 id="edp-community-title">Teaching &amp; community</h3>
 <p>Education, mentoring, outreach, and capacity-building projects created with students and communities.</p>
-<p class="edp-group-note">Some of these projects are less about code and more about learning with others through teaching, mentoring, and community work.</p>
 </div>
 <div class="edp-index">
 <a href="https://danilyanedo7.github.io/kampar-peninsula-inaturalist/" target="_blank" rel="noopener noreferrer"><span class="edp-index-date">2026</span><span class="edp-index-title">To See a Forest</span><span class="edp-index-type">Citizen science &amp; biodiversity</span></a>
