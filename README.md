@@ -14,7 +14,6 @@ The site showcases my research, publications, projects, and other professional a
 - **content/**: Main content pages, including publications, posts, and projects
 - **static/**: Static files such as images and PDFs
 - **config/**: Site configuration files
-- **wowchemy-hugo-themes/**: Wowchemy theme source and modules
 
 ## License
 

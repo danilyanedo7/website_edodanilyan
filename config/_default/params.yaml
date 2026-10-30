@@ -68,10 +68,6 @@ features:
     enable: false
   privacy_pack:
     enable: false
-  repository:
-    url: 'https://github.com/<username>/<repository>'
-    content_dir: content
-    branch: master
   avatar:
     gravatar: false
     shape: circle
