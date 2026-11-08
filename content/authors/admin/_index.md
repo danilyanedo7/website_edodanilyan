@@ -62,7 +62,7 @@ highlight_name: true
 
 Hi there, I’m Edo. I study living systems using experiments, data, code, and visualization. I like good company and bad ideas in equal measure. Experiments, code, cameras, and questionable life choices all end up here sooner or later. Tho I’m still convinced this all makes sense.
 
-Some weeks I add a dashboard or a photo from the field. Other weeks it is just one plot I liked, or a page I remembered to update. You can browse my [code](/tag/r/), [research](/publication/), and [photography](https://danilyan.myportfolio.com/). If something catches your interest, I’d be glad to hear from you.
+Some weeks I add a dashboard or a photo from the field. Other weeks it is just one plot I liked, or a page I remembered to update. You can browse my [code](/tag/r/), [maps](/maps/), [research](/publication/), and [photography](https://danilyan.myportfolio.com/). If something catches your interest, I’d be glad to hear from you.
 
 {{< cta cta_text="View my projects" cta_link="/projects/" cta_extra_text="View my research" cta_extra_link="/publication/" >}}
 

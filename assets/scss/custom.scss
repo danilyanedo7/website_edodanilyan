@@ -44,6 +44,43 @@ body {
   line-height: 1.65;
 }
 
+html {
+  --site-navbar-height: 52px;
+  scroll-padding-top: var(--site-navbar-height);
+}
+
+body:not(.no-navbar) {
+  margin-top: var(--site-navbar-height);
+}
+
+.page-wrapper:not(.no-navbar) {
+  min-height: calc(100vh - var(--site-navbar-height));
+}
+
+#navbar-main {
+  height: var(--site-navbar-height);
+}
+
+#navbar-main .navbar-brand img {
+  max-height: calc(var(--site-navbar-height) - 10px);
+}
+
+@media (max-width: 991.98px) {
+  html {
+    --site-navbar-height: 48px;
+  }
+
+  #navbar-main .navbar-collapse {
+    top: var(--site-navbar-height);
+  }
+
+  #navbar-main .navbar-toggler {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0;
+  }
+}
+
 .home-section .section-heading h1,
 #about .about-hero-copy > h1 {
   font-weight: 600;

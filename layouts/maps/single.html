@@ -1,0 +1,47 @@
+{{- define "main" -}}
+<main class="map-collection" id="map-collection">
+  <header class="map-collection__intro">
+    <div>
+      <h1>
+        {{ .Params.intro_title | default .Title }}
+      </h1>
+    </div>
+    <div class="map-collection__description">{{ .Content }}</div>
+    <p class="map-collection__hint">Open a map to zoom in and look around.</p>
+  </header>
+
+  <div class="map-gallery" id="map-gallery" aria-label="Map collection">
+    {{ range $index, $map := .Params.maps }}
+      {{ $config := dict "Width" $map.width "Height" $map.height }}
+      {{ if not (and $map.width $map.height) }}
+        {{ $config = imageConfig (printf "static%s" $map.image) }}
+      {{ end }}
+      {{ $ratio := div (float $config.Width) (float $config.Height) }}
+      {{ $previewFormat := $map.preview_format | default "webp" }}
+      <figure class="map-piece" id="{{ $map.id }}" data-ratio="{{ $ratio }}">
+        <a class="map-piece__image" href="{{ $map.image | relURL }}"
+           data-pswp-width="{{ $config.Width }}" data-pswp-height="{{ $config.Height }}"
+           data-map-id="{{ $map.id }}" aria-label="View {{ $map.title }} in detail"
+           style="aspect-ratio: {{ $config.Width }} / {{ $config.Height }}">
+          <img src="{{ printf "maps/previews/%s-900.%s" $map.id $previewFormat | relURL }}"
+               srcset="{{ printf "maps/previews/%s-480.%s" $map.id $previewFormat | relURL }} 480w, {{ printf "maps/previews/%s-900.%s" $map.id $previewFormat | relURL }} 900w"
+               sizes="(max-width: 640px) calc(100vw - 32px), (max-width: 960px) 50vw, 40vw"
+               width="{{ $config.Width }}" height="{{ $config.Height }}"
+               alt="{{ $map.alt }}" loading="{{ if lt $index 3 }}eager{{ else }}lazy{{ end }}" decoding="async">
+          <span class="map-piece__open" aria-hidden="true">View map <span>+</span></span>
+        </a>
+        <figcaption hidden>
+          <h2>{{ $map.title }}</h2>
+          <div class="map-piece__detail" hidden>
+            <p>{{ $map.caption }}</p>
+            {{ with $map.related_url }}<a href="{{ . | relURL }}">{{ $map.related_label }}</a>{{ end }}
+          </div>
+        </figcaption>
+      </figure>
+    {{ end }}
+  </div>
+
+</main>
+{{ $mapsJS := resources.Get "js/maps.js" | fingerprint }}
+<script type="module" src="{{ $mapsJS.RelPermalink }}" integrity="{{ $mapsJS.Data.Integrity }}"></script>
+{{- end -}}
