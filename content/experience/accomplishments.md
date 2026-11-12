@@ -8,6 +8,13 @@ title: 'Accomplishment'
 subtitle:
 date_format: Jan 2006
 item:
+  - date_end: '2026-11-02'
+    date_start: '2026-11-02'
+    description: Hands-on training in strain-specific metabolic modeling, flux balance analysis, whole-community simulation with MICOM, and microbial interaction analysis
+    organization: Medical University of Graz
+    organization_url: https://www.medunigraz.at
+    title: Strain-level metabolic modeling of microbial communities
+    url: https://insights.medunigraz.at/events/detail/workshop-strain-level-metabolic-modeling-of-microbial-communities
   # - certificate_url: https://www.coursera.org
   #   date_end: ''
   #   date_start: '2021-01-25'
