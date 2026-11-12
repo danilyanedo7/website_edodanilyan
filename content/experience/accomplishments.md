@@ -15,6 +15,14 @@ item:
     organization_url: https://www.medunigraz.at
     title: Strain-level metabolic modeling of microbial communities
     url: https://insights.medunigraz.at/events/detail/workshop-strain-level-metabolic-modeling-of-microbial-communities
+  - date_end: '2025-07-26'
+    date_start: '2025-07-23'
+    description: >-
+      Summer school covering basic metabolic and cell modeling, optimization of metabolic fluxes and states, enzyme costs, growth balance analysis, and modeling of microbial communities, with practical work on flux balance analysis, elementary flux modes, optimal enzyme profiles, dynamic flux balance analysis, and flux variability and entropy.
+    organization: University of Vienna
+    organization_url: https://www.univie.ac.at/en/
+    title: Economic Principles in Cell Biology Summer School
+    url: https://principlescellphysiology.org/summer-school-2025/
   # - certificate_url: https://www.coursera.org
   #   date_end: ''
   #   date_start: '2021-01-25'
