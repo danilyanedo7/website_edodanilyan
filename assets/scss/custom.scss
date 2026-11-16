@@ -345,6 +345,25 @@ body:not(.no-navbar) {
   object-fit: cover;
 }
 
+#projects .project-preview {
+  display: block;
+  position: relative;
+}
+
+#projects .project-preview-logo {
+  position: absolute;
+  display: block;
+  box-sizing: border-box;
+  top: 0.75rem;
+  right: 0.75rem;
+  width: 6.25rem;
+  max-width: 36%;
+  height: auto;
+  margin: 0;
+  padding: 0.45rem;
+  background: #fff;
+}
+
 #projects .view-card {
   height: 100%;
 }

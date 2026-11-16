@@ -7,7 +7,7 @@ summary: Projects about climate, movement, music, food, microbes, and energy
 layout: portfolio
 projects: []
 date: '2020-12-13T00:00:00Z'
-lastmod: '2026-10-29T00:00:00Z'
+lastmod: '2026-11-16T00:00:00+01:00'
 draft: false
 featured: false
 image:
@@ -53,8 +53,10 @@ body.dark .edp-intro{background:transparent}
 .edp-card-meta .edp-meta{font-size:.64rem;letter-spacing:.1em;white-space:nowrap}
 .edp-card-meta .edp-meta:last-child{text-align:right}
 .edp-card-visual{display:block;overflow:hidden;margin-bottom:1.7rem;border:1px solid var(--edp-line);background:var(--edp-panel)}
-.edp-card-visual img{display:block;width:100%;aspect-ratio:8/5;margin:0;object-fit:cover;filter:saturate(.88);transition:filter .3s ease,transform .35s ease}
-.edp-card:hover .edp-card-visual img{filter:saturate(1);transform:scale(1.018)}
+.edp-card-visual img:not(.edp-card-logo){display:block;width:100%;aspect-ratio:8/5;margin:0;object-fit:cover;filter:saturate(.88);transition:filter .3s ease,transform .35s ease}
+.edp-card-visual--branded{position:relative}
+.edp-card-visual .edp-card-logo{position:absolute;top:.75rem;right:.75rem;display:block;width:6.25rem;max-width:36%;height:auto;margin:0;padding:.45rem;background:#fff}
+.edp-card:hover .edp-card-visual img:not(.edp-card-logo){filter:saturate(1);transform:scale(1.018)}
 .edp-card h3{margin:0 0 .75rem;color:var(--edp-ink);font-size:clamp(1.8rem,2.6vw,2.25rem);font-weight:500;line-height:1.02;letter-spacing:-.04em;text-wrap:balance}
 .edp-question{margin:0 0 1.15rem;color:var(--edp-ink);font-size:1.02rem;font-weight:500;line-height:1.45}
 .edp-description{margin:0;color:var(--edp-muted);font-size:.94rem;line-height:1.58}
@@ -87,7 +89,7 @@ body.dark .edp-intro{background:transparent}
 <h2 id="edp-intro-title">A few things I have made <em>with data</em></h2>
 <div class="edp-intro-label">
 <p class="edp-kicker">Selected projects</p>
-<p class="edp-intro-count">08 projects · 2025–2026</p>
+<p class="edp-intro-count">09 projects · 2025–2026</p>
 </div>
 </div>
 <div class="edp-intro-copy">
@@ -104,10 +106,24 @@ body.dark .edp-intro{background:transparent}
 <section class="edp-showcase" id="selected-work" aria-label="Selected work">
 <div class="edp-rail" id="edp-project-rail" tabindex="0" aria-label="Selected projects">
 <article class="edp-card">
+<a class="edp-card-visual edp-card-visual--branded" href="https://danilyanedo7.github.io/rongawi-submission-nasa/" target="_blank" rel="noopener noreferrer" aria-label="Open Flock Around and Find Out">
+<picture>
+<source media="(max-width:720px)" srcset="/project/flock-around-and-find-out/preview-900.webp">
+<img src="/project/flock-around-and-find-out/featured.webp" width="1600" height="967" loading="eager" fetchpriority="high" alt="Flock Around and Find Out interface showing three gull migration routes over a NASA temperature map, sound layers, and a journey player">
+</picture>
+<img class="edp-card-logo" src="/project/flock-around-and-find-out/nasa-space-apps.png" width="580" height="227" alt="NASA Space Apps Challenge logo">
+</a>
+<h3>Flock Around and Find Out</h3>
+<p class="edp-description">A hackathon project for the Earth Information Jukebox challenge at NASA Space Apps Challenge 2026.</p>
+<div class="edp-card-footer">
+<a class="edp-link" href="https://danilyanedo7.github.io/rongawi-submission-nasa/" target="_blank" rel="noopener noreferrer">Open project</a>
+</div>
+</article>
+<article class="edp-card">
 <a class="edp-card-visual" href="https://danilyanedo7.github.io/kampar-peninsula-inaturalist/" target="_blank" rel="noopener noreferrer" aria-label="Open To See a Forest">
 <picture>
 <source media="(max-width:720px)" srcset="kampar-900.webp">
-<img src="kampar-1600.webp" width="1600" height="1000" loading="eager" fetchpriority="high" alt="The Canopy of Life visualization groups 3,120 taxon IDs into colorful branching forms for plants, insects, birds, fungi, and other life">
+<img src="kampar-1600.webp" width="1600" height="1000" loading="lazy" alt="The Canopy of Life visualization groups 3,120 taxon IDs into colorful branching forms for plants, insects, birds, fungi, and other life">
 </picture>
 </a>
 <h3>To See a Forest</h3>

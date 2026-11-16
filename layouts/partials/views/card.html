@@ -45,13 +45,20 @@
   {{ $image_sm := .Fill (printf "320x180 webp %s" $anchor) }}
   {{ $image_md := .Fill (printf "480x270 webp %s" $anchor) }}
   {{ $image_lg := .Fill (printf "808x455 webp %s" $anchor) }}
-  <a href="{{ $link }}" {{ $target | safeHTMLAttr }}>
+  <a href="{{ $link }}" {{ $target | safeHTMLAttr }}{{ if $item.Params.image.logo }} class="project-preview"{{ end }}>
     <div class="img-hover-zoom">
       <img srcset="{{ $image_sm.RelPermalink }} 320w, {{ $image_md.RelPermalink }} 480w, {{ $image_lg.RelPermalink }} 808w"
            sizes="(min-width: 992px) 404px, (min-width: 576px) calc(50vw - 2rem), calc(100vw - 2rem)"
            src="{{ $image_lg.RelPermalink }}" height="{{ $image_lg.Height }}" width="{{ $image_lg.Width }}"
            class="article-banner" alt="{{ $item.Title }}" loading="lazy">
     </div>
+    {{ with $item.Params.image.logo }}
+      {{ with $item.Resources.GetMatch . }}
+        {{ $logo := .Resize "240x webp" }}
+        <img src="{{ $logo.RelPermalink }}" width="{{ $logo.Width }}" height="{{ $logo.Height }}"
+             class="project-preview-logo" alt="{{ $item.Params.image.logo_alt }}" loading="lazy">
+      {{ end }}
+    {{ end }}
   </a>
   {{end}}
 
