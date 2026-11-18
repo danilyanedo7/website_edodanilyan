@@ -42,6 +42,57 @@ projects: []
     margin: 0;
   }
 
+  .about-guide {
+    margin: 0 0 2.5rem;
+    font-size: 0.9rem;
+  }
+
+  .about-guide__intro {
+    margin: 0 0 0.65rem;
+  }
+
+  .about-guide ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .about-guide li {
+    display: grid;
+    gap: 0 1rem;
+    margin: 0 0 0.5rem;
+  }
+
+  .about-guide li:last-child {
+    margin-bottom: 0;
+  }
+
+  .article-style .about-guide a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding-block: 0.25rem;
+    text-decoration: underline;
+  }
+
+  .article-style .about-guide a:hover,
+  .article-style .about-guide a:active {
+    text-decoration-thickness: 0.14em;
+  }
+
+  .article-style .about-guide a:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+  }
+
+  @media (min-width: 640px) {
+    .about-guide li {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      align-items: baseline;
+      margin-bottom: 0;
+    }
+  }
+
   @media (max-width: 767px) {
     .about-intro {
       grid-template-columns: 1fr;
@@ -60,9 +111,20 @@ projects: []
     <img src="/aboutme.jpeg" alt="Edo at his master's graduation">
   </div>
   <div class="about-intro__copy">
-    <p>Hi, I’m Edo. I’m a PhD researcher at the University of Vienna, where I study microbial growth, cell size, and metabolism in aquatic systems. Most days involve chemostats, automated bioreactors, single-cell measurements, and R.</p>
+    <p>I’m a PhD researcher at the University of Vienna, where I study microbial growth, cell size, and metabolism in aquatic systems. Most days involve chemostats, automated bioreactors, single-cell measurements, and R.</p>
   </div>
 </div>
+
+<nav class="about-guide" aria-labelledby="about-guide-title">
+  <p class="about-guide__intro" id="about-guide-title">I’ve been keeping bits of what I learn and make on this site. If you’d like to have a look around, here are a few places to start.</p>
+  <ul>
+    <li><span>Studying abroad</span><span><a href="/tag/study-abroad/">Study Abroad posts</a></span></li>
+    <li><span>Learning R</span><span><a href="/tag/r/">R tutorials</a></span></li>
+    <li><span>Reading my notes</span><span><a href="/post/">Notes</a></span></li>
+    <li><span>Finding outreach and teaching</span><span><a href="/talks/">Talks</a> and <a href="/projects/#edp-community-title">community projects</a></span></li>
+    <li><span>Exploring maps and visual work</span><span><a href="/maps/">Maps</a> and <a href="/projects/#selected-work">selected projects</a></span></li>
+  </ul>
+</nav>
 
 I studied biology at Institut Teknologi Sepuluh Nopember in Indonesia. Before moving to Vienna, I worked on projects in environmental microbiology and microbial applications in sustainable construction. That mix of laboratory work and data analysis still shapes how I approach research.
 
